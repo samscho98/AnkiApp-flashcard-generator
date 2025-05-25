@@ -1,29 +1,43 @@
 #!/usr/bin/env python3
 """
-Daily Card Generator for Goethe A1 Preparation
-Command-line interface for generating AnkiApp flashcards
+Language Learning Flashcard Generator - Command Line Interface
+Generic CLI for generating AnkiApp flashcards from JSON vocabulary data
 
 Usage:
-    python daily_cards.py --week 1 --day 1          # Generate today's cards
-    python daily_cards.py --week 2 --full           # Generate full week
-    python daily_cards.py --schedule                 # Create study schedule
-    python daily_cards.py --preview                  # Preview card format
+    python cli.py --file data/vocabulary/German/week1.json    # Generate from specific file
+    python cli.py --batch --input-dir data/vocabulary/       # Batch process directory
+    python cli.py --validate --input data/vocabulary/        # Validate data files
+    python cli.py --preview --file week1.json                # Preview card format
 """
 
 import argparse
 import sys
 import json
 from pathlib import Path
-from datetime import datetime, timedelta
+from datetime import datetime
 import logging
 
-# Import our enhanced generator (assuming it's in the same directory)
+# Add src directory to Python path for imports
+src_path = Path(__file__).parent / "src"
+sys.path.insert(0, str(src_path))
+
+# Import from our actual project modules
 try:
-    from csv_generator import EnhancedCSVGenerator, generate_todays_cards, generate_week_cards
-    from template_manager import TemplateManager
+    from src.core.csv_generator import GenericLanguageCSVGenerator
+    from src.core.history_manager import HistoryManager
+    from src.config.settings import SettingsManager
+    from src.utils.validation import ValidationRunner
+    from src.utils.file_utils import JSONFileManager, DirectoryScanner
+    from __version__ import __version__, APP_NAME, print_version
 except ImportError as e:
-    print(f"Error importing modules: {e}")
-    print("Make sure template_manager.py and enhanced_csv_generator.py are in the same directory")
+    print(f"❌ Error importing modules: {e}")
+    print("Make sure you're running from the project root directory and src/ exists")
+    print("Expected project structure:")
+    print("  cli.py")
+    print("  src/")
+    print("    core/")
+    print("    utils/")
+    print("    config/")
     sys.exit(1)
 
 # Setup logging
@@ -33,374 +47,457 @@ logger = logging.getLogger(__name__)
 
 def setup_directories():
     """Ensure required directories exist"""
-    directories = ['templates', 'output', 'data/vocabulary']
+    directories = [
+        'data',
+        'data/vocabulary', 
+        'data/grammar',
+        'output', 
+        'logs',
+        'backups'
+    ]
     for directory in directories:
         Path(directory).mkdir(parents=True, exist_ok=True)
     logger.info("✓ Directories setup complete")
 
 
-def calculate_study_progress(target_date: str = "2025-08-04") -> dict:
-    """Calculate study progress and recommendations"""
-    try:
-        target = datetime.strptime(target_date, "%Y-%m-%d").date()
-        today = datetime.now().date()
-        days_remaining = (target - today).days
-        
-        # Study schedule: 33 study days total (5.5 weeks)
-        total_study_days = 33
-        total_words = 650
-        
-        return {
-            'target_date': target_date,
-            'days_remaining': days_remaining,
-            'total_study_days': total_study_days,
-            'total_words': total_words,
-            'words_per_day_average': total_words / total_study_days,
-            'weeks_remaining': days_remaining / 7,
-            'status': 'on_track' if days_remaining >= total_study_days else 'intensive_needed'
-        }
-    except ValueError:
-        return {'error': 'Invalid date format. Use YYYY-MM-DD'}
+def scan_available_data():
+    """Scan for available data files"""
+    scanner = DirectoryScanner("data")
+    content_files = scanner.scan_for_content({
+        'vocabulary': ['*.json'],
+        'grammar': ['*.json'],
+        'phrases': ['*.json']
+    })
+    
+    return content_files
 
 
-def generate_daily_cards(week: int, day: int, output_dir: str = "output"):
-    """Generate daily flashcards"""
+def generate_from_file(file_path: str, output_dir: str = "output", format_type: str = "ankiapp"):
+    """Generate flashcards from a specific JSON file"""
     try:
-        generator = EnhancedCSVGenerator(output_dir, "templates")
-        csv_path = generator.generate_daily_cards(week, day)
+        file_path = Path(file_path)
+        if not file_path.exists():
+            print(f"❌ File not found: {file_path}")
+            return None
+        
+        # Initialize generator
+        settings_manager = SettingsManager()
+        generator = GenericLanguageCSVGenerator(
+            output_dir=output_dir,
+            config={
+                'export_format': format_type,
+                'include_html_formatting': True,
+                'show_connections': True
+            }
+        )
+        
+        # Generate CSV
+        print(f"📚 Processing: {file_path.name}")
+        csv_path = generator.generate_from_json_file(str(file_path), format_type)
         
         if csv_path:
-            print(f"✅ Generated daily cards: {csv_path}")
+            print(f"✅ Generated: {csv_path}")
             
-            # Show card count and study info
+            # Show statistics
             with open(csv_path, 'r', encoding='utf-8') as f:
                 lines = f.readlines()
-                card_count = len(lines) - 1  # Subtract header
+                card_count = len(lines) - 1 if lines else 0  # Subtract header
             
-            expected_words = 10 if week == 1 else 20
-            print(f"📊 Cards generated: {card_count} (expected: {expected_words})")
-            print(f"📚 Study focus: Week {week}, Day {day}")
+            print(f"📊 Cards generated: {card_count}")
             
-            if week == 1:
-                print("🎯 Week 1 Focus: Essential grammar and high-frequency words")
+            # Update history
+            history_manager = HistoryManager()
+            history_manager.add_generated_file(
+                csv_path, 
+                str(file_path),
+                "vocabulary",  # Default content type
+                card_count
+            )
+            
+            return csv_path
+        else:
+            print("❌ Failed to generate CSV")
+            return None
+            
+    except Exception as e:
+        print(f"❌ Error processing {file_path}: {e}")
+        logger.error(f"Error in generate_from_file: {e}", exc_info=True)
+        return None
+
+
+def batch_process_directory(input_dir: str, output_dir: str = "output", format_type: str = "ankiapp"):
+    """Batch process all JSON files in a directory"""
+    try:
+        input_path = Path(input_dir)
+        if not input_path.exists():
+            print(f"❌ Directory not found: {input_dir}")
+            return []
+        
+        # Find all JSON files
+        json_files = list(input_path.rglob("*.json"))
+        
+        if not json_files:
+            print(f"❌ No JSON files found in: {input_dir}")
+            return []
+        
+        print(f"📁 Found {len(json_files)} JSON files")
+        print(f"🔄 Processing batch...")
+        
+        generated_files = []
+        success_count = 0
+        
+        for json_file in json_files:
+            print(f"\n📄 Processing: {json_file.relative_to(input_path)}")
+            csv_path = generate_from_file(str(json_file), output_dir, format_type)
+            
+            if csv_path:
+                generated_files.append(csv_path)
+                success_count += 1
             else:
-                week_topics = {
-                    2: "Time & Daily Activities",
-                    3: "Living & Housing (Wohnen)",
-                    4: "Food & Shopping (Essen/Trinken & Einkaufen)",
-                    5: "Health & Services (Körper/Gesundheit & Dienstleistungen)",
-                    6: "Person & Communication"
-                }
-                print(f"🎯 Week {week} Focus: {week_topics.get(week, 'General vocabulary')}")
-            
-            return csv_path
-        else:
-            print("❌ Failed to generate daily cards")
-            return None
-            
-    except Exception as e:
-        print(f"❌ Error generating daily cards: {e}")
-        return None
-
-
-def generate_weekly_cards(week: int, output_dir: str = "output"):
-    """Generate full week flashcards"""
-    try:
-        generator = EnhancedCSVGenerator(output_dir, "templates")
-        csv_path = generator.generate_weekly_cards(week)
+                print(f"⚠️  Skipped: {json_file.name}")
         
-        if csv_path:
-            print(f"✅ Generated weekly cards: {csv_path}")
-            
-            # Show card count
-            with open(csv_path, 'r', encoding='utf-8') as f:
-                lines = f.readlines()
-                card_count = len(lines) - 1
-            
-            expected_words = 50 if week == 1 else 120
-            print(f"📊 Cards generated: {card_count} (expected: {expected_words})")
-            print(f"📚 Full week {week} vocabulary")
-            
-            return csv_path
-        else:
-            print("❌ Failed to generate weekly cards")
-            return None
-            
-    except Exception as e:
-        print(f"❌ Error generating weekly cards: {e}")
-        return None
-
-
-def create_study_schedule(output_dir: str = "output"):
-    """Create complete study schedule"""
-    try:
-        generator = EnhancedCSVGenerator(output_dir, "templates")
-        schedule_path = generator.create_study_schedule_csv()
+        print(f"\n✅ Batch complete: {success_count}/{len(json_files)} files processed")
+        return generated_files
         
-        if schedule_path:
-            print(f"✅ Generated study schedule: {schedule_path}")
-            print("📅 Complete 6-week Goethe A1 preparation plan")
-            print("📋 Import this into Excel/Google Sheets to track progress")
-            return schedule_path
-        else:
-            print("❌ Failed to generate study schedule")
-            return None
-            
     except Exception as e:
-        print(f"❌ Error creating study schedule: {e}")
-        return None
+        print(f"❌ Error in batch processing: {e}")
+        logger.error(f"Error in batch_process_directory: {e}", exc_info=True)
+        return []
 
 
-def preview_card_formats():
-    """Show preview of different card formats"""
+def validate_data_files(input_path: str):
+    """Validate JSON data files"""
+    try:
+        path = Path(input_path)
+        if not path.exists():
+            print(f"❌ Path not found: {input_path}")
+            return
+        
+        print(f"🔍 Validating data files in: {input_path}")
+        
+        # Initialize validator
+        validator = ValidationRunner({
+            'basic_validation': {
+                'required_fields': ['target', 'native'],
+                'min_entries_per_section': 1,
+                'max_entries_per_section': 100
+            }
+        })
+        
+        if path.is_file():
+            # Single file validation
+            result = validator.run_full_validation(str(path))
+            report = validator.generate_validation_report(result, "text")
+            print(report)
+        else:
+            # Directory validation
+            json_files = list(path.rglob("*.json"))
+            
+            if not json_files:
+                print("❌ No JSON files found")
+                return
+            
+            total_errors = 0
+            total_warnings = 0
+            
+            for json_file in json_files:
+                print(f"\n📄 Validating: {json_file.relative_to(path)}")
+                result = validator.run_full_validation(str(json_file))
+                
+                if result.errors:
+                    total_errors += len(result.errors)
+                    print(f"  ❌ {len(result.errors)} errors")
+                    for error in result.errors[:3]:  # Show first 3 errors
+                        print(f"    • {error}")
+                    if len(result.errors) > 3:
+                        print(f"    ... and {len(result.errors) - 3} more")
+                
+                if result.warnings:
+                    total_warnings += len(result.warnings)
+                    print(f"  ⚠️  {len(result.warnings)} warnings")
+                
+                if not result.errors and not result.warnings:
+                    print("  ✅ Valid")
+            
+            print(f"\n📊 Validation Summary:")
+            print(f"  Files checked: {len(json_files)}")
+            print(f"  Total errors: {total_errors}")
+            print(f"  Total warnings: {total_warnings}")
+            
+            if total_errors == 0:
+                print("✅ All files are valid!")
+            else:
+                print("❌ Some files have validation errors")
+        
+    except Exception as e:
+        print(f"❌ Error during validation: {e}")
+        logger.error(f"Error in validate_data_files: {e}", exc_info=True)
+
+
+def preview_card_format(file_path: str = None):
+    """Show preview of card formatting"""
     print("🎴 Card Format Preview")
     print("=" * 50)
     
     try:
-        generator = EnhancedCSVGenerator("output", "templates")
+        # Initialize components
+        settings_manager = SettingsManager()
+        generator = GenericLanguageCSVGenerator("output")
         
-        # Sample vocabulary entry
-        vocab_sample = {
-            "german": "das Haus",
-            "english": "the house",
-            "dutch_connection": "het huis",
-            "example": "Das Haus ist groß und schön.",
-            "example_translation": "The house is big and beautiful.",
-            "pronunciation_tip": "Rhymes with English 'house'",
-            "memory_tip": "Same word as Dutch 'huis' but with German article 'das'"
-        }
-        
-        print("📖 VOCABULARY CARD PREVIEW:")
-        vocab_preview = generator.preview_card(vocab_sample, "vocabulary_card")
-        # Remove HTML tags for clean console output
-        import re
-        clean_preview = re.sub('<[^<]+?>', '', vocab_preview)
-        clean_preview = clean_preview.replace('&nbsp;', ' ').strip()
-        print(clean_preview[:300] + "..." if len(clean_preview) > 300 else clean_preview)
-        
-        print("\n" + "=" * 50)
-        
-        # Sample grammar entry
-        grammar_sample = {
-            "type": "grammar",
-            "rule_name": "German Articles: der, die, das",
-            "explanation": "German nouns have grammatical gender: masculine (der), feminine (die), neuter (das).",
-            "examples": True,
-            "example_list": [
-                {
-                    "correct_example": "der Mann (the man)",
-                    "translation": "masculine noun"
+        # Sample data for preview
+        sample_entries = [
+            {
+                "target": "das Haus",
+                "native": "the house",
+                "example": "Das Haus ist groß und schön.",
+                "example_translation": "The house is big and beautiful.",
+                "pronunciation": "dahs hows",
+                "connections": {
+                    "dutch": "het huis",
+                    "spanish": "la casa"
                 },
-                {
-                    "correct_example": "die Frau (the woman)",
-                    "translation": "feminine noun"
+                "notes": "Neuter noun, plural: die Häuser"
+            },
+            {
+                "target": "gehen",
+                "native": "to go",
+                "example": "Ich gehe nach Hause.",
+                "example_translation": "I go home.",
+                "pronunciation": "GAY-en",
+                "connections": {
+                    "dutch": "gaan"
                 }
-            ],
-            "dutch_comparison": "Dutch only has 'de' and 'het' - much simpler!",
-            "memory_tip": "Learn every noun with its article from day one"
-        }
+            }
+        ]
         
-        print("📚 GRAMMAR CARD PREVIEW:")
-        grammar_preview = generator.preview_card(grammar_sample, "grammar_card")
-        clean_grammar = re.sub('<[^<]+?>', '', grammar_preview)
-        clean_grammar = clean_grammar.replace('&nbsp;', ' ').strip()
-        print(clean_grammar[:300] + "..." if len(clean_grammar) > 300 else clean_grammar)
+        # If file specified, load real data
+        if file_path and Path(file_path).exists():
+            json_manager = JSONFileManager()
+            data = json_manager.load_json(file_path)
+            if data:
+                # Extract first few entries from the file
+                entries = []
+                if 'entries' in data:
+                    entries = data['entries'][:2]
+                elif 'words' in data:
+                    entries = data['words'][:2]
+                elif 'days' in data:
+                    for day_data in data['days'].values():
+                        if 'words' in day_data:
+                            entries.extend(day_data['words'][:2])
+                            break
+                
+                if entries:
+                    sample_entries = entries
+                    print(f"📖 Preview from: {Path(file_path).name}")
         
-        print("\n✨ Available templates:", generator.get_available_templates())
+        print("\n📚 VOCABULARY CARDS:")
+        for i, entry in enumerate(sample_entries[:2], 1):
+            print(f"\n--- Card {i} ---")
+            print(f"Front: {entry.get('target', 'N/A')}")
+            print(f"Back: {entry.get('native', 'N/A')}")
+            
+            if entry.get('example'):
+                print(f"Example: {entry['example']}")
+            
+            if entry.get('connections'):
+                connections = entry['connections']
+                conn_str = " | ".join(f"{lang}: {word}" for lang, word in connections.items())
+                print(f"Connections: {conn_str}")
+            
+            if entry.get('pronunciation'):
+                print(f"Pronunciation: {entry['pronunciation']}")
+        
+        print(f"\n✨ Available formats: AnkiApp, Anki, Quizlet, Generic")
+        print(f"🎨 HTML formatting: Bold, italic, line breaks supported")
         
     except Exception as e:
         print(f"❌ Error generating preview: {e}")
+        logger.error(f"Error in preview_card_format: {e}", exc_info=True)
 
 
-def show_study_progress(target_date: str = "2025-08-04"):
-    """Show study progress and timeline"""
-    progress = calculate_study_progress(target_date)
-    
-    if 'error' in progress:
-        print(f"❌ {progress['error']}")
-        return
-    
-    print("📊 GOETHE A1 STUDY PROGRESS")
+def show_available_data():
+    """Show available data files"""
+    print("📚 Available Data Files")
     print("=" * 40)
-    print(f"🎯 Target exam date: {progress['target_date']}")
-    print(f"⏰ Days remaining: {progress['days_remaining']}")
-    print(f"📚 Total words to learn: {progress['total_words']}")
-    print(f"📈 Average words per day: {progress['words_per_day_average']:.1f}")
-    print(f"🗓️  Study weeks remaining: {progress['weeks_remaining']:.1f}")
     
-    if progress['status'] == 'intensive_needed':
-        print("⚠️  STATUS: INTENSIVE STUDY NEEDED")
-        print("💪 Recommendation: Study 25-30 words per day")
-    else:
-        print("✅ STATUS: ON TRACK")
-        print("😊 Recommendation: Follow the standard 10-20 words per day plan")
-    
-    print("\n📅 RECOMMENDED WEEKLY SCHEDULE:")
-    print("Week 1: Essential Grammar (10 words/day × 5 days)")
-    print("Week 2: Time & Activities (20 words/day × 6 days)")
-    print("Week 3: Living & Housing (20 words/day × 6 days)")
-    print("Week 4: Food & Shopping (20 words/day × 6 days)")
-    print("Week 5: Health & Services (20 words/day × 6 days)")
-    print("Week 6: Person & Communication (20 words/day × 6 days)")
+    try:
+        content_files = scan_available_data()
+        
+        if not any(content_files.values()):
+            print("❌ No data files found")
+            print("💡 Create JSON files in data/vocabulary/ or data/grammar/")
+            return
+        
+        for content_type, files in content_files.items():
+            if files:
+                print(f"\n📖 {content_type.title()}:")
+                for file_path in sorted(files):
+                    rel_path = Path(file_path).relative_to(Path.cwd())
+                    print(f"  • {rel_path}")
+        
+        print(f"\n💡 Use --file to process a specific file")
+        print(f"💡 Use --batch to process all files in a directory")
+        
+    except Exception as e:
+        print(f"❌ Error scanning data: {e}")
+
+
+def show_progress():
+    """Show learning progress and statistics"""
+    try:
+        history_manager = HistoryManager()
+        
+        print("📊 Learning Progress")
+        print("=" * 40)
+        
+        summary = history_manager.get_progress_summary()
+        today_progress = history_manager.get_today_progress()
+        
+        print(f"📚 Total items learned: {summary.get('total_items_learned', 0)}")
+        print(f"⏱️  Total study time: {summary.get('total_study_time_hours', 0):.1f} hours")
+        print(f"📈 Study streak: {summary.get('study_streak', 0)} days")
+        print(f"📄 Generated files: {summary.get('generated_files_count', 0)}")
+        
+        # Today's progress
+        if today_progress.get('items_learned', 0) > 0:
+            print(f"\n🎯 Today's Progress:")
+            print(f"  Items learned: {today_progress['items_learned']}")
+            print(f"  Target: {today_progress['daily_target']}")
+            print(f"  Progress: {today_progress['target_progress']:.1f}%")
+        
+        # Recent sessions
+        recent_sessions = history_manager.get_recent_sessions(5)
+        if recent_sessions:
+            print(f"\n📋 Recent Sessions:")
+            for session in recent_sessions[:3]:
+                if session.get('status') == 'completed':
+                    date = session.get('start_time', '').split('T')[0]
+                    items = session.get('items_learned', 0)
+                    lang = session.get('target_language', 'Unknown')
+                    print(f"  • {date}: {items} items ({lang})")
+        
+    except Exception as e:
+        print(f"❌ Error showing progress: {e}")
 
 
 def main():
     """Main CLI interface"""
     parser = argparse.ArgumentParser(
-        description="Generate AnkiApp flashcards for Goethe A1 preparation",
+        description=f"{APP_NAME} - Command Line Interface",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  %(prog)s --week 1 --day 1           Generate today's cards (Week 1, Day 1)
-  %(prog)s --week 2 --full            Generate all cards for Week 2
-  %(prog)s --schedule                 Create complete study schedule
-  %(prog)s --preview                  Preview card formats
-  %(prog)s --progress                 Show study progress
-  %(prog)s --setup                    Setup directories and templates
+  %(prog)s --list                                    # Show available data files
+  %(prog)s --file data/vocabulary/week1.json        # Generate from specific file
+  %(prog)s --batch --input-dir data/vocabulary/     # Process all files in directory
+  %(prog)s --validate --input data/vocabulary/      # Validate data files
+  %(prog)s --preview --file week1.json              # Preview card format
+  %(prog)s --progress                                # Show learning statistics
         """
     )
     
-    parser.add_argument('--week', type=int, choices=range(1, 7),
-                       help='Week number (1-6)')
-    parser.add_argument('--day', type=int, choices=range(1, 7),
-                       help='Day number (1-6, or 1-5 for week 1)')
-    parser.add_argument('--full', action='store_true',
-                       help='Generate full week instead of single day')
-    parser.add_argument('--schedule', action='store_true',
-                       help='Create complete study schedule')
+    # File operations
+    parser.add_argument('--file', type=str,
+                       help='Generate flashcards from specific JSON file')
+    parser.add_argument('--batch', action='store_true',
+                       help='Batch process multiple files')
+    parser.add_argument('--input-dir', type=str, default='data',
+                       help='Input directory for batch processing (default: data)')
+    
+    # Validation and preview
+    parser.add_argument('--validate', action='store_true',
+                       help='Validate JSON data files')
+    parser.add_argument('--input', type=str,
+                       help='Input file or directory for validation')
     parser.add_argument('--preview', action='store_true',
-                       help='Preview card formats')
-    parser.add_argument('--progress', action='store_true',
-                       help='Show study progress')
-    parser.add_argument('--setup', action='store_true',
-                       help='Setup directories and create default templates')
-    parser.add_argument('--output', default='output',
+                       help='Preview card formatting')
+    
+    # Output configuration
+    parser.add_argument('--output', type=str, default='output',
                        help='Output directory (default: output)')
-    parser.add_argument('--target-date', default='2025-08-04',
-                       help='Target exam date (YYYY-MM-DD, default: 2025-08-04)')
+    parser.add_argument('--format', type=str, 
+                       choices=['ankiapp', 'anki', 'quizlet', 'generic'],
+                       default='ankiapp',
+                       help='Output format (default: ankiapp)')
+    
+    # Information commands
+    parser.add_argument('--list', action='store_true',
+                       help='List available data files')
+    parser.add_argument('--progress', action='store_true',
+                       help='Show learning progress and statistics')
+    parser.add_argument('--setup', action='store_true',
+                       help='Setup directories')
+    parser.add_argument('--version', action='store_true',
+                       help='Show version information')
     
     args = parser.parse_args()
+    
+    # Handle version
+    if args.version:
+        print_version()
+        return
     
     # Handle setup
     if args.setup:
         setup_directories()
-        print("✅ Setup complete! You can now generate flashcards.")
+        print("✅ Setup complete! You can now add JSON files to data/ directories.")
         return
     
-    # Handle preview
-    if args.preview:
-        preview_card_formats()
+    # Handle list
+    if args.list:
+        show_available_data()
         return
     
     # Handle progress
     if args.progress:
-        show_study_progress(args.target_date)
+        show_progress()
         return
     
-    # Handle schedule creation
-    if args.schedule:
-        create_study_schedule(args.output)
+    # Handle validation
+    if args.validate:
+        input_path = args.input or args.input_dir
+        if not input_path:
+            print("❌ Please specify --input for validation")
+            return
+        validate_data_files(input_path)
         return
     
-    # Handle card generation
-    if args.week:
-        if args.full:
-            # Generate full week
-            generate_weekly_cards(args.week, args.output)
-        elif args.day:
-            # Generate specific day
-            # Validate day range for week 1
-            if args.week == 1 and args.day > 5:
-                print("❌ Week 1 only has 5 days (Day 1-5)")
-                return
-            generate_daily_cards(args.week, args.day, args.output)
-        else:
-            print("❌ Please specify --day for daily cards or --full for weekly cards")
-            print("Example: --week 1 --day 1")
-    else:
-        # No arguments provided, show help and current status
-        print("🎓 GOETHE A1 FLASHCARD GENERATOR")
-        print("=" * 40)
-        show_study_progress(args.target_date)
-        print("\n" + "=" * 40)
-        print("💡 QUICK START:")
-        print("  python daily_cards.py --week 1 --day 1    # Today's cards")
-        print("  python daily_cards.py --schedule          # Study plan")
-        print("  python daily_cards.py --preview           # See card formats")
-        print("  python daily_cards.py --help              # Full help")
-
-
-def quick_start_wizard():
-    """Interactive wizard for first-time users"""
-    print("🎓 GOETHE A1 PREPARATION WIZARD")
-    print("=" * 40)
-    print("Let's set up your German A1 study plan!\n")
+    # Handle preview
+    if args.preview:
+        preview_card_format(args.file)
+        return
     
-    # Get user info
-    name = input("What's your partner's name? ").strip()
-    if not name:
-        name = "Student"
+    # Handle file processing
+    if args.file:
+        if args.batch:
+            print("❌ Cannot use --file and --batch together")
+            return
+        generate_from_file(args.file, args.output, args.format)
+        return
     
-    print(f"\nHi {name}! 👋")
-    print("Perfect timing for the August 2025 Goethe A1 exam in Düsseldorf!")
-    print("Your Dutch knowledge will be a huge advantage! 🇳🇱➡️🇩🇪\n")
+    # Handle batch processing
+    if args.batch:
+        batch_process_directory(args.input_dir, args.output, args.format)
+        return
     
-    # Check current week
-    try:
-        current_week = int(input("Which week are you starting with? (1-6): ").strip())
-        if current_week < 1 or current_week > 6:
-            current_week = 1
-    except:
-        current_week = 1
-    
-    # Check current day
-    max_days = 5 if current_week == 1 else 6
-    try:
-        current_day = int(input(f"Which day of week {current_week}? (1-{max_days}): ").strip())
-        if current_day < 1 or current_day > max_days:
-            current_day = 1
-    except:
-        current_day = 1
-    
-    print(f"\n🎯 Starting at Week {current_week}, Day {current_day}")
-    
-    # Setup directories
-    print("\n📁 Setting up directories...")
-    setup_directories()
-    
-    # Generate today's cards
-    print(f"\n📚 Generating your first set of flashcards...")
-    csv_path = generate_daily_cards(current_week, current_day)
-    
-    if csv_path:
-        print(f"\n✅ SUCCESS! Your flashcards are ready:")
-        print(f"   📄 File: {csv_path}")
-        print(f"\n📱 NEXT STEPS:")
-        print(f"   1. Import {Path(csv_path).name} into AnkiApp")
-        print(f"   2. Study the cards (focus on Dutch connections! 🇳🇱)")
-        print(f"   3. Tomorrow, run: python daily_cards.py --week {current_week} --day {current_day + 1 if current_day < max_days else 1}")
-        
-        # Create study schedule
-        print(f"\n📅 Creating your complete study schedule...")
-        schedule_path = create_study_schedule()
-        if schedule_path:
-            print(f"   📊 Schedule: {schedule_path}")
-            print(f"   📋 Import this into Excel/Google Sheets to track progress")
-    
-    print(f"\n🎉 You're all set up, {name}!")
-    print(f"💪 With consistent daily study, you'll be ready for August 2025!")
-    print(f"🇩🇪 Viel Erfolg beim Deutschlernen!")
+    # No arguments provided, show help and available data
+    print(f"🎓 {APP_NAME} v{__version__}")
+    print("=" * 50)
+    show_available_data()
+    print("\n" + "=" * 50)
+    print("💡 QUICK START:")
+    print("  python cli.py --list                    # Show available files")
+    print("  python cli.py --file your_file.json    # Generate flashcards")
+    print("  python cli.py --help                   # Full help")
 
 
 if __name__ == "__main__":
-    # Check if this is first run (no arguments and no output directory)
-    if len(sys.argv) == 1 and not Path("output").exists():
-        try:
-            quick_start_wizard()
-        except KeyboardInterrupt:
-            print("\n\n👋 Setup cancelled. Run with --help for manual options.")
-        except Exception as e:
-            print(f"\n❌ Error in wizard: {e}")
-            print("💡 Try running with --setup first, then --help for options")
-    else:
+    try:
         main()
+    except KeyboardInterrupt:
+        print("\n\n👋 Operation cancelled by user.")
+    except Exception as e:
+        print(f"\n❌ Unexpected error: {e}")
+        logger.error(f"CLI error: {e}", exc_info=True)
+        sys.exit(1)

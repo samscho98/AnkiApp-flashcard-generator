@@ -1,0 +1,83 @@
+{
+  "week": 6,
+  "topic": "Essential Grammar & Final A1 Words",
+  "source": "Official Goethe Institute A1 Start Deutsch 1 Wortliste",
+  "total_words": 50,
+  "days": {
+    "day_1": {
+      "topic": "Modal verbs and important action verbs",
+      "words": [
+        {"german": "können", "english": "can/to be able to", "dutch_connection": "kunnen", "example": "Ich kann Deutsch und Russisch.", "official": true},
+        {"german": "müssen", "english": "must/to have to", "dutch_connection": "moeten", "example": "Ich muss jeden Tag von 8 Uhr bis 18 Uhr arbeiten.", "official": true},
+        {"german": "wollen", "english": "to want to", "dutch_connection": "willen", "example": "Wollen Sie einen Kaffee trinken?", "official": true},
+        {"german": "sollen", "english": "should/to be supposed to", "dutch_connection": "zullen", "example": "Soll ich kommen?", "official": true},
+        {"german": "dürfen", "english": "may/to be allowed to", "dutch_connection": "mogen", "example": "Sie dürfen hier nicht rauchen.", "official": true},
+        {"german": "mögen", "english": "to like", "dutch_connection": "mogen", "example": "Magst du Kaffee oder Tee?", "official": true},
+        {"german": "möchten", "english": "would like to", "example": "Was möchten Sie trinken?", "official": true},
+        {"german": "geben", "english": "to give", "dutch_connection": "geven", "example": "Kannst du mir bitte deinen Kugelschreiber geben?", "official": true},
+        {"german": "nehmen", "english": "to take", "dutch_connection": "nemen", "example": "Nehmen Sie Platz.", "official": true},
+        {"german": "bringen", "english": "to bring", "dutch_connection": "brengen", "example": "Wir müssen ihn zum Arzt bringen.", "official": true}
+      ]
+    },
+    "day_2": {
+      "topic": "Question words and prepositions",
+      "words": [
+        {"german": "was", "english": "what", "dutch_connection": "wat", "example": "Was ist das?", "official": true},
+        {"german": "wer", "english": "who", "dutch_connection": "wie", "example": "Wer ist das?", "official": true},
+        {"german": "wie", "english": "how", "dutch_connection": "hoe", "example": "Wie heißt du?", "official": true},
+        {"german": "warum", "english": "why", "dutch_connection": "waarom", "example": "Warum kommt er nicht?", "official": true},
+        {"german": "welch-", "english": "which", "dutch_connection": "welke", "example": "Welches Buch möchtest du?", "official": true},
+        {"german": "mit", "english": "with", "dutch_connection": "met", "example": "Ich gehe mit dir.", "official": true},
+        {"german": "für", "english": "for", "dutch_connection": "voor", "example": "Das ist für Sie.", "official": true},
+        {"german": "von", "english": "from", "dutch_connection": "van", "example": "Das Auto von Felix ist kaputt.", "official": true},
+        {"german": "zu", "english": "to", "dutch_connection": "naar", "example": "Der Bus fährt zum Bahnhof.", "official": true},
+        {"german": "bei", "english": "at/with", "dutch_connection": "bij", "example": "Ich wohne bei meinen Eltern.", "official": true}
+      ]
+    },
+    "day_3": {
+      "topic": "Conjunctions and connecting words",
+      "words": [
+        {"german": "und", "english": "and", "dutch_connection": "en", "example": "Peter und Helmut sind meine Söhne.", "official": true},
+        {"german": "oder", "english": "or", "dutch_connection": "of", "example": "Wann können Sie kommen – heute oder morgen?", "official": true},
+        {"german": "aber", "english": "but", "dutch_connection": "maar", "example": "Ich bin oft im Büro, aber nur für wenige Stunden.", "official": true},
+        {"german": "denn", "english": "because", "dutch_connection": "want", "example": "Ich kann nicht kommen, denn ich bin krank.", "official": true},
+        {"german": "weil", "english": "because", "dutch_connection": "omdat", "example": "Ich lerne Deutsch, weil es wichtig ist.", "official": true},
+        {"german": "wenn", "english": "if/when", "dutch_connection": "als", "example": "Wenn es regnet, bleibe ich zu Hause.", "official": true},
+        {"german": "dass", "english": "that", "dutch_connection": "dat", "example": "Ich denke, dass es richtig ist.", "official": true},
+        {"german": "also", "english": "so/therefore", "example": "Er hat Zeit, also muss er uns helfen.", "official": true},
+        {"german": "so", "english": "so", "example": "Sie müssen das so machen!", "official": true},
+        {"german": "doch", "english": "but/however", "example": "Das ist doch schön, nicht?", "official": true}
+      ]
+    },
+    "day_4": {
+      "topic": "Common adjectives and intensifiers",
+      "words": [
+        {"german": "sehr", "english": "very", "dutch_connection": "zeer", "example": "Danke sehr!", "official": true},
+        {"german": "ganz", "english": "quite/completely", "dutch_connection": "heel", "example": "Die Prüfung ist ganz einfach.", "official": true},
+        {"german": "viel", "english": "much/many", "dutch_connection": "veel", "example": "Hier regnet es viel.", "official": true},
+        {"german": "wenig", "english": "little/few", "dutch_connection": "weinig", "example": "Ich habe leider nur wenig verstanden.", "official": true},
+        {"german": "mehr", "english": "more", "dutch_connection": "meer", "example": "Dieses Auto kostet 1.000 Euro mehr als das andere.", "official": true},
+        {"german": "meist-", "english": "most", "example": "Die meisten Norddeutschen sind sehr groß.", "official": true},
+        {"german": "wichtig", "english": "important", "dutch_connection": "belangrijk", "example": "Dieses Formular ist sehr wichtig.", "official": true},
+        {"german": "einfach", "english": "simple", "dutch_connection": "eenvoudig", "example": "Die Prüfung ist ganz einfach.", "official": true},
+        {"german": "schwer", "english": "difficult/heavy", "dutch_connection": "zwaar", "example": "Das ist eine schwere Arbeit.", "official": true},
+        {"german": "leicht", "english": "easy/light", "dutch_connection": "licht", "example": "Deutsch ist nicht leicht.", "official": true}
+      ]
+    },
+    "day_5": {
+      "topic": "Final essential words",
+      "words": [
+        {"german": "etwas", "english": "something", "dutch_connection": "iets", "example": "Suchst du etwas?", "official": true},
+        {"german": "nichts", "english": "nothing", "dutch_connection": "niets", "example": "Hier kaufe ich nichts. Der Laden gefällt mir nicht.", "official": true},
+        {"german": "alles", "english": "everything", "dutch_connection": "alles", "example": "Alles Gute!", "official": true},
+        {"german": "ohne", "english": "without", "dutch_connection": "zonder", "example": "Ohne Geld kann er nichts kaufen.", "official": true},
+        {"german": "nur", "english": "only", "dutch_connection": "alleen", "example": "Ich möchte nur ein Glas Wasser.", "official": true},
+        {"german": "auch", "english": "also", "dutch_connection": "ook", "example": "Ich bin auch Spanier.", "official": true},
+        {"german": "schon", "english": "already", "dutch_connection": "al", "example": "Ist das Essen schon fertig?", "official": true},
+        {"german": "wieder", "english": "again", "dutch_connection": "weer", "example": "Wir sehen uns wieder.", "official": true},
+        {"german": "zurück", "english": "back", "dutch_connection": "terug", "example": "Wann kommst du zurück?", "official": true},
+        {"german": "zusammen", "english": "together", "dutch_connection": "samen", "example": "Sollen wir zusammen essen gehen?", "official": true}
+      ]
+    }
+  }
+}

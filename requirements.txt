@@ -1,0 +1,10 @@
+# Language Learning Flashcard Generator Requirements
+# Core dependencies for the application
+
+# No external dependencies required for basic functionality
+# tkinter is included with Python standard library
+
+# Optional: Add these if you want enhanced functionality
+# requests>=2.25.0          # For potential API features
+# Pillow>=8.0.0            # For image processing in flashcards
+# python-dateutil>=2.8.0   # For advanced date handling

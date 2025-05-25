@@ -1,0 +1,297 @@
+{
+  "template_config": {
+    "description": "Template configuration for Goethe A1 German learning with Dutch connections",
+    "target_exam": "Goethe A1 Start Deutsch 1",
+    "exam_date": "2025-08-04",
+    "exam_location": "Düsseldorf",
+    "student_background": {
+      "native_language": "Tagalog/Filipino",
+      "bridge_language": "Dutch",
+      "dutch_level": "A1",
+      "current_location": "Philippines/Netherlands"
+    }
+  },
+  
+  "card_types": {
+    "vocabulary_card": {
+      "template_file": "vocabulary_card.html",
+      "priority_fields": ["german", "english", "dutch_connection", "example"],
+      "optional_fields": ["pronunciation_tip", "memory_tip", "grammar_note"],
+      "styling": {
+        "primary_color": "#2196F3",
+        "dutch_connection_color": "#FF9800", 
+        "example_background": "#F5F5F5",
+        "memory_tip_background": "#E8F5E8"
+      },
+      "dutch_integration": {
+        "show_connections": true,
+        "highlight_similarities": true,
+        "show_differences": true,
+        "connection_types": ["identical", "very_similar", "similar", "related", "false_friend"]
+      }
+    },
+    
+    "grammar_card": {
+      "template_file": "grammar_card.html", 
+      "priority_fields": ["rule_name", "explanation", "examples"],
+      "optional_fields": ["dutch_comparison", "memory_tip", "common_mistakes"],
+      "styling": {
+        "primary_color": "#FF9800",
+        "example_color": "#4CAF50",
+        "warning_color": "#F44336"
+      },
+      "a1_focus": {
+        "basic_rules_only": true,
+        "essential_grammar": ["articles", "present_tense", "word_order", "negation"],
+        "avoid_complex": ["subjunctive", "passive_voice", "complex_cases"]
+      }
+    },
+    
+    "verb_card": {
+      "template_file": "verb_card.html",
+      "priority_fields": ["infinitive", "meaning", "present_conjugation"],
+      "optional_fields": ["dutch_cognate", "irregular_note", "common_phrases"],
+      "styling": {
+        "primary_color": "#9C27B0",
+        "conjugation_highlight": "#F3E5F5",
+        "irregular_warning": "#FFEBEE"
+      },
+      "conjugation_focus": {
+        "tenses": ["present"],
+        "persons": ["ich", "du", "er_sie_es", "wir", "ihr", "sie_Sie"],
+        "highlight_irregulars": true
+      }
+    },
+    
+    "phrase_card": {
+      "template_file": "phrase_card.html",
+      "priority_fields": ["phrase", "translation", "context"],
+      "optional_fields": ["formality", "dialogue_example", "cultural_note"],
+      "styling": {
+        "primary_color": "#4CAF50",
+        "context_background": "#E8F5E8",
+        "dialogue_background": "#F5F5F5"
+      },
+      "goethe_situations": [
+        "Kennenlernen", "Einkaufen", "Essen", "Wohnen", 
+        "Freizeit", "Reisen", "Gesundheit", "Arbeit"
+      ]
+    }
+  },
+  
+  "field_mappings": {
+    "vocabulary": {
+      "german": ["german", "word", "term"],
+      "english": ["english", "translation", "meaning"],
+      "dutch_connection": ["dutch_connection", "dutch", "nederlands"],
+      "example": ["example", "sentence", "example_sentence"],
+      "pronunciation": ["pronunciation", "pronunciation_tip", "phonetic"],
+      "memory_tip": ["memory_tip", "mnemonic", "remember"],
+      "grammar_note": ["grammar_note", "grammar", "note"]
+    },
+    "grammar": {
+      "rule_name": ["rule_name", "title", "name"],
+      "explanation": ["explanation", "description", "rule"],
+      "examples": ["examples", "example_list", "samples"],
+      "dutch_comparison": ["dutch_comparison", "dutch_difference", "nederlands"],
+      "memory_tip": ["memory_tip", "tip", "remember"],
+      "common_mistakes": ["common_mistakes", "errors", "avoid"]
+    }
+  },
+  
+  "styling_themes": {
+    "default": {
+      "font_family": "Arial, sans-serif",
+      "font_size_base": "14px",
+      "font_size_large": "18px",
+      "font_size_small": "12px",
+      "border_radius": "4px",
+      "padding_base": "8px",
+      "padding_large": "10px",
+      "colors": {
+        "primary": "#2196F3",
+        "secondary": "#FF9800", 
+        "success": "#4CAF50",
+        "warning": "#FFC107",
+        "error": "#F44336",
+        "dutch": "#FF6F00",
+        "background_light": "#F5F5F5",
+        "background_accent": "#E3F2FD",
+        "text_primary": "#212121",
+        "text_secondary": "#666666"
+      }
+    },
+    
+    "high_contrast": {
+      "font_family": "Arial, sans-serif",
+      "font_size_base": "16px",
+      "font_size_large": "20px", 
+      "font_size_small": "14px",
+      "colors": {
+        "primary": "#000000",
+        "secondary": "#FF6600",
+        "dutch": "#CC3300",
+        "background_light": "#FFFFFF",
+        "text_primary": "#000000",
+        "text_secondary": "#333333"
+      }
+    }
+  },
+  
+  "export_settings": {
+    "ankiapp": {
+      "headers": ["Front", "Back", "Tag"],
+      "front_field": "german",
+      "back_template": true,
+      "tag_format": "German_A1_W{week}D{day}_{topic}",
+      "encoding": "utf-8",
+      "separator": ","
+    },
+    
+    "anki_desktop": {
+      "headers": ["German", "English", "Dutch Connection", "Example", "Audio", "Tags"],
+      "note_type": "German A1 Vocabulary",
+      "deck_name": "German A1 - Goethe Preparation"
+    }
+  },
+  
+  "philippine_adaptations": {
+    "pronunciation_guide": {
+      "include_tagalog_comparisons": true,
+      "focus_problem_sounds": ["ü", "ö", "ä", "ch", "r"],
+      "tagalog_examples": {
+        "ä": "like 'a' in Tagalog 'bata'",
+        "ö": "like 'e' but with rounded lips", 
+        "ü": "like 'i' but with rounded lips",
+        "ch": "like strong 'h' sound",
+        "r": "rolled 'r' like in Spanish"
+      }
+    },
+    
+    "cultural_notes": {
+      "include_german_culture": true,
+      "compare_to_filipino": false,
+      "focus_on_daily_life": true,
+      "practical_situations": [
+        "At the Goethe Institute", "German bureaucracy", "Shopping in Germany",
+        "Public transport", "Renting apartments", "Job applications"
+      ]
+    }
+  },
+  
+  "dutch_connection_settings": {
+    "similarity_levels": {
+      "identical": {
+        "threshold": 0.95,
+        "label": "identical to Dutch",
+        "color": "#4CAF50",
+        "icon": "✓"
+      },
+      "very_similar": {
+        "threshold": 0.8,
+        "label": "very similar to Dutch", 
+        "color": "#8BC34A",
+        "icon": "≈"
+      },
+      "similar": {
+        "threshold": 0.6,
+        "label": "similar to Dutch",
+        "color": "#FFC107", 
+        "icon": "~"
+      },
+      "related": {
+        "threshold": 0.3,
+        "label": "related to Dutch",
+        "color": "#FF9800",
+        "icon": "≋"
+      },
+      "false_friend": {
+        "threshold": 0.0,
+        "label": "false friend - different meaning!",
+        "color": "#F44336",
+        "icon": "⚠️"
+      }
+    },
+    
+    "common_patterns": {
+      "articles": {
+        "german": ["der", "die", "das"],
+        "dutch": ["de", "het"],
+        "note": "German has 3 genders vs Dutch 2"
+      },
+      "word_endings": {
+        "-ung": "-ing",
+        "-heit": "-heid", 
+        "-keit": "-heid",
+        "-lich": "-lijk"
+      }
+    }
+  },
+  
+  "goethe_a1_requirements": {
+    "vocabulary_topics": [
+      "Persönliche Informationen",
+      "Wohnen und Umgebung", 
+      "Alltag",
+      "Freizeit",
+      "Reisen",
+      "Gesundheit und Körperpflege",
+      "Einkaufen",
+      "Dienstleistungen",
+      "Orte",
+      "Sprache und Kommunikation"
+    ],
+    
+    "grammar_requirements": [
+      "Present tense regular verbs",
+      "Present tense irregular verbs (sein, haben, werden)",
+      "Modal verbs (können, müssen, wollen)",
+      "Articles (definite and indefinite)",
+      "Personal pronouns",
+      "Possessive pronouns", 
+      "Negation (nicht, kein)",
+      "Question formation",
+      "Basic word order",
+      "Prepositions (basic)"
+    ],
+    
+    "exam_skills": [
+      "Reading comprehension (simple texts)",
+      "Listening comprehension (everyday situations)",
+      "Writing (short messages, forms)",
+      "Speaking (introduce yourself, simple conversations)"
+    ]
+  },
+  
+  "daily_study_recommendations": {
+    "week_1": {
+      "words_per_day": 10,
+      "focus": "High-frequency words + essential grammar",
+      "dutch_connection_emphasis": "high",
+      "review_frequency": "daily"
+    },
+    "weeks_2_to_6": {
+      "words_per_day": 20,
+      "focus": "Thematic vocabulary",
+      "dutch_connection_emphasis": "medium", 
+      "review_frequency": "every_2_days"
+    },
+    "final_week": {
+      "words_per_day": 0,
+      "focus": "Review and exam practice",
+      "dutch_connection_emphasis": "low",
+      "review_frequency": "comprehensive"
+    }
+  },
+  
+  "quality_control": {
+    "required_fields": ["german", "english"],
+    "recommended_fields": ["example", "dutch_connection"],
+    "validation_rules": {
+      "german_word_max_length": 50,
+      "example_max_length": 200,
+      "require_example_for_long_words": true,
+      "check_dutch_similarity": true
+    }
+  }
+}

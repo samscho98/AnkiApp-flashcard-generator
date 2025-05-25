@@ -1,0 +1,381 @@
+{
+  "target_language": "german",
+  "native_language": "english",
+  "content_type": "grammar",
+  "topic": "Perfect Tense",
+  "level": "A1",
+  "week": 8,
+  "days": {
+    "day_1": {
+      "topic": "Perfect Tense - Concept & Formation",
+      "words": [
+        {
+          "german": "Perfect tense concept",
+          "english": "German present perfect vs English",
+          "content_type": "grammar",
+          "example": "Ich habe gegessen. (I have eaten / I ate)",
+          "example_translation": "I have eaten / I ate",
+          "rule": "German perfect tense is used for past actions, like English simple past",
+          "pattern": "auxiliary verb + past participle",
+          "notes": "More common than simple past in spoken German",
+          "difficulty": 3,
+          "tags": ["perfect", "concept", "past", "spoken"]
+        },
+        {
+          "german": "Perfect tense formation",
+          "english": "How to build the perfect tense",
+          "content_type": "grammar",
+          "example": "haben/sein + past participle",
+          "example_translation": "have/be + past participle",
+          "rule": "Perfect tense = auxiliary verb + past participle",
+          "pattern": "[haben or sein] + [past participle]",
+          "notes": "Two parts: helper verb + main verb form",
+          "difficulty": 3,
+          "tags": ["perfect", "formation", "auxiliary", "participle"]
+        },
+        {
+          "german": "Word order in perfect tense",
+          "english": "Where the past participle goes",
+          "content_type": "grammar",
+          "example": "Ich habe ein Auto gekauft.",
+          "example_translation": "I have bought a car.",
+          "rule": "Auxiliary verb in position 2, past participle at the end",
+          "pattern": "[Subject] + [haben/sein] + [middle] + [past participle]",
+          "notes": "Like separable verbs - participle goes to end",
+          "difficulty": 3,
+          "tags": ["perfect", "word-order", "participle", "end-position"]
+        },
+        {
+          "german": "Choosing haben or sein",
+          "english": "Which auxiliary verb to use",
+          "content_type": "grammar",
+          "example": "haben: most verbs, sein: movement/change verbs",
+          "example_translation": "have: most verbs, be: movement/change verbs",
+          "rule": "Haben for most verbs, sein for movement and change of state",
+          "pattern": "haben = default, sein = special cases",
+          "notes": "When in doubt, use haben",
+          "difficulty": 4,
+          "tags": ["perfect", "auxiliary", "haben", "sein", "choice"]
+        }
+      ]
+    },
+    "day_2": {
+      "topic": "Past Participles - Regular Verbs",
+      "words": [
+        {
+          "german": "Regular past participle formation",
+          "english": "Pattern for regular verbs",
+          "content_type": "grammar",
+          "example": "machen → gemacht, spielen → gespielt, kaufen → gekauft",
+          "example_translation": "make → made, play → played, buy → bought",
+          "rule": "Regular verbs: ge- + stem + -t",
+          "pattern": "ge + [verb stem] + t",
+          "notes": "Most predictable pattern in German",
+          "difficulty": 2,
+          "tags": ["participle", "regular", "ge-", "-t", "pattern"]
+        },
+        {
+          "german": "Regular verbs with haben",
+          "english": "Most common perfect tense pattern",
+          "content_type": "grammar",
+          "example": "Ich habe gearbeitet. Du hast gekauft. Er hat gespielt.",
+          "example_translation": "I have worked. You have bought. He has played.",
+          "rule": "Most regular verbs use haben + ge-[stem]-t",
+          "pattern": "haben + ge[stem]t",
+          "notes": "This covers majority of German verbs",
+          "difficulty": 2,
+          "tags": ["participle", "regular", "haben", "common"]
+        },
+        {
+          "german": "Verbs ending in -ieren",
+          "english": "Special case: no ge- prefix",
+          "content_type": "grammar",
+          "example": "studieren → studiert, telefonieren → telefoniert",
+          "example_translation": "study → studied, telephone → telephoned",
+          "rule": "Verbs ending in -ieren don't get ge- prefix",
+          "pattern": "[verb stem] + t (no ge-)",
+          "notes": "Many foreign/borrowed verbs end in -ieren",
+          "difficulty": 3,
+          "tags": ["participle", "-ieren", "no-ge", "foreign"]
+        },
+        {
+          "german": "Inseparable prefix verbs",
+          "english": "Verbs with be-, er-, ver-, etc.",
+          "content_type": "grammar",
+          "example": "besuchen → besucht, erzählen → erzählt, verstehen → verstanden",
+          "example_translation": "visit → visited, tell → told, understand → understood",
+          "rule": "Inseparable prefix verbs don't get ge-",
+          "pattern": "[prefix][stem] + t (no ge-)",
+          "notes": "Prefixes: be-, er-, ver-, ent-, emp-, ge-, zer-",
+          "difficulty": 3,
+          "tags": ["participle", "inseparable", "prefixes", "no-ge"]
+        }
+      ]
+    },
+    "day_3": {
+      "topic": "Past Participles - Irregular Verbs",
+      "words": [
+        {
+          "german": "Irregular past participle pattern",
+          "english": "Strong verbs change their stem",
+          "content_type": "grammar",
+          "example": "trinken → getrunken, singen → gesungen, finden → gefunden",
+          "example_translation": "drink → drunk, sing → sung, find → found",
+          "rule": "Irregular verbs: ge- + changed stem + -en",
+          "pattern": "ge + [changed stem] + en",
+          "notes": "Like English: sing-sang-sung",
+          "difficulty": 4,
+          "tags": ["participle", "irregular", "strong", "stem-change"]
+        },
+        {
+          "german": "Common irregular participles",
+          "english": "Must-know irregular forms",
+          "content_type": "grammar",
+          "example": "essen → gegessen, sehen → gesehen, gehen → gegangen",
+          "example_translation": "eat → eaten, see → seen, go → gone",
+          "rule": "These must be memorized individually",
+          "pattern": "Each verb has unique form",
+          "notes": "Learn these high-frequency verbs first",
+          "difficulty": 4,
+          "tags": ["participle", "irregular", "common", "memorize"]
+        },
+        {
+          "german": "Mixed verbs",
+          "english": "Verbs that change stem but take -t",
+          "content_type": "grammar",
+          "example": "bringen → gebracht, denken → gedacht, kennen → gekannt",
+          "example_translation": "bring → brought, think → thought, know → known",
+          "rule": "Mixed verbs change stem and take -t ending",
+          "pattern": "ge + [changed stem] + t",
+          "notes": "Small group of verbs with mixed characteristics",
+          "difficulty": 4,
+          "tags": ["participle", "mixed", "stem-change", "-t"]
+        },
+        {
+          "german": "Sein and haben participles",
+          "english": "Past participles of auxiliary verbs",
+          "content_type": "grammar",
+          "example": "sein → gewesen, haben → gehabt",
+          "example_translation": "be → been, have → had",
+          "rule": "Even auxiliary verbs have past participles",
+          "pattern": "sein → gewesen, haben → gehabt",
+          "notes": "Used in complex perfect constructions",
+          "difficulty": 3,
+          "tags": ["participle", "sein", "haben", "auxiliary"]
+        }
+      ]
+    },
+    "day_4": {
+      "topic": "Perfect Tense with 'sein'",
+      "words": [
+        {
+          "german": "Movement verbs with sein",
+          "english": "Verbs showing change of location",
+          "content_type": "grammar",
+          "example": "Ich bin gegangen. Er ist gefahren. Wir sind gekommen.",
+          "example_translation": "I have gone. He has driven. We have come.",
+          "rule": "Verbs of movement use sein as auxiliary",
+          "pattern": "sein + past participle (movement verbs)",
+          "notes": "Think: from point A to point B",
+          "difficulty": 3,
+          "tags": ["perfect", "sein", "movement", "location"]
+        },
+        {
+          "german": "Change of state verbs with sein",
+          "english": "Verbs showing transformation",
+          "content_type": "grammar",
+          "example": "Er ist gestorben. Die Blume ist gewachsen.",
+          "example_translation": "He has died. The flower has grown.",
+          "rule": "Verbs showing change of condition use sein",
+          "pattern": "sein + past participle (change verbs)",
+          "notes": "Think: becoming different",
+          "difficulty": 3,
+          "tags": ["perfect", "sein", "change", "state"]
+        },
+        {
+          "german": "Common sein-verbs",
+          "english": "High-frequency verbs that take sein",
+          "content_type": "grammar",
+          "example": "gehen, kommen, fahren, fliegen, laufen, sterben, werden",
+          "example_translation": "go, come, drive, fly, run, die, become",
+          "rule": "Learn these common sein-verbs by heart",
+          "pattern": "These always use sein in perfect tense",
+          "notes": "Memorize this list - very important!",
+          "difficulty": 3,
+          "tags": ["perfect", "sein", "common", "list"]
+        },
+        {
+          "german": "Sein vs haben decision",
+          "english": "How to choose the right auxiliary",
+          "content_type": "grammar",
+          "example": "Ich habe das Auto gefahren. vs Ich bin nach Berlin gefahren.",
+          "example_translation": "I drove the car. vs I drove to Berlin.",
+          "rule": "Same verb can take haben (with object) or sein (movement)",
+          "pattern": "Context determines auxiliary choice",
+          "notes": "Some verbs can use both auxiliaries!",
+          "difficulty": 4,
+          "tags": ["perfect", "auxiliary", "choice", "context"]
+        }
+      ]
+    },
+    "day_5": {
+      "topic": "Separable Verbs in Perfect Tense",
+      "words": [
+        {
+          "german": "Separable verb participles",
+          "english": "Past participles of separable verbs",
+          "content_type": "grammar",
+          "example": "aufstehen → aufgestanden, anrufen → angerufen",
+          "example_translation": "get up → gotten up, call → called",
+          "rule": "Separable verbs: prefix + ge + stem + ending",
+          "pattern": "[prefix] + ge + [stem] + t/en",
+          "notes": "Ge- goes between prefix and stem",
+          "difficulty": 4,
+          "tags": ["participle", "separable", "prefix", "ge-insertion"]
+        },
+        {
+          "german": "Perfect tense with separable verbs",
+          "english": "Using separable verbs in perfect tense",
+          "content_type": "grammar",
+          "example": "Ich bin um 7 Uhr aufgestanden. Er hat seine Mutter angerufen.",
+          "example_translation": "I got up at 7 o'clock. He called his mother.",
+          "rule": "Participle stays together at sentence end",
+          "pattern": "[aux] + [middle] + [prefix+ge+stem+ending]",
+          "notes": "Unlike present tense, participle doesn't split",
+          "difficulty": 3,
+          "tags": ["perfect", "separable", "sentence-end", "together"]
+        },
+        {
+          "german": "Common separable verbs in perfect",
+          "english": "Frequently used separable verbs",
+          "content_type": "grammar",
+          "example": "aufgestanden, angekommen, eingekauft, mitgekommen",
+          "example_translation": "gotten up, arrived, shopped, come along",
+          "rule": "Learn these common separable verb participles",
+          "pattern": "Each follows prefix+ge+stem+ending pattern",
+          "notes": "Very useful for describing daily activities",
+          "difficulty": 3,
+          "tags": ["participle", "separable", "common", "daily"]
+        },
+        {
+          "german": "Separable verbs with sein",
+          "english": "Movement separable verbs",
+          "content_type": "grammar",
+          "example": "Ich bin angekommen. Wir sind mitgekommen.",
+          "example_translation": "I have arrived. We have come along.",
+          "rule": "Separable movement verbs also use sein",
+          "pattern": "sein + separable participle (if movement)",
+          "notes": "Same sein rules apply to separable verbs",
+          "difficulty": 4,
+          "tags": ["perfect", "separable", "sein", "movement"]
+        }
+      ]
+    },
+    "day_6": {
+      "topic": "Perfect Tense in Questions and Negation",
+      "words": [
+        {
+          "german": "Yes/no questions in perfect",
+          "english": "Perfect tense questions",
+          "content_type": "grammar",
+          "example": "Hast du gegessen? Bist du gekommen?",
+          "example_translation": "Have you eaten? Have you come?",
+          "rule": "Auxiliary verb starts the question, participle at end",
+          "pattern": "[Haben/Sein] + [subject] + [middle] + [participle]?",
+          "notes": "Same question formation as other tenses",
+          "difficulty": 3,
+          "tags": ["perfect", "questions", "yes-no", "auxiliary"]
+        },
+        {
+          "german": "W-questions in perfect",
+          "english": "Question words with perfect tense",
+          "content_type": "grammar",
+          "example": "Was hast du gekauft? Wohin bist du gefahren?",
+          "example_translation": "What have you bought? Where have you driven?",
+          "rule": "Question word + auxiliary + subject + participle",
+          "pattern": "[W-word] + [haben/sein] + [subject] + [participle]?",
+          "notes": "Standard W-question word order",
+          "difficulty": 3,
+          "tags": ["perfect", "questions", "w-questions", "word-order"]
+        },
+        {
+          "german": "Negation in perfect tense",
+          "english": "Using 'nicht' with perfect tense",
+          "content_type": "grammar",
+          "example": "Ich habe nicht gegessen. Er ist nicht gekommen.",
+          "example_translation": "I have not eaten. He has not come.",
+          "rule": "'Nicht' comes before the past participle",
+          "pattern": "[Subject] + [auxiliary] + nicht + [participle]",
+          "notes": "Nicht goes between auxiliary and participle",
+          "difficulty": 3,
+          "tags": ["perfect", "negation", "nicht", "position"]
+        },
+        {
+          "german": "Negation with 'nie' and 'noch nicht'",
+          "english": "Never and not yet",
+          "content_type": "grammar",
+          "example": "Ich habe nie geraucht. Er ist noch nicht angekommen.",
+          "example_translation": "I have never smoked. He has not arrived yet.",
+          "rule": "'Nie' (never) and 'noch nicht' (not yet) before participle",
+          "pattern": "[aux] + nie/noch nicht + [participle]",
+          "notes": "Useful time expressions with perfect tense",
+          "difficulty": 3,
+          "tags": ["perfect", "negation", "nie", "noch-nicht"]
+        }
+      ]
+    },
+    "day_7": {
+      "topic": "Using Perfect Tense in Context",
+      "words": [
+        {
+          "german": "Talking about past experiences",
+          "english": "Perfect tense for life experiences",
+          "content_type": "grammar",
+          "example": "Ich bin schon in Deutschland gewesen. Hast du schon Sushi gegessen?",
+          "example_translation": "I have already been to Germany. Have you ever eaten sushi?",
+          "rule": "Perfect tense describes experiences up to now",
+          "pattern": "[aux] + schon/schon mal + [participle]",
+          "notes": "'Schon' (already) and 'schon mal' (ever) are common",
+          "difficulty": 3,
+          "tags": ["perfect", "experiences", "schon", "context"]
+        },
+        {
+          "german": "Recent past events",
+          "english": "What happened recently",
+          "content_type": "grammar",
+          "example": "Gestern habe ich eingekauft. Heute Morgen bin ich aufgestanden.",
+          "example_translation": "Yesterday I went shopping. This morning I got up.",
+          "rule": "Perfect tense for recent past events",
+          "pattern": "[time expression] + [perfect tense]",
+          "notes": "More common than simple past in spoken German",
+          "difficulty": 2,
+          "tags": ["perfect", "recent", "past", "spoken"]
+        },
+        {
+          "german": "Perfect tense with time expressions",
+          "english": "Common time words with perfect",
+          "content_type": "grammar",
+          "example": "heute, gestern, letzte Woche, vor einem Jahr",
+          "example_translation": "today, yesterday, last week, a year ago",
+          "rule": "These time expressions commonly appear with perfect tense",
+          "pattern": "[time expression] + perfect tense sentence",
+          "notes": "Learn these together as useful phrases",
+          "difficulty": 2,
+          "tags": ["perfect", "time", "expressions", "common"]
+        },
+        {
+          "german": "Conversation with perfect tense",
+          "english": "Natural dialogue using perfect",
+          "content_type": "grammar",
+          "example": "Was hast du am Wochenende gemacht? - Ich bin ins Kino gegangen und habe einen Film gesehen.",
+          "example_translation": "What did you do on the weekend? - I went to the cinema and saw a movie.",
+          "rule": "Perfect tense is standard for casual conversation about past",
+          "pattern": "Natural back-and-forth using perfect tense",
+          "notes": "This is how Germans actually talk about the past",
+          "difficulty": 3,
+          "tags": ["perfect", "conversation", "natural", "dialogue"]
+        }
+      ]
+    }
+  }
+}

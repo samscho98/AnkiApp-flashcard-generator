@@ -57,3 +57,5 @@ if %app_exit_code% equ 0 (
     echo.
     echo Check flashcard_generator.log for details
 )
+
+pause

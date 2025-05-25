@@ -135,7 +135,7 @@ class FileSelector(ttk.Frame):
 
 
 class ContentSelector(ttk.LabelFrame):
-    """Widget for selecting specific content sections from loaded data"""
+    """Widget for selecting specific content sections from loaded data - SINGLE SELECTION ONLY"""
     
     def __init__(self, parent, selection_callback: Callable):
         super().__init__(parent, text="Content Selection", padding="10")
@@ -151,13 +151,14 @@ class ContentSelector(ttk.LabelFrame):
         self.columnconfigure(0, weight=1)
         self.rowconfigure(0, weight=1)
         
-        # Create listbox with scrollbar
+        # Create listbox with scrollbar - CHANGED TO SINGLE SELECTION
         list_frame = ttk.Frame(self)
         list_frame.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S))
         list_frame.columnconfigure(0, weight=1)
         list_frame.rowconfigure(0, weight=1)
         
-        self.listbox = tk.Listbox(list_frame, selectmode=tk.EXTENDED)
+        # Changed from tk.EXTENDED to tk.SINGLE for single selection only
+        self.listbox = tk.Listbox(list_frame, selectmode=tk.SINGLE)
         scrollbar = ttk.Scrollbar(list_frame, orient=tk.VERTICAL, command=self.listbox.yview)
         self.listbox.configure(yscrollcommand=scrollbar.set)
         
@@ -166,12 +167,19 @@ class ContentSelector(ttk.LabelFrame):
         
         self.listbox.bind('<<ListboxSelect>>', self.on_selection_changed)
         
-        # Add select all/none buttons
-        button_frame = ttk.Frame(self)
-        button_frame.grid(row=1, column=0, sticky=(tk.W, tk.E), pady=(10, 0))
+        # Remove select all/none buttons since we only allow single selection
+        # button_frame = ttk.Frame(self)
+        # button_frame.grid(row=1, column=0, sticky=(tk.W, tk.E), pady=(10, 0))
+        # 
+        # ttk.Button(button_frame, text="Select All", command=self.select_all).pack(side=tk.LEFT, padx=(0, 5))
+        # ttk.Button(button_frame, text="Select None", command=self.select_none).pack(side=tk.LEFT)
         
-        ttk.Button(button_frame, text="Select All", command=self.select_all).pack(side=tk.LEFT, padx=(0, 5))
-        ttk.Button(button_frame, text="Select None", command=self.select_none).pack(side=tk.LEFT)
+        # Add instruction label instead
+        instruction_frame = ttk.Frame(self)
+        instruction_frame.grid(row=1, column=0, sticky=(tk.W, tk.E), pady=(10, 0))
+        
+        ttk.Label(instruction_frame, text="Select one day to export", 
+                 font=('Arial', 9), foreground='gray').pack(side=tk.LEFT)
     
     def load_data(self, data: Dict[str, Any], content_type: str):
         """Load data and populate the list"""
@@ -216,81 +224,81 @@ class ContentSelector(ttk.LabelFrame):
             display_text = f"All words ({len(words)} items)"
             self.listbox.insert(tk.END, display_text)
         
-        # Select all items by default
-        self.select_all()
+        # Auto-select first item if available
+        if self.listbox.size() > 0:
+            self.listbox.select_set(0)
+            self.on_selection_changed()
     
     def on_selection_changed(self, event=None):
-        """Handle selection change"""
+        """Handle selection change - UPDATED FOR SINGLE SELECTION"""
         if not self.current_data:
             return
         
+        # Get single selected index (curselection returns tuple, but only one item for SINGLE mode)
         selected_indices = self.listbox.curselection()
+        if not selected_indices:
+            # No selection
+            self.selection_callback([], 0)
+            return
+        
+        # Only one index since we use SINGLE selection mode
+        selected_idx = selected_indices[0]
         selected_sections = []
         total_items = 0
         
         if 'days' in self.current_data:
             day_keys = list(self.current_data['days'].keys())
-            for idx in selected_indices:
-                if idx < len(day_keys):
-                    day_key = day_keys[idx]
-                    selected_sections.append(day_key)
-                    total_items += len(self.current_data['days'][day_key].get('words', []))
+            if selected_idx < len(day_keys):
+                day_key = day_keys[selected_idx]
+                selected_sections.append(day_key)
+                total_items = len(self.current_data['days'][day_key].get('words', []))
         
         elif any(key in self.current_data for key in ['lessons', 'chapters', 'sections']):
             container_key = next(key for key in ['lessons', 'chapters', 'sections'] if key in self.current_data)
             section_keys = list(self.current_data[container_key].keys())
-            for idx in selected_indices:
-                if idx < len(section_keys):
-                    section_key = section_keys[idx]
-                    selected_sections.append(section_key)
-                    items = self.current_data[container_key][section_key].get('entries', 
-                             self.current_data[container_key][section_key].get('words', 
-                             self.current_data[container_key][section_key].get('items', [])))
-                    total_items += len(items)
+            if selected_idx < len(section_keys):
+                section_key = section_keys[selected_idx]
+                selected_sections.append(section_key)
+                items = self.current_data[container_key][section_key].get('entries', 
+                         self.current_data[container_key][section_key].get('words', 
+                         self.current_data[container_key][section_key].get('items', [])))
+                total_items = len(items)
         
         else:
             # For direct entries/words
-            if selected_indices:
-                selected_sections = ['main']
-                total_items = len(self.current_data.get('entries', self.current_data.get('words', [])))
+            selected_sections = ['main']
+            total_items = len(self.current_data.get('entries', self.current_data.get('words', [])))
         
         self.selection_callback(selected_sections, total_items)
     
     def get_selected_sections(self) -> List[str]:
-        """Get currently selected section names"""
+        """Get currently selected section names - UPDATED FOR SINGLE SELECTION"""
         if not self.current_data:
             return []
         
         selected_indices = self.listbox.curselection()
+        if not selected_indices:
+            return []
+        
+        # Only one selection allowed
+        selected_idx = selected_indices[0]
         selected_sections = []
         
         if 'days' in self.current_data:
             day_keys = list(self.current_data['days'].keys())
-            for idx in selected_indices:
-                if idx < len(day_keys):
-                    selected_sections.append(day_keys[idx])
+            if selected_idx < len(day_keys):
+                selected_sections.append(day_keys[selected_idx])
         
         elif any(key in self.current_data for key in ['lessons', 'chapters', 'sections']):
             container_key = next(key for key in ['lessons', 'chapters', 'sections'] if key in self.current_data)
             section_keys = list(self.current_data[container_key].keys())
-            for idx in selected_indices:
-                if idx < len(section_keys):
-                    selected_sections.append(section_keys[idx])
+            if selected_idx < len(section_keys):
+                selected_sections.append(section_keys[selected_idx])
         
         elif selected_indices:
             selected_sections = ['main']
         
         return selected_sections
-    
-    def select_all(self):
-        """Select all items in the list"""
-        self.listbox.select_set(0, tk.END)
-        self.on_selection_changed()
-    
-    def select_none(self):
-        """Deselect all items"""
-        self.listbox.select_clear(0, tk.END)
-        self.on_selection_changed()
     
     def clear(self):
         """Clear the content list"""
@@ -407,7 +415,7 @@ class ContentPreview(ttk.LabelFrame):
 
 
 class ExportPanel(ttk.LabelFrame):
-    """Widget for export controls and status"""
+    """Widget for export controls and status - UPDATED FOR SINGLE DAY SELECTION"""
     
     def __init__(self, parent, export_callback: Callable):
         super().__init__(parent, text="Export to AnkiApp", padding="10")
@@ -425,24 +433,30 @@ class ExportPanel(ttk.LabelFrame):
         self.export_button.grid(row=0, column=0, padx=(0, 10))
         
         # Status label
-        self.status_var = tk.StringVar(value="Select content to export")
+        self.status_var = tk.StringVar(value="Select a day to export")
         ttk.Label(self, textvariable=self.status_var).grid(row=0, column=1, sticky=tk.W)
     
     def set_data_loaded(self, loaded: bool, filename: str = ""):
         """Update status when data is loaded"""
         if loaded:
-            self.status_var.set(f"Loaded: {filename}")
+            self.status_var.set(f"Loaded: {filename} - Select a day to export")
         else:
-            self.status_var.set("Select content to export")
+            self.status_var.set("Select a day to export")
             self.export_button.config(state=tk.DISABLED)
     
     def set_selection(self, section_count: int, item_count: int):
-        """Update status when selection changes"""
-        if section_count > 0 and item_count > 0:
-            self.status_var.set(f"Selected {section_count} sections with {item_count} items")
+        """Update status when selection changes - UPDATED FOR SINGLE DAY"""
+        if section_count == 1 and item_count > 0:
+            # Single day selected (which is what we want)
+            self.status_var.set(f"Selected day with {item_count} items - Ready to export")
             self.export_button.config(state=tk.NORMAL)
+        elif section_count > 1:
+            # This shouldn't happen anymore with single selection, but just in case
+            self.status_var.set("Multiple selections detected - Please select only one day")
+            self.export_button.config(state=tk.DISABLED)
         else:
-            self.status_var.set("No content selected")
+            # No selection
+            self.status_var.set("No day selected")
             self.export_button.config(state=tk.DISABLED)
 
 

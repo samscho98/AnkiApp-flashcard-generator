@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Main launcher for Language Learning Flashcard Generator
-Properly handles imports and launches the GUI application from project root
+Updated to use the new refactored GUI structure
 """
 
 import sys
@@ -65,8 +65,8 @@ def main():
         # Setup directories
         setup_directories()
         
-        # Import and run GUI application (now that src is in path)
-        from gui.main_window import LanguageLearningApp
+        # Import and run GUI application (now from the new location)
+        from src.gui.app import LanguageLearningApp  # CHANGED: Import from gui.app instead of gui.main_window
         
         logger.info("Starting Language Learning Flashcard Generator")
         
@@ -83,7 +83,19 @@ def main():
         logger.error(f"Import error: {e}", exc_info=True)
         print(f"❌ Import error: {e}")
         print("Make sure all required files are present in the src/ directory")
-        return 1
+        print("\nTrying fallback to original structure...")
+        
+        # Fallback to original structure if new one isn't ready
+        try:
+            from src.gui.main_window import LanguageLearningApp
+            logger.info("Using fallback import")
+            app = LanguageLearningApp()
+            app.run()
+            return 0
+        except ImportError as fallback_error:
+            print(f"❌ Fallback also failed: {fallback_error}")
+            print("Please ensure the GUI files are properly set up")
+            return 1
     except Exception as e:
         logger.error(f"Fatal error: {e}", exc_info=True)
         print(f"❌ Fatal error: {e}")

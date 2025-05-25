@@ -1,1 +1,0 @@
-# Linux/Mac shell script to run the application - launches python src/main.py

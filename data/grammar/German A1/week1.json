@@ -1,0 +1,399 @@
+{
+  "target_language": "german",
+  "native_language": "english",
+  "content_type": "grammar",
+  "topic": "Introduction & Basic Sentence Structure",
+  "level": "A1",
+  "week": 1,
+  "days": {
+    "day_1": {
+      "topic": "Personal Pronouns",
+      "words": [
+        {
+          "german": "ich",
+          "english": "I",
+          "content_type": "grammar",
+          "example": "Ich bin Maria.",
+          "example_translation": "I am Maria.",
+          "rule": "First person singular pronoun",
+          "pronunciation": "ikh",
+          "notes": "Always lowercase except at sentence beginning",
+          "difficulty": 1,
+          "tags": ["pronouns", "personal", "basic"]
+        },
+        {
+          "german": "du",
+          "english": "you (informal singular)",
+          "content_type": "grammar",
+          "example": "Du bist nett.",
+          "example_translation": "You are nice.",
+          "rule": "Second person singular, informal",
+          "pronunciation": "doo",
+          "notes": "Used with friends, family, children",
+          "difficulty": 1,
+          "tags": ["pronouns", "personal", "informal"]
+        },
+        {
+          "german": "er/sie/es",
+          "english": "he/she/it",
+          "content_type": "grammar",
+          "example": "Er ist groß. Sie ist klein. Es ist gut.",
+          "example_translation": "He is tall. She is small. It is good.",
+          "rule": "Third person singular pronouns",
+          "pronunciation": "air/zee/es",
+          "notes": "Er=masculine, sie=feminine, es=neuter",
+          "difficulty": 2,
+          "tags": ["pronouns", "personal", "gender"]
+        },
+        {
+          "german": "wir",
+          "english": "we",
+          "content_type": "grammar",
+          "example": "Wir sind Studenten.",
+          "example_translation": "We are students.",
+          "rule": "First person plural pronoun",
+          "pronunciation": "veer",
+          "notes": "Used for groups including yourself",
+          "difficulty": 1,
+          "tags": ["pronouns", "personal", "plural"]
+        },
+        {
+          "german": "ihr",
+          "english": "you (informal plural)",
+          "content_type": "grammar",
+          "example": "Ihr seid jung.",
+          "example_translation": "You (all) are young.",
+          "rule": "Second person plural, informal",
+          "pronunciation": "eer",
+          "notes": "Used when addressing multiple friends/family",
+          "difficulty": 2,
+          "tags": ["pronouns", "personal", "plural", "informal"]
+        },
+        {
+          "german": "sie/Sie",
+          "english": "they/you (formal)",
+          "content_type": "grammar",
+          "example": "Sie kommen heute. (they) / Sie sind Herr Schmidt? (you formal)",
+          "example_translation": "They come today. / You are Mr. Schmidt?",
+          "rule": "Third person plural OR formal second person",
+          "pronunciation": "zee",
+          "notes": "Formal Sie is always capitalized",
+          "difficulty": 3,
+          "tags": ["pronouns", "personal", "formal", "plural"]
+        }
+      ]
+    },
+    "day_2": {
+      "topic": "Regular Verb Conjugation - Present Tense",
+      "words": [
+        {
+          "german": "ich spiele",
+          "english": "I play",
+          "content_type": "grammar",
+          "example": "Ich spiele Fußball.",
+          "example_translation": "I play soccer.",
+          "rule": "Regular verbs: stem + -e for ich",
+          "pattern": "spielen → spiel + e",
+          "base_form": "spielen",
+          "difficulty": 2,
+          "tags": ["verbs", "conjugation", "present", "regular"]
+        },
+        {
+          "german": "du spielst",
+          "english": "you play",
+          "content_type": "grammar",
+          "example": "Du spielst gut.",
+          "example_translation": "You play well.",
+          "rule": "Regular verbs: stem + -st for du",
+          "pattern": "spielen → spiel + st",
+          "base_form": "spielen",
+          "difficulty": 2,
+          "tags": ["verbs", "conjugation", "present", "regular"]
+        },
+        {
+          "german": "er/sie/es spielt",
+          "english": "he/she/it plays",
+          "content_type": "grammar",
+          "example": "Sie spielt Tennis.",
+          "example_translation": "She plays tennis.",
+          "rule": "Regular verbs: stem + -t for er/sie/es",
+          "pattern": "spielen → spiel + t",
+          "base_form": "spielen",
+          "difficulty": 2,
+          "tags": ["verbs", "conjugation", "present", "regular"]
+        },
+        {
+          "german": "wir spielen",
+          "english": "we play",
+          "content_type": "grammar",
+          "example": "Wir spielen zusammen.",
+          "example_translation": "We play together.",
+          "rule": "Regular verbs: infinitive form for wir",
+          "pattern": "spielen → spielen (same as infinitive)",
+          "base_form": "spielen",
+          "difficulty": 1,
+          "tags": ["verbs", "conjugation", "present", "regular"]
+        },
+        {
+          "german": "ihr spielt",
+          "english": "you (plural) play",
+          "content_type": "grammar",
+          "example": "Ihr spielt sehr gut.",
+          "example_translation": "You (all) play very well.",
+          "rule": "Regular verbs: stem + -t for ihr",
+          "pattern": "spielen → spiel + t",
+          "base_form": "spielen",
+          "difficulty": 2,
+          "tags": ["verbs", "conjugation", "present", "regular"]
+        },
+        {
+          "german": "sie/Sie spielen",
+          "english": "they play / you (formal) play",
+          "content_type": "grammar",
+          "example": "Sie spielen oft. / Spielen Sie gern?",
+          "example_translation": "They play often. / Do you like to play?",
+          "rule": "Regular verbs: infinitive form for sie/Sie",
+          "pattern": "spielen → spielen (same as infinitive)",
+          "base_form": "spielen",
+          "difficulty": 2,
+          "tags": ["verbs", "conjugation", "present", "regular"]
+        }
+      ]
+    },
+    "day_3": {
+      "topic": "Basic Sentence Structure (SVO)",
+      "words": [
+        {
+          "german": "Subject + Verb + Object",
+          "english": "Basic German word order",
+          "content_type": "grammar",
+          "example": "Ich trinke Kaffee.",
+          "example_translation": "I drink coffee.",
+          "rule": "Standard word order in main clauses",
+          "pattern": "[Subject] + [Verb] + [Object]",
+          "notes": "Same as English in simple sentences",
+          "difficulty": 1,
+          "tags": ["word-order", "syntax", "basic"]
+        },
+        {
+          "german": "Verb in second position",
+          "english": "Verb always in position 2",
+          "content_type": "grammar",
+          "example": "Heute trinke ich Kaffee.",
+          "example_translation": "Today I drink coffee.",
+          "rule": "In German, verb is always in second position",
+          "pattern": "[Position 1] + [Verb] + [Subject] + [Rest]",
+          "notes": "Position 1 can be subject, time, place, etc.",
+          "difficulty": 3,
+          "tags": ["word-order", "syntax", "V2-rule"]
+        },
+        {
+          "german": "Statement formation",
+          "english": "Making statements",
+          "content_type": "grammar",
+          "example": "Das Buch ist interessant.",
+          "example_translation": "The book is interesting.",
+          "rule": "Subject + conjugated verb + complement",
+          "pattern": "[Subject] + [Verb] + [Complement/Object]",
+          "notes": "Most common sentence type",
+          "difficulty": 1,
+          "tags": ["statements", "syntax", "basic"]
+        }
+      ]
+    },
+    "day_4": {
+      "topic": "Yes/No Questions",
+      "words": [
+        {
+          "german": "Verb-first questions",
+          "english": "Yes/No questions",
+          "content_type": "grammar",
+          "example": "Trinkst du Kaffee?",
+          "example_translation": "Do you drink coffee?",
+          "rule": "Start with conjugated verb for yes/no questions",
+          "pattern": "[Verb] + [Subject] + [Rest]?",
+          "notes": "No auxiliary verb needed like English 'do'",
+          "difficulty": 2,
+          "tags": ["questions", "yes-no", "syntax"]
+        },
+        {
+          "german": "Question with 'sein'",
+          "english": "Questions with 'to be'",
+          "content_type": "grammar",
+          "example": "Bist du müde?",
+          "example_translation": "Are you tired?",
+          "rule": "Conjugated 'sein' comes first",
+          "pattern": "[Bin/Bist/Ist] + [Subject] + [Adjective]?",
+          "base_form": "sein (to be)",
+          "difficulty": 2,
+          "tags": ["questions", "sein", "adjectives"]
+        },
+        {
+          "german": "Answering yes/no questions",
+          "english": "Ja/Nein responses",
+          "content_type": "grammar",
+          "example": "Ja, ich trinke Kaffee. / Nein, ich trinke keinen Kaffee.",
+          "example_translation": "Yes, I drink coffee. / No, I don't drink coffee.",
+          "rule": "Answer with ja/nein + complete sentence",
+          "pattern": "Ja/Nein, [complete sentence]",
+          "notes": "Avoid short answers in formal German",
+          "difficulty": 2,
+          "tags": ["questions", "answers", "ja-nein"]
+        }
+      ]
+    },
+    "day_5": {
+      "topic": "W-Questions (Question Words)",
+      "words": [
+        {
+          "german": "Wo?",
+          "english": "Where?",
+          "content_type": "grammar",
+          "example": "Wo wohnst du?",
+          "example_translation": "Where do you live?",
+          "rule": "Question word + verb + subject + rest",
+          "pattern": "Wo + [Verb] + [Subject] + [Rest]?",
+          "pronunciation": "voh",
+          "difficulty": 1,
+          "tags": ["questions", "w-questions", "location"]
+        },
+        {
+          "german": "Was?",
+          "english": "What?",
+          "content_type": "grammar",
+          "example": "Was machst du?",
+          "example_translation": "What are you doing?",
+          "rule": "Most common question word",
+          "pattern": "Was + [Verb] + [Subject] + [Rest]?",
+          "pronunciation": "vas",
+          "difficulty": 1,
+          "tags": ["questions", "w-questions", "general"]
+        },
+        {
+          "german": "Wie?",
+          "english": "How?",
+          "content_type": "grammar",
+          "example": "Wie geht es dir?",
+          "example_translation": "How are you?",
+          "rule": "Asks about manner or condition",
+          "pattern": "Wie + [Verb] + [Subject] + [Rest]?",
+          "pronunciation": "vee",
+          "difficulty": 1,
+          "tags": ["questions", "w-questions", "manner"]
+        },
+        {
+          "german": "Wer?",
+          "english": "Who?",
+          "content_type": "grammar",
+          "example": "Wer ist das?",
+          "example_translation": "Who is that?",
+          "rule": "Asks about people (subject)",
+          "pattern": "Wer + [Verb] + [Rest]?",
+          "pronunciation": "vair",
+          "difficulty": 1,
+          "tags": ["questions", "w-questions", "people"]
+        },
+        {
+          "german": "Wann?",
+          "english": "When?",
+          "content_type": "grammar",
+          "example": "Wann kommst du?",
+          "example_translation": "When are you coming?",
+          "rule": "Asks about time",
+          "pattern": "Wann + [Verb] + [Subject] + [Rest]?",
+          "pronunciation": "van",
+          "difficulty": 1,
+          "tags": ["questions", "w-questions", "time"]
+        },
+        {
+          "german": "Warum?",
+          "english": "Why?",
+          "content_type": "grammar",
+          "example": "Warum lernst du Deutsch?",
+          "example_translation": "Why are you learning German?",
+          "rule": "Asks for reasons",
+          "pattern": "Warum + [Verb] + [Subject] + [Rest]?",
+          "pronunciation": "vah-rum",
+          "difficulty": 2,
+          "tags": ["questions", "w-questions", "reason"]
+        }
+      ]
+    },
+    "day_6": {
+      "topic": "Definite Articles (der, die, das)",
+      "words": [
+        {
+          "german": "der (masculine)",
+          "english": "the (masculine nouns)",
+          "content_type": "grammar",
+          "example": "der Mann, der Tisch, der Hund",
+          "example_translation": "the man, the table, the dog",
+          "rule": "Definite article for masculine nouns",
+          "notes": "Gender must be memorized with each noun",
+          "difficulty": 2,
+          "tags": ["articles", "definite", "masculine"]
+        },
+        {
+          "german": "die (feminine)",
+          "english": "the (feminine nouns)",
+          "content_type": "grammar",
+          "example": "die Frau, die Katze, die Blume",
+          "example_translation": "the woman, the cat, the flower",
+          "rule": "Definite article for feminine nouns",
+          "notes": "Also used for ALL plural nouns",
+          "difficulty": 2,
+          "tags": ["articles", "definite", "feminine"]
+        },
+        {
+          "german": "das (neuter)",
+          "english": "the (neuter nouns)",
+          "content_type": "grammar",
+          "example": "das Kind, das Haus, das Auto",
+          "example_translation": "the child, the house, the car",
+          "rule": "Definite article for neuter nouns",
+          "notes": "Many diminutives (-chen, -lein) are neuter",
+          "difficulty": 2,
+          "tags": ["articles", "definite", "neuter"]
+        }
+      ]
+    },
+    "day_7": {
+      "topic": "Indefinite Articles (ein, eine)",
+      "words": [
+        {
+          "german": "ein (masculine/neuter)",
+          "english": "a/an (masculine/neuter nouns)",
+          "content_type": "grammar",
+          "example": "ein Mann, ein Haus",
+          "example_translation": "a man, a house",
+          "rule": "Indefinite article for masculine and neuter nouns",
+          "notes": "Same form for masculine and neuter in nominative",
+          "difficulty": 2,
+          "tags": ["articles", "indefinite", "masculine", "neuter"]
+        },
+        {
+          "german": "eine (feminine)",
+          "english": "a/an (feminine nouns)",
+          "content_type": "grammar",
+          "example": "eine Frau, eine Katze",
+          "example_translation": "a woman, a cat",
+          "rule": "Indefinite article for feminine nouns",
+          "notes": "Always 'eine' for feminine in nominative",
+          "difficulty": 2,
+          "tags": ["articles", "indefinite", "feminine"]
+        },
+        {
+          "german": "No plural indefinite article",
+          "english": "No 'a/an' for plural",
+          "content_type": "grammar",
+          "example": "Männer, Frauen, Häuser",
+          "example_translation": "men, women, houses",
+          "rule": "German has no plural indefinite article",
+          "notes": "Just use the plural noun without article",
+          "difficulty": 1,
+          "tags": ["articles", "indefinite", "plural"]
+        }
+      ]
+    }
+  }
+}

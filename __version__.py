@@ -15,7 +15,7 @@ Version format: MAJOR.MINOR.PATCH[-PRERELEASE][+BUILD_METADATA]
 
 # Version components
 VERSION_MAJOR = 1
-VERSION_MINOR = 0
+VERSION_MINOR = 1
 VERSION_PATCH = 0
 VERSION_BUILD = None  # For development builds, set to build number
 
@@ -70,7 +70,7 @@ APP_NAME = "Language Learning Flashcard Generator"
 APP_DESCRIPTION = "Generate AnkiApp-compatible flashcards from JSON vocabulary data to CSV format, importable by the AnkiApp."
 APP_AUTHOR = "Sam Schonenberg"
 APP_EMAIL = "sam@schonenberg.dev"
-APP_URL = "https://github.com/yourusername/AnkiApp-flashcard-generator"
+APP_URL = "https://github.com/samscho98/AnkiApp-flashcard-generator"
 APP_LICENSE = "MIT"
 
 # Minimum requirements

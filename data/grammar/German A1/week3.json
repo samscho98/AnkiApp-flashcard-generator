@@ -1,0 +1,381 @@
+{
+  "target_language": "german",
+  "native_language": "english",
+  "content_type": "grammar",
+  "topic": "Cases & Negation",
+  "level": "A1",
+  "week": 3,
+  "days": {
+    "day_1": {
+      "topic": "Nominative Case - Subject",
+      "words": [
+        {
+          "german": "Nominative case function",
+          "english": "Subject of the sentence",
+          "content_type": "grammar",
+          "example": "Der Mann liest. Die Frau schläft. Das Kind spielt.",
+          "example_translation": "The man reads. The woman sleeps. The child plays.",
+          "rule": "Nominative case shows the subject (who/what does the action)",
+          "pattern": "[Nominative subject] + [verb] + [rest]",
+          "notes": "This is the 'dictionary form' of nouns",
+          "difficulty": 1,
+          "tags": ["nominative", "subject", "basic"]
+        },
+        {
+          "german": "Nominative articles",
+          "english": "Articles in nominative case",
+          "content_type": "grammar",
+          "example": "der/ein Mann, die/eine Frau, das/ein Kind",
+          "example_translation": "the/a man, the/a woman, the/a child",
+          "rule": "Nominative articles: der/die/das, ein/eine/ein",
+          "pattern": "der(m)/die(f)/das(n) or ein(m)/eine(f)/ein(n)",
+          "notes": "Same as dictionary form you've learned",
+          "difficulty": 1,
+          "tags": ["nominative", "articles", "definite", "indefinite"]
+        },
+        {
+          "german": "Nominative with 'sein'",
+          "english": "Predicate nominative with 'to be'",
+          "content_type": "grammar",
+          "example": "Ich bin ein Student. Das ist eine Lehrerin.",
+          "example_translation": "I am a student. That is a teacher.",
+          "rule": "After 'sein' (to be), use nominative case",
+          "pattern": "[Subject] + sein + [Nominative predicate]",
+          "notes": "Both sides of 'sein' are nominative",
+          "difficulty": 2,
+          "tags": ["nominative", "sein", "predicate"]
+        },
+        {
+          "german": "Questions with nominative",
+          "english": "Who/what questions",
+          "content_type": "grammar",
+          "example": "Wer ist das? Was ist das?",
+          "example_translation": "Who is that? What is that?",
+          "rule": "Wer (who) and was (what) are nominative question words",
+          "pattern": "Wer/Was + [verb] + [rest]?",
+          "notes": "These ask about the subject",
+          "difficulty": 1,
+          "tags": ["nominative", "questions", "wer", "was"]
+        }
+      ]
+    },
+    "day_2": {
+      "topic": "Accusative Case - Direct Object",
+      "words": [
+        {
+          "german": "Accusative case function",
+          "english": "Direct object of the sentence",
+          "content_type": "grammar",
+          "example": "Ich lese den Brief. Sie kauft eine Blume.",
+          "example_translation": "I read the letter. She buys a flower.",
+          "rule": "Accusative case shows the direct object (who/what receives the action)",
+          "pattern": "[Subject] + [verb] + [Accusative object]",
+          "notes": "Answers the question 'wen?' (who) or 'was?' (what)",
+          "difficulty": 2,
+          "tags": ["accusative", "direct-object", "basic"]
+        },
+        {
+          "german": "Accusative articles - masculine changes",
+          "english": "Only masculine articles change in accusative",
+          "content_type": "grammar",
+          "example": "den Mann, einen Mann (but: die Frau, das Kind unchanged)",
+          "example_translation": "the man, a man (but: the woman, the child unchanged)",
+          "rule": "Masculine: der→den, ein→einen. Feminine/neuter unchanged",
+          "pattern": "der→den, ein→einen, die/das/eine stay same",
+          "notes": "Only masculine changes in accusative!",
+          "difficulty": 2,
+          "tags": ["accusative", "articles", "masculine", "change"]
+        },
+        {
+          "german": "Accusative with common verbs",
+          "english": "Verbs that take accusative objects",
+          "content_type": "grammar",
+          "example": "haben, essen, trinken, kaufen, lesen, sehen",
+          "example_translation": "to have, eat, drink, buy, read, see",
+          "rule": "Most transitive verbs take accusative objects",
+          "pattern": "[Subject] + [transitive verb] + [Accusative object]",
+          "notes": "These are 'doing' verbs that affect something",
+          "difficulty": 2,
+          "tags": ["accusative", "verbs", "transitive"]
+        },
+        {
+          "german": "Accusative questions",
+          "english": "Asking about direct objects",
+          "content_type": "grammar",
+          "example": "Wen siehst du? Was isst du?",
+          "example_translation": "Who do you see? What do you eat?",
+          "rule": "Wen (who) for people, was (what) for things in accusative",
+          "pattern": "Wen/Was + [verb] + [subject]?",
+          "notes": "Wen is accusative form of wer",
+          "difficulty": 2,
+          "tags": ["accusative", "questions", "wen", "was"]
+        }
+      ]
+    },
+    "day_3": {
+      "topic": "Accusative Practice & Examples",
+      "words": [
+        {
+          "german": "Masculine accusative practice",
+          "english": "Practice with masculine nouns",
+          "content_type": "grammar",
+          "example": "Ich sehe den Hund. Er kauft einen Apfel.",
+          "example_translation": "I see the dog. He buys an apple.",
+          "rule": "Remember: masculine changes der→den, ein→einen",
+          "pattern": "verb + den/einen + masculine noun",
+          "notes": "Feminine and neuter don't change",
+          "difficulty": 2,
+          "tags": ["accusative", "masculine", "practice"]
+        },
+        {
+          "german": "Mixed gender objects",
+          "english": "Accusative with different genders",
+          "content_type": "grammar",
+          "example": "Sie liest den Brief, die Zeitung und das Buch.",
+          "example_translation": "She reads the letter, the newspaper and the book.",
+          "rule": "Only masculine article changes in accusative",
+          "pattern": "den Brief(m), die Zeitung(f), das Buch(n)",
+          "notes": "Good way to practice all three genders",
+          "difficulty": 3,
+          "tags": ["accusative", "mixed-gender", "practice"]
+        },
+        {
+          "german": "Time expressions in accusative",
+          "english": "Time duration uses accusative",
+          "content_type": "grammar",
+          "example": "Ich warte einen Tag. Sie arbeitet eine Stunde.",
+          "example_translation": "I wait one day. She works one hour.",
+          "rule": "Duration of time uses accusative case",
+          "pattern": "[verb] + einen/eine/ein + time word",
+          "notes": "How long something takes",
+          "difficulty": 3,
+          "tags": ["accusative", "time", "duration"]
+        },
+        {
+          "german": "Accusative vs nominative",
+          "english": "Comparing subject and object",
+          "content_type": "grammar",
+          "example": "Der Mann sieht den Mann. (Two different men!)",
+          "example_translation": "The man sees the man. (Two different men!)",
+          "rule": "Subject (nominative) does action to object (accusative)",
+          "pattern": "[der/Subject] + verb + [den/Object]",
+          "notes": "Case endings show who does what to whom",
+          "difficulty": 3,
+          "tags": ["accusative", "nominative", "comparison"]
+        }
+      ]
+    },
+    "day_4": {
+      "topic": "Negation with 'nicht'",
+      "words": [
+        {
+          "german": "Basic negation with 'nicht'",
+          "english": "Using 'not' in German",
+          "content_type": "grammar",
+          "example": "Ich verstehe nicht. Das ist nicht gut.",
+          "example_translation": "I don't understand. That is not good.",
+          "rule": "'Nicht' negates verbs, adjectives, and adverbs",
+          "pattern": "[statement] + nicht OR nicht + [adjective/adverb]",
+          "notes": "General negation word",
+          "difficulty": 2,
+          "tags": ["negation", "nicht", "basic"]
+        },
+        {
+          "german": "'Nicht' position with verbs",
+          "english": "Where to place 'nicht' with verbs",
+          "content_type": "grammar",
+          "example": "Ich arbeite nicht. Ich gehe nicht nach Hause.",
+          "example_translation": "I don't work. I'm not going home.",
+          "rule": "'Nicht' usually comes at the end, or before prepositional phrases",
+          "pattern": "[subject] + [verb] + [object] + nicht",
+          "notes": "End position is safest for beginners",
+          "difficulty": 3,
+          "tags": ["negation", "nicht", "position", "verbs"]
+        },
+        {
+          "german": "'Nicht' with adjectives",
+          "english": "'Not' before adjectives and adverbs",
+          "content_type": "grammar",
+          "example": "Das Haus ist nicht groß. Er läuft nicht schnell.",
+          "example_translation": "The house is not big. He doesn't run fast.",
+          "rule": "'Nicht' comes directly before adjectives and adverbs",
+          "pattern": "nicht + [adjective/adverb]",
+          "notes": "This position is fixed",
+          "difficulty": 2,
+          "tags": ["negation", "nicht", "adjectives", "adverbs"]
+        },
+        {
+          "german": "'Nicht' in questions",
+          "english": "Negative questions",
+          "content_type": "grammar",
+          "example": "Verstehst du nicht? Ist das nicht schön?",
+          "example_translation": "Don't you understand? Isn't that beautiful?",
+          "rule": "'Nicht' follows same position rules in questions",
+          "pattern": "[question word/verb] + [subject] + nicht?",
+          "notes": "Often expects 'yes' as answer in German",
+          "difficulty": 3,
+          "tags": ["negation", "nicht", "questions"]
+        }
+      ]
+    },
+    "day_5": {
+      "topic": "Negation with 'kein'",
+      "words": [
+        {
+          "german": "'Kein' replaces 'ein'",
+          "english": "'No/not a' instead of 'a/an'",
+          "content_type": "grammar",
+          "example": "Das ist kein Hund. Ich habe keine Zeit.",
+          "example_translation": "That is not a dog. I have no time.",
+          "rule": "'Kein' negates nouns that would use 'ein' or no article",
+          "pattern": "kein(m)/keine(f)/kein(n) + noun",
+          "notes": "Replaces ein/eine/ein in negative sentences",
+          "difficulty": 2,
+          "tags": ["negation", "kein", "nouns", "indefinite"]
+        },
+        {
+          "german": "'Kein' declension",
+          "english": "'Kein' changes like 'ein'",
+          "content_type": "grammar",
+          "example": "Nominative: kein/keine/kein, Accusative: keinen/keine/kein",
+          "example_translation": "No man/woman/child (subject/object)",
+          "rule": "'Kein' follows same pattern as 'ein' but has plural form",
+          "pattern": "Like ein + plural: keine (for all genders)",
+          "notes": "Unlike 'ein', 'kein' has a plural form",
+          "difficulty": 3,
+          "tags": ["negation", "kein", "declension", "cases"]
+        },
+        {
+          "german": "'Kein' vs 'nicht'",
+          "english": "When to use 'kein' vs 'nicht'",
+          "content_type": "grammar",
+          "example": "Ich habe kein Auto. (not: nicht ein Auto) / Das ist nicht mein Auto.",
+          "example_translation": "I don't have a car. / That is not my car.",
+          "rule": "Use 'kein' with indefinite nouns, 'nicht' with definite nouns",
+          "pattern": "kein + indefinite noun, nicht + definite noun",
+          "notes": "Kein = no/not a, nicht = not the",
+          "difficulty": 3,
+          "tags": ["negation", "kein", "nicht", "comparison"]
+        },
+        {
+          "german": "'Kein' with plural",
+          "english": "'No' with plural nouns",
+          "content_type": "grammar",
+          "example": "Ich habe keine Kinder. Wir haben keine Probleme.",
+          "example_translation": "I have no children. We have no problems.",
+          "rule": "'Keine' is used for all plural nouns (any gender)",
+          "pattern": "keine + plural noun",
+          "notes": "Keine works for all plural, regardless of original gender",
+          "difficulty": 2,
+          "tags": ["negation", "kein", "plural", "keine"]
+        }
+      ]
+    },
+    "day_6": {
+      "topic": "Possessive Pronouns - Basic Forms",
+      "words": [
+        {
+          "german": "mein (my)",
+          "english": "My - first person possessive",
+          "content_type": "grammar",
+          "example": "mein Vater, meine Mutter, mein Kind",
+          "example_translation": "my father, my mother, my child",
+          "rule": "'Mein' changes like 'ein' to match the possessed noun",
+          "pattern": "mein(m)/meine(f)/mein(n) + noun",
+          "notes": "Changes based on the thing owned, not the owner",
+          "difficulty": 2,
+          "tags": ["possessive", "mein", "my", "declension"]
+        },
+        {
+          "german": "dein (your - informal)",
+          "english": "Your - informal possessive",
+          "content_type": "grammar",
+          "example": "dein Buch, deine Tasche, dein Auto",
+          "example_translation": "your book, your bag, your car",
+          "rule": "'Dein' follows same pattern as 'mein'",
+          "pattern": "dein(m)/deine(f)/dein(n) + noun",
+          "notes": "Used with people you call 'du'",
+          "difficulty": 2,
+          "tags": ["possessive", "dein", "your", "informal"]
+        },
+        {
+          "german": "sein/ihr (his/her)",
+          "english": "His/her possessive pronouns",
+          "content_type": "grammar",
+          "example": "sein Haus (his house), ihr Haus (her house)",
+          "example_translation": "his house, her house",
+          "rule": "'Sein' (his) and 'ihr' (her) change like 'ein'",
+          "pattern": "sein/ihr + endings like ein",
+          "notes": "Sein=his, ihr=her (don't confuse with Sie/ihr)",
+          "difficulty": 3,
+          "tags": ["possessive", "sein", "ihr", "his", "her"]
+        },
+        {
+          "german": "unser/euer (our/your plural)",
+          "english": "Our/your (plural) possessive",
+          "content_type": "grammar",
+          "example": "unser Lehrer, euer Lehrer",
+          "example_translation": "our teacher, your (plural) teacher",
+          "rule": "'Unser' and 'euer' also follow 'ein' pattern",
+          "pattern": "unser/euer + ein-endings",
+          "notes": "Euer often drops middle -e-: eur-",
+          "difficulty": 3,
+          "tags": ["possessive", "unser", "euer", "our", "your-plural"]
+        }
+      ]
+    },
+    "day_7": {
+      "topic": "Possessive Pronouns in Cases",
+      "words": [
+        {
+          "german": "Possessives in nominative",
+          "english": "Possessives as subjects",
+          "content_type": "grammar",
+          "example": "Mein Hund ist groß. Deine Katze schläft.",
+          "example_translation": "My dog is big. Your cat sleeps.",
+          "rule": "Possessives in nominative: mein/meine/mein, etc.",
+          "pattern": "[possessive + ein-endings] + noun + verb",
+          "notes": "Same as basic forms you learned",
+          "difficulty": 2,
+          "tags": ["possessive", "nominative", "subject"]
+        },
+        {
+          "german": "Possessives in accusative",
+          "english": "Possessives as direct objects",
+          "content_type": "grammar",
+          "example": "Ich sehe meinen Hund. Du liest dein Buch.",
+          "example_translation": "I see my dog. You read your book.",
+          "rule": "Masculine possessives add -en in accusative",
+          "pattern": "meinen/deinen/seinen (masculine), meine/deine/seine (fem/neut)",
+          "notes": "Only masculine forms change, like with 'ein'→'einen'",
+          "difficulty": 3,
+          "tags": ["possessive", "accusative", "masculine"]
+        },
+        {
+          "german": "Possessive vs article",
+          "english": "Choosing between possessive and article",
+          "content_type": "grammar",
+          "example": "Ich nehme mein Buch. (not: das Buch)",
+          "example_translation": "I take my book. (not: the book)",
+          "rule": "Use possessive to show ownership, not definite article",
+          "pattern": "possessive replaces der/die/das when showing ownership",
+          "notes": "Can't use both possessive AND article together",
+          "difficulty": 2,
+          "tags": ["possessive", "articles", "ownership"]
+        },
+        {
+          "german": "Common possessive phrases",
+          "english": "Typical expressions with possessives",
+          "content_type": "grammar",
+          "example": "meine Familie, dein Freund, unser Haus, ihre Arbeit",
+          "example_translation": "my family, your friend, our house, her work",
+          "rule": "Possessives are very common in everyday German",
+          "pattern": "possessive + noun (very frequent combination)",
+          "notes": "Practice these common combinations",
+          "difficulty": 2,
+          "tags": ["possessive", "common", "phrases", "everyday"]
+        }
+      ]
+    }
+  }
+}

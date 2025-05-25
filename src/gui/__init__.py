@@ -1,55 +1,69 @@
 """
 GUI Package for Language Learning Flashcard Generator
-Contains tkinter-based user interface components
+Refactored into focused, maintainable components
 """
 
-# Import main window and components
-try:
-    from .main_window import MainWindow, LanguageLearningApp
-    MAIN_WINDOW_AVAILABLE = True
-except ImportError:
-    MainWindow = None
-    LanguageLearningApp = None
-    MAIN_WINDOW_AVAILABLE = False
+# Import main application class
+from .app import LanguageLearningApp
 
-# Import custom widgets
-try:
-    from .widgets import (
-        FileSelector,
-        ContentPreview,
-        ExportPanel,
-        ProgressDisplay,
-        SettingsPanel
-    )
-    WIDGETS_AVAILABLE = True
-except ImportError:
-    FileSelector = None
-    ContentPreview = None
-    ExportPanel = None
-    ProgressDisplay = None
-    SettingsPanel = None
-    WIDGETS_AVAILABLE = False
+# Import main window
+from .main_window import MainWindow
 
-# Import settings window
-try:
-    from .settings_window import SettingsWindow, PreferencesDialog
-    SETTINGS_WINDOW_AVAILABLE = True
-except ImportError:
-    SettingsWindow = None
-    PreferencesDialog = None
-    SETTINGS_WINDOW_AVAILABLE = False
+# Import components
+from .components import (
+    FileSelector,
+    ContentSelector, 
+    CSVPreviewEditor,
+    ExportPanel,
+    ProgressDisplay,
+    StatusBar
+)
+
+# Import dialogs
+from .dialogs import (
+    SettingsDialog,
+    ErrorDialog,
+    ExportDialog,
+    AboutDialog
+)
+
+# Import utilities
+from .utils import (
+    GUIHelpers,
+    ThemeManager,
+    LayoutHelpers
+)
+
+# Main entry point
+def main():
+    """Main entry point for the GUI application"""
+    app = LanguageLearningApp()
+    app.run()
 
 __all__ = [
-    'MainWindow',
+    # Main classes
     'LanguageLearningApp',
+    'MainWindow',
+    
+    # Components
     'FileSelector',
-    'ContentPreview',
+    'ContentSelector', 
+    'CSVPreviewEditor',
     'ExportPanel',
     'ProgressDisplay',
-    'SettingsPanel',
-    'SettingsWindow',
-    'PreferencesDialog',
-    'MAIN_WINDOW_AVAILABLE',
-    'WIDGETS_AVAILABLE',
-    'SETTINGS_WINDOW_AVAILABLE'
+    'StatusBar',
+    
+    # Dialogs
+    'SettingsDialog',
+    'ErrorDialog',
+    'ExportDialog',
+    'AboutDialog',
+    
+    # Utilities
+    'GUIHelpers',
+    'ThemeManager',
+    'LayoutHelpers',
+    
+    # Entry point
+    'main'
 ]

@@ -1,0 +1,381 @@
+{
+  "target_language": "german",
+  "native_language": "english",
+  "content_type": "grammar",
+  "topic": "Word Order & Conjunctions",
+  "level": "A1",
+  "week": 7,
+  "days": {
+    "day_1": {
+      "topic": "Basic Word Order - Verb Position",
+      "words": [
+        {
+          "german": "Verb in second position",
+          "english": "The fundamental German word order rule",
+          "content_type": "grammar",
+          "example": "Ich gehe heute ins Kino. Heute gehe ich ins Kino.",
+          "example_translation": "I go to the cinema today. Today I go to the cinema.",
+          "rule": "The conjugated verb is always in second position in main clauses",
+          "pattern": "[Position 1] + [Verb] + [Subject] + [Rest]",
+          "notes": "This is called the V2 rule - most important German syntax rule",
+          "difficulty": 3,
+          "tags": ["word-order", "verb-position", "V2", "fundamental"]
+        },
+        {
+          "german": "Subject-verb-object (normal order)",
+          "english": "Standard word order when subject comes first",
+          "content_type": "grammar",
+          "example": "Der Mann kauft ein Auto.",
+          "example_translation": "The man buys a car.",
+          "rule": "When subject is in position 1, order is like English",
+          "pattern": "[Subject] + [Verb] + [Object]",
+          "notes": "This feels natural for English speakers",
+          "difficulty": 1,
+          "tags": ["word-order", "SVO", "normal", "subject-first"]
+        },
+        {
+          "german": "Inversion after adverbs",
+          "english": "Subject and verb switch when adverb comes first",
+          "content_type": "grammar",
+          "example": "Morgen fahre ich nach Berlin.",
+          "example_translation": "Tomorrow I drive to Berlin.",
+          "rule": "When anything other than subject is first, verb stays second",
+          "pattern": "[Adverb] + [Verb] + [Subject] + [Rest]",
+          "notes": "Subject moves after verb to keep verb in position 2",
+          "difficulty": 3,
+          "tags": ["word-order", "inversion", "adverbs", "V2"]
+        },
+        {
+          "german": "Questions maintain V2",
+          "english": "Question word order follows same rule",
+          "content_type": "grammar",
+          "example": "Wann fährst du nach Berlin?",
+          "example_translation": "When do you drive to Berlin?",
+          "rule": "Question word + verb + subject + rest",
+          "pattern": "[Question word] + [Verb] + [Subject] + [Rest]",
+          "notes": "W-questions follow normal V2 pattern",
+          "difficulty": 2,
+          "tags": ["word-order", "questions", "V2", "w-questions"]
+        }
+      ]
+    },
+    "day_2": {
+      "topic": "Position of 'nicht' (Negation)",
+      "words": [
+        {
+          "german": "'Nicht' at sentence end",
+          "english": "Basic negation position",
+          "content_type": "grammar",
+          "example": "Ich verstehe nicht. Er kommt nicht.",
+          "example_translation": "I don't understand. He's not coming.",
+          "rule": "'Nicht' often goes at the end of the sentence",
+          "pattern": "[Subject] + [Verb] + [Object] + nicht",
+          "notes": "Safest position for beginners",
+          "difficulty": 2,
+          "tags": ["negation", "nicht", "sentence-end", "basic"]
+        },
+        {
+          "german": "'Nicht' before specific elements",
+          "english": "Negating specific parts of sentence",
+          "content_type": "grammar",
+          "example": "Ich gehe nicht ins Kino. Er ist nicht alt.",
+          "example_translation": "I'm not going to the cinema. He is not old.",
+          "rule": "'Nicht' comes before what it negates (prepositional phrases, adjectives)",
+          "pattern": "nicht + [thing being negated]",
+          "notes": "More precise negation",
+          "difficulty": 3,
+          "tags": ["negation", "nicht", "specific", "precise"]
+        },
+        {
+          "german": "'Nicht' with separable verbs",
+          "english": "Negation with separable verbs",
+          "content_type": "grammar",
+          "example": "Ich stehe nicht auf. Er ruft nicht an.",
+          "example_translation": "I don't get up. He doesn't call.",
+          "rule": "'Nicht' comes before the separable prefix",
+          "pattern": "[Subject] + [Verb] + nicht + [Prefix]",
+          "notes": "Nicht goes between verb parts",
+          "difficulty": 4,
+          "tags": ["negation", "nicht", "separable-verbs", "position"]
+        },
+        {
+          "german": "'Nicht' vs 'kein' review",
+          "english": "Choosing the right negation",
+          "content_type": "grammar",
+          "example": "Das ist nicht mein Auto. / Ich habe kein Auto.",
+          "example_translation": "That's not my car. / I don't have a car.",
+          "rule": "Nicht negates definite things, kein negates indefinite things",
+          "pattern": "nicht + definite, kein + indefinite",
+          "notes": "Review of Week 3 concept with word order",
+          "difficulty": 3,
+          "tags": ["negation", "nicht", "kein", "review", "choice"]
+        }
+      ]
+    },
+    "day_3": {
+      "topic": "Time-Manner-Place (TMP) Order",
+      "words": [
+        {
+          "german": "Time, Manner, Place order",
+          "english": "Order of adverbial information",
+          "content_type": "grammar",
+          "example": "Ich fahre morgen mit dem Auto nach Berlin.",
+          "example_translation": "I drive tomorrow by car to Berlin.",
+          "rule": "When combining adverbs: Time - Manner - Place",
+          "pattern": "[Time] + [Manner] + [Place]",
+          "notes": "TMP = easy way to remember the order",
+          "difficulty": 3,
+          "tags": ["word-order", "TMP", "adverbs", "sequence"]
+        },
+        {
+          "german": "Time expressions first",
+          "english": "When something happens",
+          "content_type": "grammar",
+          "example": "heute, morgen, um 8 Uhr, am Montag",
+          "example_translation": "today, tomorrow, at 8 o'clock, on Monday",
+          "rule": "Time information comes first in TMP order",
+          "pattern": "[Time expression] comes before manner and place",
+          "notes": "Answer to 'when?' comes first",
+          "difficulty": 2,
+          "tags": ["word-order", "time", "TMP", "when"]
+        },
+        {
+          "german": "Manner expressions second",
+          "english": "How something is done",
+          "content_type": "grammar",
+          "example": "schnell, mit dem Auto, zu Fuß, allein",
+          "example_translation": "quickly, by car, on foot, alone",
+          "rule": "Manner information comes second in TMP order",
+          "pattern": "[Manner expression] comes after time, before place",
+          "notes": "Answer to 'how?' comes second",
+          "difficulty": 2,
+          "tags": ["word-order", "manner", "TMP", "how"]
+        },
+        {
+          "german": "Place expressions last",
+          "english": "Where something happens",
+          "content_type": "grammar",
+          "example": "nach Hause, in die Schule, hier, dort",
+          "example_translation": "home, to school, here, there",
+          "rule": "Place information comes last in TMP order",
+          "pattern": "[Place expression] comes after time and manner",
+          "notes": "Answer to 'where?' comes last",
+          "difficulty": 2,
+          "tags": ["word-order", "place", "TMP", "where"]
+        }
+      ]
+    },
+    "day_4": {
+      "topic": "Coordinating Conjunctions - 'und', 'oder', 'aber'",
+      "words": [
+        {
+          "german": "und (and)",
+          "english": "Connecting similar ideas",
+          "content_type": "grammar",
+          "example": "Ich trinke Kaffee und esse Kuchen.",
+          "example_translation": "I drink coffee and eat cake.",
+          "rule": "'Und' connects words, phrases, or clauses without changing word order",
+          "pattern": "[Clause 1] + und + [Clause 2]",
+          "notes": "Most basic conjunction, no word order change",
+          "difficulty": 1,
+          "tags": ["conjunctions", "coordinating", "und", "and"]
+        },
+        {
+          "german": "oder (or)",
+          "english": "Showing alternatives or choices",
+          "content_type": "grammar",
+          "example": "Trinkst du Kaffee oder Tee?",
+          "example_translation": "Do you drink coffee or tea?",
+          "rule": "'Oder' shows alternatives without changing word order",
+          "pattern": "[Option 1] + oder + [Option 2]",
+          "notes": "Used for choices and alternatives",
+          "difficulty": 1,
+          "tags": ["conjunctions", "coordinating", "oder", "or"]
+        },
+        {
+          "german": "aber (but)",
+          "english": "Showing contrast or contradiction",
+          "content_type": "grammar",
+          "example": "Ich bin müde, aber ich arbeite weiter.",
+          "example_translation": "I am tired, but I continue working.",
+          "rule": "'Aber' shows contrast without changing word order",
+          "pattern": "[Clause 1], aber + [Clause 2]",
+          "notes": "Often with comma before 'aber'",
+          "difficulty": 2,
+          "tags": ["conjunctions", "coordinating", "aber", "but", "contrast"]
+        },
+        {
+          "german": "denn (because/for)",
+          "english": "Giving reasons or explanations",
+          "content_type": "grammar",
+          "example": "Ich bleibe zu Hause, denn ich bin krank.",
+          "example_translation": "I stay home, for I am sick.",
+          "rule": "'Denn' gives reasons without changing word order",
+          "pattern": "[Main clause], denn + [Reason clause]",
+          "notes": "More formal than 'weil', no word order change",
+          "difficulty": 2,
+          "tags": ["conjunctions", "coordinating", "denn", "because", "reason"]
+        }
+      ]
+    },
+    "day_5": {
+      "topic": "Subordinating Conjunctions - 'weil' and 'dass'",
+      "words": [
+        {
+          "german": "weil (because) - verb to end",
+          "english": "Explaining reasons with changed word order",
+          "content_type": "grammar",
+          "example": "Ich bleibe zu Hause, weil ich krank bin.",
+          "example_translation": "I stay home because I am sick.",
+          "rule": "After 'weil', the conjugated verb goes to the end",
+          "pattern": "[Main clause], weil + [subject] + [rest] + [verb]",
+          "notes": "This is different from coordinating conjunctions!",
+          "difficulty": 4,
+          "tags": ["conjunctions", "subordinating", "weil", "because", "verb-end"]
+        },
+        {
+          "german": "dass (that) - verb to end",
+          "english": "Reporting what someone said or thought",
+          "content_type": "grammar",
+          "example": "Ich denke, dass er heute kommt.",
+          "example_translation": "I think that he comes today.",
+          "rule": "After 'dass', the conjugated verb goes to the end",
+          "pattern": "[Main clause], dass + [subject] + [rest] + [verb]",
+          "notes": "Used after verbs like denken, sagen, glauben",
+          "difficulty": 4,
+          "tags": ["conjunctions", "subordinating", "dass", "that", "verb-end"]
+        },
+        {
+          "german": "Subordinate clause punctuation",
+          "english": "Comma rules with subordinate clauses",
+          "content_type": "grammar",
+          "example": "Ich gehe nicht mit, weil ich keine Zeit habe.",
+          "example_translation": "I'm not coming along because I don't have time.",
+          "rule": "Always use comma before subordinating conjunctions",
+          "pattern": "[Main clause], [subordinating conjunction] + [subordinate clause]",
+          "notes": "Comma is mandatory in German",
+          "difficulty": 3,
+          "tags": ["conjunctions", "punctuation", "comma", "subordinate"]
+        },
+        {
+          "german": "Subordinate clause as first element",
+          "english": "When subordinate clause comes first",
+          "content_type": "grammar",
+          "example": "Weil ich krank bin, bleibe ich zu Hause.",
+          "example_translation": "Because I am sick, I stay home.",
+          "rule": "If subordinate clause is first, main clause verb comes right after comma",
+          "pattern": "Weil [subordinate clause], [verb] + [subject] + [rest]",
+          "notes": "Subordinate clause counts as position 1, so verb is position 2",
+          "difficulty": 4,
+          "tags": ["conjunctions", "subordinate-first", "inversion", "V2"]
+        }
+      ]
+    },
+    "day_6": {
+      "topic": "More Subordinating Conjunctions",
+      "words": [
+        {
+          "german": "wenn (if/when)",
+          "english": "Conditional or temporal clauses",
+          "content_type": "grammar",
+          "example": "Wenn es regnet, bleibe ich zu Hause.",
+          "example_translation": "If/When it rains, I stay home.",
+          "rule": "'Wenn' sends verb to end, used for conditions or repeated time",
+          "pattern": "Wenn + [subject] + [rest] + [verb], [main clause]",
+          "notes": "Can mean 'if' or 'when' depending on context",
+          "difficulty": 4,
+          "tags": ["conjunctions", "subordinating", "wenn", "if", "when"]
+        },
+        {
+          "german": "ob (whether/if)",
+          "english": "Indirect yes/no questions",
+          "content_type": "grammar",
+          "example": "Ich weiß nicht, ob er kommt.",
+          "example_translation": "I don't know whether/if he's coming.",
+          "rule": "'Ob' is used for indirect questions, verb goes to end",
+          "pattern": "[Main clause], ob + [subject] + [rest] + [verb]",
+          "notes": "Used instead of direct yes/no questions",
+          "difficulty": 4,
+          "tags": ["conjunctions", "subordinating", "ob", "whether", "indirect"]
+        },
+        {
+          "german": "als (when - past)",
+          "english": "When something happened once in the past",
+          "content_type": "grammar",
+          "example": "Als ich klein war, spielte ich gern.",
+          "example_translation": "When I was small, I liked to play.",
+          "rule": "'Als' for single past events, verb goes to end",
+          "pattern": "Als + [subject] + [rest] + [verb], [main clause]",
+          "notes": "Different from 'wenn' - 'als' is for past, single events",
+          "difficulty": 4,
+          "tags": ["conjunctions", "subordinating", "als", "when", "past"]
+        },
+        {
+          "german": "Common subordinating conjunction verbs",
+          "english": "Verbs that often take dass-clauses",
+          "content_type": "grammar",
+          "example": "sagen, denken, glauben, wissen, hoffen",
+          "example_translation": "to say, think, believe, know, hope",
+          "rule": "These verbs often introduce subordinate clauses with 'dass'",
+          "pattern": "[Subject] + [verb], dass + [subordinate clause]",
+          "notes": "Learn these verbs that take subordinate clauses",
+          "difficulty": 3,
+          "tags": ["conjunctions", "verbs", "dass", "reporting"]
+        }
+      ]
+    },
+    "day_7": {
+      "topic": "Complex Sentences & Practice",
+      "words": [
+        {
+          "german": "Combining multiple clauses",
+          "english": "Using coordinating and subordinating conjunctions together",
+          "content_type": "grammar",
+          "example": "Ich gehe einkaufen, und dann koche ich, weil wir Hunger haben.",
+          "example_translation": "I go shopping, and then I cook because we are hungry.",
+          "rule": "Can combine different types of conjunctions in complex sentences",
+          "pattern": "[Clause] + coordinating + [clause] + subordinating + [clause]",
+          "notes": "Watch word order in each clause type",
+          "difficulty": 5,
+          "tags": ["conjunctions", "complex", "combining", "multiple"]
+        },
+        {
+          "german": "Word order troubleshooting",
+          "english": "Common mistakes with German word order",
+          "content_type": "grammar",
+          "example": "Wrong: Ich weil krank bin bleibe zu Hause. Right: Ich bleibe zu Hause, weil ich krank bin.",
+          "example_translation": "I stay home because I am sick.",
+          "rule": "Subordinating conjunctions change word order, coordinating don't",
+          "pattern": "Remember: weil/dass/wenn → verb to end",
+          "notes": "This is the most common word order mistake",
+          "difficulty": 4,
+          "tags": ["word-order", "troubleshooting", "mistakes", "common-errors"]
+        },
+        {
+          "german": "Sentence building practice",
+          "english": "Creating natural German sentences",
+          "content_type": "grammar",
+          "example": "Heute gehe ich mit meiner Freundin ins Kino, weil ein guter Film läuft.",
+          "example_translation": "Today I go to the cinema with my girlfriend because a good movie is playing.",
+          "rule": "Combine time, manner, place with conjunctions for natural speech",
+          "pattern": "[Time] + [V2] + [TMP order] + conjunction + [reason]",
+          "notes": "This combines multiple grammar concepts",
+          "difficulty": 4,
+          "tags": ["sentence-building", "practice", "natural", "combining"]
+        },
+        {
+          "german": "Common conjunction combinations",
+          "english": "Frequent patterns in spoken German",
+          "content_type": "grammar",
+          "example": "..., aber ich denke, dass... / ..., und weil..., ...",
+          "example_translation": "but I think that... / and because...",
+          "rule": "These combinations appear frequently in conversation",
+          "pattern": "Learn common conjunction combinations as units",
+          "notes": "Helps with fluency and natural speech patterns",
+          "difficulty": 3,
+          "tags": ["conjunctions", "combinations", "frequent", "fluency"]
+        }
+      ]
+    }
+  }
+}

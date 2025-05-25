@@ -1,0 +1,377 @@
+{
+  "target_language": "german",
+  "native_language": "english",
+  "content_type": "grammar",
+  "topic": "Nouns, Articles, and Plurals",
+  "level": "A1",
+  "week": 2,
+  "days": {
+    "day_1": {
+      "topic": "Gender of Nouns - Masculine",
+      "words": [
+        {
+          "german": "Masculine nouns (-er endings)",
+          "english": "Most nouns ending in -er are masculine",
+          "content_type": "grammar",
+          "example": "der Lehrer, der Computer, der Winter",
+          "example_translation": "the teacher, the computer, the winter",
+          "rule": "Nouns ending in -er are usually masculine",
+          "pattern": "-er → der + noun",
+          "notes": "Very reliable rule, few exceptions",
+          "difficulty": 2,
+          "tags": ["gender", "masculine", "patterns", "-er"]
+        },
+        {
+          "german": "Masculine nouns (male beings)",
+          "english": "Male people and animals are masculine",
+          "content_type": "grammar",
+          "example": "der Mann, der Vater, der Hund (male)",
+          "example_translation": "the man, the father, the dog (male)",
+          "rule": "Biological males are grammatically masculine",
+          "pattern": "male being → der + noun",
+          "notes": "Logical rule, easy to remember",
+          "difficulty": 1,
+          "tags": ["gender", "masculine", "biological"]
+        },
+        {
+          "german": "Days, months, seasons",
+          "english": "Time periods are usually masculine",
+          "content_type": "grammar",
+          "example": "der Montag, der Januar, der Winter",
+          "example_translation": "Monday, January, winter",
+          "rule": "Days of week, months, seasons are masculine",
+          "pattern": "time period → der + noun",
+          "notes": "Exception: die Woche (week) is feminine",
+          "difficulty": 2,
+          "tags": ["gender", "masculine", "time"]
+        },
+        {
+          "german": "Car brands and alcohol",
+          "english": "Car brands and alcoholic drinks are masculine",
+          "content_type": "grammar",
+          "example": "der BMW, der Wein, der Schnaps",
+          "example_translation": "the BMW, the wine, the schnapps",
+          "rule": "Car brands and alcoholic beverages are masculine",
+          "pattern": "car/alcohol → der + noun",
+          "notes": "Exception: das Bier (beer) is neuter",
+          "difficulty": 2,
+          "tags": ["gender", "masculine", "brands"]
+        }
+      ]
+    },
+    "day_2": {
+      "topic": "Gender of Nouns - Feminine",
+      "words": [
+        {
+          "german": "Feminine nouns (-e endings)",
+          "english": "Many nouns ending in -e are feminine",
+          "content_type": "grammar",
+          "example": "die Blume, die Katze, die Schule",
+          "example_translation": "the flower, the cat, the school",
+          "rule": "Many -e ending nouns are feminine",
+          "pattern": "-e → die + noun (often)",
+          "notes": "Common pattern but has exceptions",
+          "difficulty": 3,
+          "tags": ["gender", "feminine", "patterns", "-e"]
+        },
+        {
+          "german": "Feminine nouns (-ung, -heit, -keit)",
+          "english": "Abstract nouns with these endings are feminine",
+          "content_type": "grammar",
+          "example": "die Wohnung, die Gesundheit, die Möglichkeit",
+          "example_translation": "the apartment, the health, the possibility",
+          "rule": "Nouns ending in -ung, -heit, -keit are always feminine",
+          "pattern": "-ung/-heit/-keit → die + noun",
+          "notes": "100% reliable rule, no exceptions",
+          "difficulty": 1,
+          "tags": ["gender", "feminine", "suffixes"]
+        },
+        {
+          "german": "Female beings",
+          "english": "Female people and animals are feminine",
+          "content_type": "grammar",
+          "example": "die Frau, die Mutter, die Katze (female)",
+          "example_translation": "the woman, the mother, the cat (female)",
+          "rule": "Biological females are grammatically feminine",
+          "pattern": "female being → die + noun",
+          "notes": "Exception: das Mädchen (girl) is neuter",
+          "difficulty": 1,
+          "tags": ["gender", "feminine", "biological"]
+        },
+        {
+          "german": "Numbers and trees",
+          "english": "Numbers and tree names are feminine",
+          "content_type": "grammar",
+          "example": "die Eins, die Zwei, die Eiche, die Tanne",
+          "example_translation": "the one, the two, the oak, the fir",
+          "rule": "Numbers and most tree names are feminine",
+          "pattern": "number/tree → die + noun",
+          "notes": "Most tree names, some exceptions exist",
+          "difficulty": 3,
+          "tags": ["gender", "feminine", "numbers", "trees"]
+        }
+      ]
+    },
+    "day_3": {
+      "topic": "Gender of Nouns - Neuter",
+      "words": [
+        {
+          "german": "Neuter nouns (-chen, -lein)",
+          "english": "Diminutives are always neuter",
+          "content_type": "grammar",
+          "example": "das Mädchen, das Häuschen, das Kätzlein",
+          "example_translation": "the girl, the little house, the little cat",
+          "rule": "All diminutive forms are neuter",
+          "pattern": "-chen/-lein → das + noun",
+          "notes": "100% reliable rule, overrides biological gender",
+          "difficulty": 1,
+          "tags": ["gender", "neuter", "diminutives"]
+        },
+        {
+          "german": "Young beings",
+          "english": "Young animals are often neuter",
+          "content_type": "grammar",
+          "example": "das Baby, das Kind, das Kalb",
+          "example_translation": "the baby, the child, the calf",
+          "rule": "Young beings are often neuter",
+          "pattern": "young being → das + noun",
+          "notes": "Not always true, but common pattern",
+          "difficulty": 2,
+          "tags": ["gender", "neuter", "young"]
+        },
+        {
+          "german": "Neuter nouns (-um endings)",
+          "english": "Latin loanwords ending in -um are neuter",
+          "content_type": "grammar",
+          "example": "das Museum, das Zentrum, das Stadium",
+          "example_translation": "the museum, the center, the stadium",
+          "rule": "Words ending in -um are neuter",
+          "pattern": "-um → das + noun",
+          "notes": "From Latin, fairly reliable rule",
+          "difficulty": 2,
+          "tags": ["gender", "neuter", "latin", "-um"]
+        },
+        {
+          "german": "Colors and metals",
+          "english": "Colors and metals are usually neuter",
+          "content_type": "grammar",
+          "example": "das Rot, das Gold, das Silber",
+          "example_translation": "the red, the gold, the silver",
+          "rule": "Color names and metals are typically neuter",
+          "pattern": "color/metal → das + noun",
+          "notes": "When used as nouns, not adjectives",
+          "difficulty": 3,
+          "tags": ["gender", "neuter", "colors", "metals"]
+        }
+      ]
+    },
+    "day_4": {
+      "topic": "Plural Formation - Regular Patterns",
+      "words": [
+        {
+          "german": "Plural with -e",
+          "english": "Add -e to form plural",
+          "content_type": "grammar",
+          "example": "der Hund → die Hunde, das Jahr → die Jahre",
+          "example_translation": "the dog → the dogs, the year → the years",
+          "rule": "Many masculine and neuter nouns add -e",
+          "pattern": "noun + -e",
+          "notes": "Sometimes with umlaut: Hand → Hände",
+          "difficulty": 2,
+          "tags": ["plural", "regular", "-e"]
+        },
+        {
+          "german": "Plural with -en",
+          "english": "Add -en to form plural",
+          "content_type": "grammar",
+          "example": "die Frau → die Frauen, der Herr → die Herren",
+          "example_translation": "the woman → the women, the gentleman → the gentlemen",
+          "rule": "Many feminine nouns and some masculine add -en",
+          "pattern": "noun + -en",
+          "notes": "Most common plural ending for feminines",
+          "difficulty": 2,
+          "tags": ["plural", "regular", "-en"]
+        },
+        {
+          "german": "Plural with -er",
+          "english": "Add -er to form plural",
+          "content_type": "grammar",
+          "example": "das Kind → die Kinder, das Haus → die Häuser",
+          "example_translation": "the child → the children, the house → the houses",
+          "rule": "Many neuter nouns add -er, often with umlaut",
+          "pattern": "noun + -er (+ umlaut)",
+          "notes": "Always get umlaut if vowel allows",
+          "difficulty": 3,
+          "tags": ["plural", "regular", "-er", "umlaut"]
+        },
+        {
+          "german": "Plural with -s",
+          "english": "Add -s to form plural",
+          "content_type": "grammar",
+          "example": "das Auto → die Autos, das Hotel → die Hotels",
+          "example_translation": "the car → the cars, the hotel → the hotels",
+          "rule": "Foreign words and some short words add -s",
+          "pattern": "noun + -s",
+          "notes": "Like English, mainly for loanwords",
+          "difficulty": 1,
+          "tags": ["plural", "regular", "-s", "foreign"]
+        }
+      ]
+    },
+    "day_5": {
+      "topic": "Plural Formation - Special Cases",
+      "words": [
+        {
+          "german": "No change plurals",
+          "english": "Some nouns don't change in plural",
+          "content_type": "grammar",
+          "example": "der Lehrer → die Lehrer, das Zimmer → die Zimmer",
+          "example_translation": "the teacher → the teachers, the room → the rooms",
+          "rule": "Masculine/neuter ending in -er, -el, -en often unchanged",
+          "pattern": "noun → same noun (only article changes)",
+          "notes": "Only der/das → die changes",
+          "difficulty": 2,
+          "tags": ["plural", "unchanged", "-er", "-el"]
+        },
+        {
+          "german": "Umlaut only plurals",
+          "english": "Some nouns only add umlaut",
+          "content_type": "grammar",
+          "example": "der Vater → die Väter, die Mutter → die Mütter",
+          "example_translation": "the father → the fathers, the mother → the mothers",
+          "rule": "Some family words only get umlaut",
+          "pattern": "a/o/u → ä/ö/ü",
+          "notes": "Common with family relationships",
+          "difficulty": 3,
+          "tags": ["plural", "umlaut-only", "family"]
+        },
+        {
+          "german": "Irregular plurals",
+          "english": "Some plurals are completely irregular",
+          "content_type": "grammar",
+          "example": "der Mann → die Männer, das Museum → die Museen",
+          "example_translation": "the man → the men, the museum → the museums",
+          "rule": "Some plurals must be memorized individually",
+          "pattern": "various irregular patterns",
+          "notes": "Learn these case by case",
+          "difficulty": 4,
+          "tags": ["plural", "irregular", "memorize"]
+        },
+        {
+          "german": "All plurals use 'die'",
+          "english": "All plural nouns use 'die' as article",
+          "content_type": "grammar",
+          "example": "die Männer, die Frauen, die Kinder",
+          "example_translation": "the men, the women, the children",
+          "rule": "Regardless of singular gender, plurals always use 'die'",
+          "pattern": "der/die/das + noun → die + plural",
+          "notes": "Simplifies things - no gender in plural!",
+          "difficulty": 1,
+          "tags": ["plural", "articles", "die"]
+        }
+      ]
+    },
+    "day_6": {
+      "topic": "Common Plural Examples",
+      "words": [
+        {
+          "german": "Family members",
+          "english": "Family plural forms",
+          "content_type": "grammar",
+          "example": "Eltern, Großeltern, Geschwister",
+          "example_translation": "parents, grandparents, siblings",
+          "rule": "Some family words only exist as plurals",
+          "notes": "Eltern has no singular form",
+          "difficulty": 2,
+          "tags": ["plural", "family", "plural-only"]
+        },
+        {
+          "german": "Body parts",
+          "english": "Body part plurals",
+          "content_type": "grammar",
+          "example": "die Hand → die Hände, das Auge → die Augen",
+          "example_translation": "the hand → the hands, the eye → the eyes",
+          "rule": "Body parts often get umlaut + ending",
+          "pattern": "various patterns with umlaut",
+          "notes": "Usually come in pairs anyway",
+          "difficulty": 3,
+          "tags": ["plural", "body", "umlaut"]
+        },
+        {
+          "german": "School subjects",
+          "english": "School subject plurals",
+          "content_type": "grammar",
+          "example": "die Sprache → die Sprachen, das Fach → die Fächer",
+          "example_translation": "the language → the languages, the subject → the subjects",
+          "rule": "School subjects follow regular patterns",
+          "pattern": "mostly -en or -ächer endings",
+          "difficulty": 2,
+          "tags": ["plural", "school", "subjects"]
+        },
+        {
+          "german": "Animals",
+          "english": "Animal plurals",
+          "content_type": "grammar",
+          "example": "die Katze → die Katzen, der Hund → die Hunde",
+          "example_translation": "the cat → the cats, the dog → the dogs",
+          "rule": "Animals follow standard plural rules",
+          "pattern": "feminine: -n, masculine: -e",
+          "difficulty": 2,
+          "tags": ["plural", "animals", "standard"]
+        }
+      ]
+    },
+    "day_7": {
+      "topic": "Practice with Articles and Plurals",
+      "words": [
+        {
+          "german": "Article agreement",
+          "english": "Articles must match noun gender",
+          "content_type": "grammar",
+          "example": "ein großer Mann, eine schöne Frau, ein kleines Kind",
+          "example_translation": "a tall man, a beautiful woman, a small child",
+          "rule": "Indefinite articles change based on gender",
+          "pattern": "ein(m)/eine(f)/ein(n) + adjective + noun",
+          "difficulty": 3,
+          "tags": ["articles", "agreement", "adjectives"]
+        },
+        {
+          "german": "From singular to plural",
+          "english": "Converting singular to plural",
+          "content_type": "grammar",
+          "example": "der Tisch → die Tische, die Lampe → die Lampen",
+          "example_translation": "the table → the tables, the lamp → the lamps",
+          "rule": "Learn singular + plural as a unit",
+          "pattern": "der/die/das + noun → die + plural form",
+          "notes": "Always memorize plurals with new nouns",
+          "difficulty": 2,
+          "tags": ["conversion", "practice", "memorization"]
+        },
+        {
+          "german": "Counting with plurals",
+          "english": "Numbers with plural nouns",
+          "content_type": "grammar",
+          "example": "zwei Katzen, drei Häuser, viele Leute",
+          "example_translation": "two cats, three houses, many people",
+          "rule": "Numbers above 1 require plural forms",
+          "pattern": "number (>1) + plural noun",
+          "notes": "No article needed with numbers",
+          "difficulty": 2,
+          "tags": ["numbers", "counting", "plural"]
+        },
+        {
+          "german": "Mixed practice",
+          "english": "Combining all concepts",
+          "content_type": "grammar",
+          "example": "Der Mann hat zwei Kinder. Die Kinder spielen.",
+          "example_translation": "The man has two children. The children play.",
+          "rule": "Use appropriate articles and plural forms",
+          "pattern": "context-dependent usage",
+          "notes": "Practice with real sentences",
+          "difficulty": 3,
+          "tags": ["practice", "mixed", "context"]
+        }
+      ]
+    }
+  }
+}

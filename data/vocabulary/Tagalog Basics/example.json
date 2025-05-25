@@ -1,0 +1,38 @@
+{
+  "week": 6,
+  "topic": "Essential Grammar & Final A1 Words",
+  "source": "Official Goethe Institute A1 Start Deutsch 1 Wortliste",
+  "total_words": 50,
+  "days": {
+    "day_1": {
+      "topic": "Modal verbs and important action verbs",
+      "words": [
+        {"german": "können", "english": "can/to be able to", "dutch_connection": "kunnen", "example": "Ich kann Deutsch und Russisch.", "official": true},
+        {"german": "müssen", "english": "must/to have to", "dutch_connection": "moeten", "example": "Ich muss jeden Tag von 8 Uhr bis 18 Uhr arbeiten.", "official": true},
+        {"german": "wollen", "english": "to want to", "dutch_connection": "willen", "example": "Wollen Sie einen Kaffee trinken?", "official": true},
+        {"german": "sollen", "english": "should/to be supposed to", "dutch_connection": "zullen", "example": "Soll ich kommen?", "official": true},
+        {"german": "dürfen", "english": "may/to be allowed to", "dutch_connection": "mogen", "example": "Sie dürfen hier nicht rauchen.", "official": true},
+        {"german": "mögen", "english": "to like", "dutch_connection": "mogen", "example": "Magst du Kaffee oder Tee?", "official": true},
+        {"german": "möchten", "english": "would like to", "example": "Was möchten Sie trinken?", "official": true},
+        {"german": "geben", "english": "to give", "dutch_connection": "geven", "example": "Kannst du mir bitte deinen Kugelschreiber geben?", "official": true},
+        {"german": "nehmen", "english": "to take", "dutch_connection": "nemen", "example": "Nehmen Sie Platz.", "official": true},
+        {"german": "bringen", "english": "to bring", "dutch_connection": "brengen", "example": "Wir müssen ihn zum Arzt bringen.", "official": true}
+      ]
+    },
+    "day_2": {
+      "topic": "Question words and prepositions",
+      "words": [
+        {"german": "was", "english": "what", "dutch_connection": "wat", "example": "Was ist das?", "official": true},
+        {"german": "wer", "english": "who", "dutch_connection": "wie", "example": "Wer ist das?", "official": true},
+        {"german": "wie", "english": "how", "dutch_connection": "hoe", "example": "Wie heißt du?", "official": true},
+        {"german": "warum", "english": "why", "dutch_connection": "waarom", "example": "Warum kommt er nicht?", "official": true},
+        {"german": "welch-", "english": "which", "dutch_connection": "welke", "example": "Welches Buch möchtest du?", "official": true},
+        {"german": "mit", "english": "with", "dutch_connection": "met", "example": "Ich gehe mit dir.", "official": true},
+        {"german": "für", "english": "for", "dutch_connection": "voor", "example": "Das ist für Sie.", "official": true},
+        {"german": "von", "english": "from", "dutch_connection": "van", "example": "Das Auto von Felix ist kaputt.", "official": true},
+        {"german": "zu", "english": "to", "dutch_connection": "naar", "example": "Der Bus fährt zum Bahnhof.", "official": true},
+        {"german": "bei", "english": "at/with", "dutch_connection": "bij", "example": "Ich wohne bei meinen Eltern.", "official": true}
+      ]
+    }
+  }
+}

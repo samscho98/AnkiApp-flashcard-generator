@@ -1,0 +1,381 @@
+{
+  "target_language": "german",
+  "native_language": "english",
+  "content_type": "grammar",
+  "topic": "Adjectives & Descriptions",
+  "level": "A1",
+  "week": 5,
+  "days": {
+    "day_1": {
+      "topic": "Predicate Adjectives (after 'sein')",
+      "words": [
+        {
+          "german": "Adjectives after 'sein'",
+          "english": "Adjectives that don't change form",
+          "content_type": "grammar",
+          "example": "Das Haus ist groß. Die Katze ist klein. Der Mann ist alt.",
+          "example_translation": "The house is big. The cat is small. The man is old.",
+          "rule": "Adjectives after 'sein' (to be) never change their form",
+          "pattern": "[Subject] + sein + [adjective (unchanged)]",
+          "notes": "Easiest way to use adjectives - no endings!",
+          "difficulty": 1,
+          "tags": ["adjectives", "predicate", "sein", "unchanged"]
+        },
+        {
+          "german": "Common predicate adjectives",
+          "english": "Frequently used descriptive words",
+          "content_type": "grammar",
+          "example": "gut, schlecht, schön, hässlich, neu, alt",
+          "example_translation": "good, bad, beautiful, ugly, new, old",
+          "rule": "Learn these high-frequency adjectives first",
+          "pattern": "Das ist [adjective]",
+          "notes": "Perfect for basic descriptions",
+          "difficulty": 1,
+          "tags": ["adjectives", "common", "basic", "vocabulary"]
+        },
+        {
+          "german": "Personality adjectives",
+          "english": "Describing people's character",
+          "content_type": "grammar",
+          "example": "Er ist nett. Sie ist freundlich. Du bist intelligent.",
+          "example_translation": "He is nice. She is friendly. You are intelligent.",
+          "rule": "Personality traits use same pattern",
+          "pattern": "[Person] + ist + [personality adjective]",
+          "notes": "Very useful for meeting people",
+          "difficulty": 1,
+          "tags": ["adjectives", "personality", "character", "people"]
+        },
+        {
+          "german": "Questions with adjectives",
+          "english": "Asking about qualities",
+          "content_type": "grammar",
+          "example": "Wie ist das Wetter? Ist der Film gut?",
+          "example_translation": "How is the weather? Is the movie good?",
+          "rule": "Use 'wie' (how) to ask about qualities",
+          "pattern": "Wie ist [noun]? / Ist [noun] [adjective]?",
+          "notes": "'Wie' is perfect for getting descriptions",
+          "difficulty": 2,
+          "tags": ["adjectives", "questions", "wie", "descriptions"]
+        }
+      ]
+    },
+    "day_2": {
+      "topic": "Attributive Adjectives - Basic Concept",
+      "words": [
+        {
+          "german": "Adjectives before nouns",
+          "english": "Adjectives that come before the noun",
+          "content_type": "grammar",
+          "example": "ein großes Haus, eine kleine Katze, der alte Mann",
+          "example_translation": "a big house, a small cat, the old man",
+          "rule": "Adjectives before nouns must have endings",
+          "pattern": "[article] + [adjective + ending] + [noun]",
+          "notes": "More complex than predicate adjectives",
+          "difficulty": 3,
+          "tags": ["adjectives", "attributive", "endings", "before-nouns"]
+        },
+        {
+          "german": "Why adjective endings exist",
+          "english": "Purpose of adjective endings",
+          "content_type": "grammar",
+          "example": "den großen Mann (acc.) vs der große Mann (nom.)",
+          "example_translation": "the big man (object) vs the big man (subject)",
+          "rule": "Endings show gender, number, and case information",
+          "pattern": "endings carry grammatical information",
+          "notes": "Endings help identify the noun's role",
+          "difficulty": 3,
+          "tags": ["adjectives", "endings", "grammar", "function"]
+        },
+        {
+          "german": "Three adjective ending systems",
+          "english": "Different patterns for different articles",
+          "content_type": "grammar",
+          "example": "der große Mann, ein großer Mann, großer Mann",
+          "example_translation": "the big man, a big man, big man (no article)",
+          "rule": "Endings depend on what article (if any) comes before",
+          "pattern": "definite/indefinite/no article = different endings",
+          "notes": "Start with definite articles (easiest pattern)",
+          "difficulty": 4,
+          "tags": ["adjectives", "systems", "articles", "patterns"]
+        },
+        {
+          "german": "Learning strategy",
+          "english": "How to approach adjective endings",
+          "content_type": "grammar",
+          "example": "Focus on nominative case first, then add accusative",
+          "example_translation": "Build complexity gradually",
+          "rule": "Learn one case at a time, then combine",
+          "pattern": "Start simple, add complexity step by step",
+          "notes": "Don't try to learn all endings at once!",
+          "difficulty": 2,
+          "tags": ["adjectives", "strategy", "learning", "gradual"]
+        }
+      ]
+    },
+    "day_3": {
+      "topic": "Adjective Endings - Definite Articles (Nominative)",
+      "words": [
+        {
+          "german": "Masculine nominative: -e",
+          "english": "der + adjective + -e + masculine noun",
+          "content_type": "grammar",
+          "example": "der große Mann, der alte Hund, der neue Lehrer",
+          "example_translation": "the big man, the old dog, the new teacher",
+          "rule": "After 'der', adjectives always end in -e",
+          "pattern": "der + [adjective]-e + [masculine noun]",
+          "notes": "Most common pattern with definite articles",
+          "difficulty": 2,
+          "tags": ["adjectives", "definite", "masculine", "nominative", "-e"]
+        },
+        {
+          "german": "Feminine nominative: -e",
+          "english": "die + adjective + -e + feminine noun",
+          "content_type": "grammar",
+          "example": "die schöne Frau, die kleine Katze, die neue Schule",
+          "example_translation": "the beautiful woman, the small cat, the new school",
+          "rule": "After 'die', adjectives always end in -e",
+          "pattern": "die + [adjective]-e + [feminine noun]",
+          "notes": "Same ending as masculine!",
+          "difficulty": 2,
+          "tags": ["adjectives", "definite", "feminine", "nominative", "-e"]
+        },
+        {
+          "german": "Neuter nominative: -e",
+          "english": "das + adjective + -e + neuter noun",
+          "content_type": "grammar",
+          "example": "das große Haus, das kleine Kind, das neue Auto",
+          "example_translation": "the big house, the small child, the new car",
+          "rule": "After 'das', adjectives always end in -e",
+          "pattern": "das + [adjective]-e + [neuter noun]",
+          "notes": "All singular nominative = -e with definite articles",
+          "difficulty": 2,
+          "tags": ["adjectives", "definite", "neuter", "nominative", "-e"]
+        },
+        {
+          "german": "Plural nominative: -en",
+          "english": "die + adjective + -en + plural noun",
+          "content_type": "grammar",
+          "example": "die großen Männer, die kleinen Katzen, die neuen Autos",
+          "example_translation": "the big men, the small cats, the new cars",
+          "rule": "All plural adjectives end in -en with definite articles",
+          "pattern": "die + [adjective]-en + [plural noun]",
+          "notes": "Only different ending in this system",
+          "difficulty": 2,
+          "tags": ["adjectives", "definite", "plural", "nominative", "-en"]
+        }
+      ]
+    },
+    "day_4": {
+      "topic": "Adjective Endings - Definite Articles (Accusative)",
+      "words": [
+        {
+          "german": "Masculine accusative: -en",
+          "english": "den + adjective + -en + masculine noun",
+          "content_type": "grammar",
+          "example": "Ich sehe den großen Mann. Er kauft den neuen Wagen.",
+          "example_translation": "I see the big man. He buys the new car.",
+          "rule": "Masculine accusative adjectives end in -en",
+          "pattern": "den + [adjective]-en + [masculine noun]",
+          "notes": "Only masculine changes in accusative",
+          "difficulty": 3,
+          "tags": ["adjectives", "definite", "masculine", "accusative", "-en"]
+        },
+        {
+          "german": "Feminine accusative: -e",
+          "english": "die + adjective + -e + feminine noun (unchanged)",
+          "content_type": "grammar",
+          "example": "Ich sehe die schöne Frau. Er liest die neue Zeitung.",
+          "example_translation": "I see the beautiful woman. He reads the new newspaper.",
+          "rule": "Feminine accusative = same as nominative (-e)",
+          "pattern": "die + [adjective]-e + [feminine noun]",
+          "notes": "Feminine never changes between nom/acc",
+          "difficulty": 2,
+          "tags": ["adjectives", "definite", "feminine", "accusative", "-e"]
+        },
+        {
+          "german": "Neuter accusative: -e",
+          "english": "das + adjective + -e + neuter noun (unchanged)",
+          "content_type": "grammar",
+          "example": "Wir kaufen das große Haus. Sie liest das neue Buch.",
+          "example_translation": "We buy the big house. She reads the new book.",
+          "rule": "Neuter accusative = same as nominative (-e)",
+          "pattern": "das + [adjective]-e + [neuter noun]",
+          "notes": "Neuter never changes between nom/acc",
+          "difficulty": 2,
+          "tags": ["adjectives", "definite", "neuter", "accusative", "-e"]
+        },
+        {
+          "german": "Plural accusative: -en",
+          "english": "die + adjective + -en + plural noun (unchanged)",
+          "content_type": "grammar",
+          "example": "Ich sehe die großen Männer. Wir kaufen die neuen Bücher.",
+          "example_translation": "I see the big men. We buy the new books.",
+          "rule": "Plural accusative = same as nominative (-en)",
+          "pattern": "die + [adjective]-en + [plural noun]",
+          "notes": "Plural never changes between nom/acc",
+          "difficulty": 2,
+          "tags": ["adjectives", "definite", "plural", "accusative", "-en"]
+        }
+      ]
+    },
+    "day_5": {
+      "topic": "Adjective Endings - Indefinite Articles",
+      "words": [
+        {
+          "german": "Masculine nominative: -er",
+          "english": "ein + adjective + -er + masculine noun",
+          "content_type": "grammar",
+          "example": "ein großer Mann, ein alter Hund, ein neuer Lehrer",
+          "example_translation": "a big man, an old dog, a new teacher",
+          "rule": "After 'ein' (masc. nom.), adjectives end in -er",
+          "pattern": "ein + [adjective]-er + [masculine noun]",
+          "notes": "Different from definite articles (-e)",
+          "difficulty": 3,
+          "tags": ["adjectives", "indefinite", "masculine", "nominative", "-er"]
+        },
+        {
+          "german": "Feminine nominative: -e",
+          "english": "eine + adjective + -e + feminine noun",
+          "content_type": "grammar",
+          "example": "eine schöne Frau, eine kleine Katze, eine neue Schule",
+          "example_translation": "a beautiful woman, a small cat, a new school",
+          "rule": "After 'eine' (fem. nom.), adjectives end in -e",
+          "pattern": "eine + [adjective]-e + [feminine noun]",
+          "notes": "Same as definite articles",
+          "difficulty": 2,
+          "tags": ["adjectives", "indefinite", "feminine", "nominative", "-e"]
+        },
+        {
+          "german": "Neuter nominative: -es",
+          "english": "ein + adjective + -es + neuter noun",
+          "content_type": "grammar",
+          "example": "ein großes Haus, ein kleines Kind, ein neues Auto",
+          "example_translation": "a big house, a small child, a new car",
+          "rule": "After 'ein' (neut. nom.), adjectives end in -es",
+          "pattern": "ein + [adjective]-es + [neuter noun]",
+          "notes": "Different from definite articles (-e)",
+          "difficulty": 3,
+          "tags": ["adjectives", "indefinite", "neuter", "nominative", "-es"]
+        },
+        {
+          "german": "Masculine accusative: -en",
+          "english": "einen + adjective + -en + masculine noun",
+          "content_type": "grammar",
+          "example": "Ich sehe einen großen Mann. Er kauft einen neuen Wagen.",
+          "example_translation": "I see a big man. He buys a new car.",
+          "rule": "After 'einen' (masc. acc.), adjectives end in -en",
+          "pattern": "einen + [adjective]-en + [masculine noun]",
+          "notes": "Same as definite articles in accusative",
+          "difficulty": 3,
+          "tags": ["adjectives", "indefinite", "masculine", "accusative", "-en"]
+        }
+      ]
+    },
+    "day_6": {
+      "topic": "Comparative Adjectives",
+      "words": [
+        {
+          "german": "Comparative formation: -er",
+          "english": "Making adjectives comparative",
+          "content_type": "grammar",
+          "example": "groß → größer, klein → kleiner, alt → älter",
+          "example_translation": "big → bigger, small → smaller, old → older",
+          "rule": "Add -er to make comparatives, often with umlaut",
+          "pattern": "[adjective] + -er (+ umlaut if possible)",
+          "notes": "Similar to English -er endings",
+          "difficulty": 2,
+          "tags": ["comparative", "adjectives", "-er", "umlaut"]
+        },
+        {
+          "german": "Common comparative adjectives",
+          "english": "Frequently used comparative forms",
+          "content_type": "grammar",
+          "example": "besser (better), schöner (more beautiful), billiger (cheaper)",
+          "example_translation": "better, more beautiful, cheaper",
+          "rule": "Learn these high-frequency comparatives",
+          "pattern": "gut → besser (irregular)",
+          "notes": "Some comparatives are irregular",
+          "difficulty": 2,
+          "tags": ["comparative", "common", "irregular", "frequency"]
+        },
+        {
+          "german": "Using comparatives",
+          "english": "How to use comparative adjectives",
+          "content_type": "grammar",
+          "example": "Das Haus ist größer. Ein größeres Haus.",
+          "example_translation": "The house is bigger. A bigger house.",
+          "rule": "Comparatives can be predicate or attributive",
+          "pattern": "Same rules as regular adjectives for endings",
+          "notes": "Add comparative -er, then normal adjective endings",
+          "difficulty": 3,
+          "tags": ["comparative", "usage", "predicate", "attributive"]
+        },
+        {
+          "german": "Comparisons with 'als'",
+          "english": "Making comparisons between things",
+          "content_type": "grammar",
+          "example": "Ich bin größer als du. Das Auto ist teurer als das Fahrrad.",
+          "example_translation": "I am taller than you. The car is more expensive than the bicycle.",
+          "rule": "Use 'als' (than) to compare two things",
+          "pattern": "[A] ist [comparative] als [B]",
+          "notes": "'Als' = 'than' in comparisons",
+          "difficulty": 3,
+          "tags": ["comparative", "comparisons", "als", "than"]
+        }
+      ]
+    },
+    "day_7": {
+      "topic": "Colors and Physical Descriptions",
+      "words": [
+        {
+          "german": "Basic colors as adjectives",
+          "english": "Color words with proper endings",
+          "content_type": "grammar",
+          "example": "das rote Auto, die blaue Blume, der grüne Baum",
+          "example_translation": "the red car, the blue flower, the green tree",
+          "rule": "Color adjectives follow same ending rules",
+          "pattern": "[article] + [color + ending] + [noun]",
+          "notes": "Colors are just normal adjectives",
+          "difficulty": 2,
+          "tags": ["colors", "adjectives", "endings", "descriptions"]
+        },
+        {
+          "german": "Physical appearance",
+          "english": "Describing how people look",
+          "content_type": "grammar",
+          "example": "Er hat braune Haare. Sie ist eine große Frau.",
+          "example_translation": "He has brown hair. She is a tall woman.",
+          "rule": "Physical descriptions use adjective + noun patterns",
+          "pattern": "[person] hat [adjective + accusative ending] + [body part]",
+          "notes": "Very practical for describing people",
+          "difficulty": 3,
+          "tags": ["physical", "appearance", "descriptions", "people"]
+        },
+        {
+          "german": "Size and shape adjectives",
+          "english": "Describing dimensions and forms",
+          "content_type": "grammar",
+          "example": "ein langes Auto, ein rundes Fenster, eine breite Straße",
+          "example_translation": "a long car, a round window, a wide street",
+          "rule": "Size/shape adjectives work like other adjectives",
+          "pattern": "standard adjective ending rules apply",
+          "notes": "Useful for describing objects",
+          "difficulty": 2,
+          "tags": ["size", "shape", "dimensions", "objects"]
+        },
+        {
+          "german": "Practice with mixed adjectives",
+          "english": "Combining different types of adjectives",
+          "content_type": "grammar",
+          "example": "das große, rote Auto; eine schöne, alte Kirche",
+          "example_translation": "the big, red car; a beautiful, old church",
+          "rule": "Multiple adjectives all get the same endings",
+          "pattern": "[article] + [adj1 + ending], [adj2 + ending] + [noun]",
+          "notes": "All adjectives need endings, separated by commas",
+          "difficulty": 4,
+          "tags": ["multiple", "adjectives", "combinations", "practice"]
+        }
+      ]
+    }
+  }
+}

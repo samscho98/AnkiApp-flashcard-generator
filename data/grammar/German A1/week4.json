@@ -1,0 +1,387 @@
+{
+  "target_language": "german",
+  "native_language": "english",
+  "content_type": "grammar",
+  "topic": "Verbs: Irregular, Modal & Separable",
+  "level": "A1",
+  "week": 4,
+  "days": {
+    "day_1": {
+      "topic": "Irregular Verb: 'sein' (to be)",
+      "words": [
+        {
+          "german": "ich bin",
+          "english": "I am",
+          "content_type": "grammar",
+          "example": "Ich bin müde.",
+          "example_translation": "I am tired.",
+          "rule": "Sein is completely irregular - must memorize all forms",
+          "base_form": "sein",
+          "pattern": "ich bin, du bist, er/sie/es ist",
+          "difficulty": 2,
+          "tags": ["irregular", "sein", "to-be", "essential"]
+        },
+        {
+          "german": "du bist",
+          "english": "you are (informal)",
+          "content_type": "grammar",
+          "example": "Du bist sehr nett.",
+          "example_translation": "You are very nice.",
+          "rule": "Second person singular of 'sein'",
+          "base_form": "sein",
+          "pattern": "du bist (never du seist!)",
+          "difficulty": 2,
+          "tags": ["irregular", "sein", "informal"]
+        },
+        {
+          "german": "er/sie/es ist",
+          "english": "he/she/it is",
+          "content_type": "grammar",
+          "example": "Sie ist Lehrerin. Es ist kalt.",
+          "example_translation": "She is a teacher. It is cold.",
+          "rule": "Third person singular of 'sein'",
+          "base_form": "sein",
+          "pattern": "er ist, sie ist, es ist",
+          "difficulty": 2,
+          "tags": ["irregular", "sein", "third-person"]
+        },
+        {
+          "german": "wir sind, ihr seid, sie/Sie sind",
+          "english": "we are, you (plural) are, they/you (formal) are",
+          "content_type": "grammar",
+          "example": "Wir sind Studenten. Ihr seid jung. Sie sind hier.",
+          "example_translation": "We are students. You are young. They are here.",
+          "rule": "Plural forms of 'sein'",
+          "base_form": "sein",
+          "pattern": "wir sind, ihr seid, sie sind",
+          "notes": "Note: ihr seid (not ihr sind!)",
+          "difficulty": 2,
+          "tags": ["irregular", "sein", "plural"]
+        }
+      ]
+    },
+    "day_2": {
+      "topic": "Irregular Verb: 'haben' (to have)",
+      "words": [
+        {
+          "german": "ich habe",
+          "english": "I have",
+          "content_type": "grammar",
+          "example": "Ich habe einen Hund.",
+          "example_translation": "I have a dog.",
+          "rule": "Haben is irregular in du/er/sie/es forms",
+          "base_form": "haben",
+          "pattern": "ich habe (regular), du hast, er hat",
+          "difficulty": 2,
+          "tags": ["irregular", "haben", "to-have", "essential"]
+        },
+        {
+          "german": "du hast",
+          "english": "you have (informal)",
+          "content_type": "grammar",
+          "example": "Du hast Glück.",
+          "example_translation": "You are lucky. (lit: You have luck)",
+          "rule": "Du form loses -be and adds -st",
+          "base_form": "haben",
+          "pattern": "haben → hab + st = hast",
+          "difficulty": 2,
+          "tags": ["irregular", "haben", "du-form"]
+        },
+        {
+          "german": "er/sie/es hat",
+          "english": "he/she/it has",
+          "content_type": "grammar",
+          "example": "Er hat keine Zeit. Sie hat Hunger.",
+          "example_translation": "He has no time. She is hungry.",
+          "rule": "Third person loses -be and adds -t",
+          "base_form": "haben",
+          "pattern": "haben → hab + t = hat",
+          "difficulty": 2,
+          "tags": ["irregular", "haben", "third-person"]
+        },
+        {
+          "german": "wir haben, ihr habt, sie/Sie haben",
+          "english": "we have, you (plural) have, they/you (formal) have",
+          "content_type": "grammar",
+          "example": "Wir haben Zeit. Ihr habt Recht. Sie haben Kinder.",
+          "example_translation": "We have time. You are right. They have children.",
+          "rule": "Plural forms: wir/sie regular, ihr drops -en",
+          "base_form": "haben",
+          "pattern": "wir haben, ihr habt, sie haben",
+          "difficulty": 2,
+          "tags": ["irregular", "haben", "plural"]
+        }
+      ]
+    },
+    "day_3": {
+      "topic": "Other Important Irregular Verbs",
+      "words": [
+        {
+          "german": "gehen (to go)",
+          "english": "ich gehe, du gehst, er geht",
+          "content_type": "grammar",
+          "example": "Ich gehe nach Hause. Du gehst zur Schule.",
+          "example_translation": "I go home. You go to school.",
+          "rule": "Regular conjugation, but very important verb",
+          "base_form": "gehen",
+          "pattern": "geh + normal endings",
+          "notes": "Actually regular, but essential to know",
+          "difficulty": 1,
+          "tags": ["irregular", "gehen", "movement", "essential"]
+        },
+        {
+          "german": "fahren (to drive/travel)",
+          "english": "ich fahre, du fährst, er fährt",
+          "content_type": "grammar",
+          "example": "Ich fahre Auto. Du fährst Fahrrad.",
+          "example_translation": "I drive a car. You ride a bicycle.",
+          "rule": "Stem vowel changes: a → ä in du/er/sie/es forms",
+          "base_form": "fahren",
+          "pattern": "ich fahre, du fährst, er fährt, wir fahren",
+          "difficulty": 3,
+          "tags": ["irregular", "fahren", "vowel-change", "travel"]
+        },
+        {
+          "german": "essen (to eat)",
+          "english": "ich esse, du isst, er isst",
+          "content_type": "grammar",
+          "example": "Ich esse Brot. Was isst du?",
+          "example_translation": "I eat bread. What do you eat?",
+          "rule": "Stem vowel changes: e → i in du/er/sie/es forms",
+          "base_form": "essen",
+          "pattern": "ich esse, du isst, er isst, wir essen",
+          "difficulty": 3,
+          "tags": ["irregular", "essen", "vowel-change", "food"]
+        },
+        {
+          "german": "sehen (to see)",
+          "english": "ich sehe, du siehst, er sieht",
+          "content_type": "grammar",
+          "example": "Ich sehe das Haus. Siehst du den Film?",
+          "example_translation": "I see the house. Do you see the movie?",
+          "rule": "Stem vowel changes: e → ie in du/er/sie/es forms",
+          "base_form": "sehen",
+          "pattern": "ich sehe, du siehst, er sieht, wir sehen",
+          "difficulty": 3,
+          "tags": ["irregular", "sehen", "vowel-change", "perception"]
+        }
+      ]
+    },
+    "day_4": {
+      "topic": "Modal Verbs - können & müssen",
+      "words": [
+        {
+          "german": "können (can/to be able to)",
+          "english": "Expressing ability or possibility",
+          "content_type": "grammar",
+          "example": "Ich kann Deutsch sprechen. Kannst du schwimmen?",
+          "example_translation": "I can speak German. Can you swim?",
+          "rule": "Modal verb + infinitive at end of sentence",
+          "base_form": "können",
+          "pattern": "ich kann, du kannst, er kann, wir können",
+          "difficulty": 3,
+          "tags": ["modal", "können", "ability", "possibility"]
+        },
+        {
+          "german": "können conjugation",
+          "english": "Forms of können",
+          "content_type": "grammar",
+          "example": "ich kann, du kannst, er/sie/es kann, wir können, ihr könnt, sie können",
+          "example_translation": "I can, you can, he/she/it can, we can, you can, they can",
+          "rule": "Modal verbs have irregular singular forms",
+          "pattern": "singular forms different from infinitive",
+          "notes": "Plural forms closer to infinitive",
+          "difficulty": 3,
+          "tags": ["modal", "können", "conjugation"]
+        },
+        {
+          "german": "müssen (must/to have to)",
+          "english": "Expressing necessity or obligation",
+          "content_type": "grammar",
+          "example": "Ich muss arbeiten. Du musst lernen.",
+          "example_translation": "I must work. You have to study.",
+          "rule": "Expresses strong necessity",
+          "base_form": "müssen",
+          "pattern": "ich muss, du musst, er muss, wir müssen",
+          "difficulty": 3,
+          "tags": ["modal", "müssen", "necessity", "obligation"]
+        },
+        {
+          "german": "Modal verb sentence structure",
+          "english": "Word order with modal verbs",
+          "content_type": "grammar",
+          "example": "Ich kann heute nicht kommen.",
+          "example_translation": "I can't come today.",
+          "rule": "Modal verb in position 2, main verb (infinitive) at end",
+          "pattern": "[Subject] + [Modal] + [middle] + [Infinitive]",
+          "notes": "Infinitive always goes to the end",
+          "difficulty": 3,
+          "tags": ["modal", "word-order", "structure"]
+        }
+      ]
+    },
+    "day_5": {
+      "topic": "More Modal Verbs - wollen, sollen, dürfen",
+      "words": [
+        {
+          "german": "wollen (to want to)",
+          "english": "Expressing desire or intention",
+          "content_type": "grammar",
+          "example": "Ich will nach Hause gehen. Willst du Kaffee trinken?",
+          "example_translation": "I want to go home. Do you want to drink coffee?",
+          "rule": "Expresses wishes and intentions",
+          "base_form": "wollen",
+          "pattern": "ich will, du willst, er will, wir wollen",
+          "difficulty": 3,
+          "tags": ["modal", "wollen", "desire", "intention"]
+        },
+        {
+          "german": "sollen (should/to be supposed to)",
+          "english": "Expressing obligation or recommendation",
+          "content_type": "grammar",
+          "example": "Du sollst mehr lernen. Wir sollen pünktlich sein.",
+          "example_translation": "You should study more. We should be punctual.",
+          "rule": "Expresses what someone should do",
+          "base_form": "sollen",
+          "pattern": "ich soll, du sollst, er soll, wir sollen",
+          "difficulty": 3,
+          "tags": ["modal", "sollen", "should", "recommendation"]
+        },
+        {
+          "german": "dürfen (may/to be allowed to)",
+          "english": "Expressing permission",
+          "content_type": "grammar",
+          "example": "Darf ich hier rauchen? Ihr dürft gehen.",
+          "example_translation": "May I smoke here? You may go.",
+          "rule": "Expresses permission or what's allowed",
+          "base_form": "dürfen",
+          "pattern": "ich darf, du darfst, er darf, wir dürfen",
+          "difficulty": 3,
+          "tags": ["modal", "dürfen", "permission", "allowed"]
+        },
+        {
+          "german": "mögen/möchten (to like/would like)",
+          "english": "Expressing likes and polite requests",
+          "content_type": "grammar",
+          "example": "Ich mag Kaffee. Ich möchte Tee trinken.",
+          "example_translation": "I like coffee. I would like to drink tea.",
+          "rule": "Mögen = like, möchten = would like (more polite)",
+          "base_form": "mögen",
+          "pattern": "ich mag/möchte, du magst/möchtest",
+          "notes": "Möchten is more common in A1",
+          "difficulty": 3,
+          "tags": ["modal", "mögen", "möchten", "like", "polite"]
+        }
+      ]
+    },
+    "day_6": {
+      "topic": "Separable Verbs - Introduction",
+      "words": [
+        {
+          "german": "aufstehen (to get up)",
+          "english": "Separable verb - prefix splits off",
+          "content_type": "grammar",
+          "example": "Ich stehe um 7 Uhr auf.",
+          "example_translation": "I get up at 7 o'clock.",
+          "rule": "In main clauses, prefix goes to end of sentence",
+          "base_form": "aufstehen",
+          "pattern": "Ich stehe ... auf, du stehst ... auf",
+          "notes": "auf- is separable prefix",
+          "difficulty": 4,
+          "tags": ["separable", "aufstehen", "daily-routine"]
+        },
+        {
+          "german": "anrufen (to call/phone)",
+          "english": "To make a phone call",
+          "content_type": "grammar",
+          "example": "Ich rufe meine Mutter an.",
+          "example_translation": "I call my mother.",
+          "rule": "an- prefix separates and goes to end",
+          "base_form": "anrufen",
+          "pattern": "rufe ... an, rufst ... an, ruft ... an",
+          "notes": "Very common separable verb",
+          "difficulty": 4,
+          "tags": ["separable", "anrufen", "communication"]
+        },
+        {
+          "german": "mitkommen (to come along)",
+          "english": "To come with someone",
+          "content_type": "grammar",
+          "example": "Kommst du mit?",
+          "example_translation": "Are you coming along?",
+          "rule": "mit- prefix separates",
+          "base_form": "mitkommen",
+          "pattern": "komme ... mit, kommst ... mit",
+          "notes": "Common in invitations",
+          "difficulty": 4,
+          "tags": ["separable", "mitkommen", "invitation"]
+        },
+        {
+          "german": "Separable verb recognition",
+          "english": "How to identify separable verbs",
+          "content_type": "grammar",
+          "example": "auf-, an-, mit-, ein-, aus-, zu-",
+          "example_translation": "Common separable prefixes",
+          "rule": "These prefixes are usually separable",
+          "pattern": "[prefix] + [verb] → splits in conjugation",
+          "notes": "Learn these prefixes to recognize separable verbs",
+          "difficulty": 3,
+          "tags": ["separable", "prefixes", "recognition"]
+        }
+      ]
+    },
+    "day_7": {
+      "topic": "More Separable Verbs & Imperative",
+      "words": [
+        {
+          "german": "einkaufen (to shop)",
+          "english": "To go shopping",
+          "content_type": "grammar",
+          "example": "Wir kaufen am Samstag ein.",
+          "example_translation": "We shop on Saturday.",
+          "rule": "ein- prefix goes to end",
+          "base_form": "einkaufen",
+          "pattern": "kaufe ... ein, kaufst ... ein",
+          "difficulty": 4,
+          "tags": ["separable", "einkaufen", "shopping"]
+        },
+        {
+          "german": "ausgehen (to go out)",
+          "english": "To go out (for entertainment)",
+          "content_type": "grammar",
+          "example": "Heute Abend gehen wir aus.",
+          "example_translation": "Tonight we're going out.",
+          "rule": "aus- prefix separates",
+          "base_form": "ausgehen",
+          "pattern": "gehe ... aus, gehst ... aus",
+          "difficulty": 4,
+          "tags": ["separable", "ausgehen", "entertainment"]
+        },
+        {
+          "german": "Imperative - du form",
+          "english": "Commands with informal 'you'",
+          "content_type": "grammar",
+          "example": "Komm! Geh! Steh auf! Ruf an!",
+          "example_translation": "Come! Go! Get up! Call!",
+          "rule": "Drop -st ending from du form for commands",
+          "pattern": "du gehst → Geh!, du stehst auf → Steh auf!",
+          "notes": "Separable prefixes stay at end in commands",
+          "difficulty": 3,
+          "tags": ["imperative", "commands", "du-form"]
+        },
+        {
+          "german": "Imperative - ihr/Sie forms",
+          "english": "Commands with plural/formal 'you'",
+          "content_type": "grammar",
+          "example": "Kommt! Kommen Sie! Steht auf! Stehen Sie auf!",
+          "example_translation": "Come! (plural/formal) Get up! (plural/formal)",
+          "rule": "Use verb form without pronoun for commands",
+          "pattern": "ihr kommt → Kommt!, Sie kommen → Kommen Sie!",
+          "notes": "Sie-imperative keeps the pronoun",
+          "difficulty": 3,
+          "tags": ["imperative", "commands", "plural", "formal"]
+        }
+      ]
+    }
+  }
+}

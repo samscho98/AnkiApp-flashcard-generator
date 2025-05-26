@@ -1,0 +1,53 @@
+{
+  "week": 1,
+  "topic": "Essential A1 Phrases: Greetings, Politeness, and Basics",
+  "source": "Common Goethe A1 Phrases",
+  "total_phrases": 20,
+  "days": {
+    "day_1": {
+      "topic": "Greetings & Introductions",
+      "phrases": [
+        {"german": "Guten Morgen!", "english": "Good morning!"},
+        {"german": "Guten Tag!", "english": "Good day!"},
+        {"german": "Wie heißen Sie?", "english": "What is your name?"},
+        {"german": "Ich heiße ...", "english": "My name is ..."}
+      ]
+    },
+    "day_2": {
+      "topic": "Politeness",
+      "phrases": [
+        {"german": "Bitte.", "english": "Please."},
+        {"german": "Danke.", "english": "Thank you."},
+        {"german": "Entschuldigung!", "english": "Excuse me!"},
+        {"german": "Es tut mir leid.", "english": "I’m sorry."}
+      ]
+    },
+    "day_3": {
+      "topic": "Asking and Understanding",
+      "phrases": [
+        {"german": "Können Sie mir helfen?", "english": "Can you help me?"},
+        {"german": "Ich verstehe nicht.", "english": "I don’t understand."},
+        {"german": "Wie bitte?", "english": "Pardon me?"},
+        {"german": "Können Sie das bitte wiederholen?", "english": "Can you repeat that, please?"}
+      ]
+    },
+    "day_4": {
+      "topic": "Small Talk & Basics",
+      "phrases": [
+        {"german": "Wie geht es Ihnen?", "english": "How are you?"},
+        {"german": "Mir geht es gut.", "english": "I’m doing well."},
+        {"german": "Woher kommen Sie?", "english": "Where are you from?"},
+        {"german": "Ich komme aus ...", "english": "I come from ..."}
+      ]
+    },
+    "day_5": {
+      "topic": "Farewells & Courtesy",
+      "phrases": [
+        {"german": "Auf Wiedersehen!", "english": "Goodbye!"},
+        {"german": "Tschüss!", "english": "Bye!"},
+        {"german": "Gute Nacht!", "english": "Good night!"},
+        {"german": "Schönen Tag noch!", "english": "Have a nice day!"}
+      ]
+    }
+  }
+}

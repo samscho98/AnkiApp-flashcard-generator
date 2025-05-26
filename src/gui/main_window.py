@@ -1,7 +1,6 @@
 """
-Main Window for Language Learning Flashcard Generator
-Simplified window layout and coordination - delegates to specialized components
-Modified to support single-day selection and editable CSV preview
+Updated Main Window for Language Learning Flashcard Generator
+Uses the enhanced file selector with improved dropdown organization
 """
 
 import tkinter as tk
@@ -15,10 +14,10 @@ from core.csv_generator import GenericLanguageCSVGenerator
 from core.history_manager import HistoryManager
 from config.settings import SettingsManager
 
-# Import GUI components
+# Import GUI components - using enhanced file selector
 from .components import (
-    FileSelector, ContentSelector, CSVPreviewEditor, 
-    ExportPanel, ProgressDisplay, StatusBar
+    ContentSelector, CSVPreviewEditor, 
+    ExportPanel, ProgressDisplay, StatusBar, FileSelector
 )
 from .dialogs import SettingsDialog, ErrorDialog
 from .utils import GUIHelpers
@@ -27,7 +26,7 @@ logger = logging.getLogger(__name__)
 
 
 class MainWindow:
-    """Main application window - coordinates all components and handles high-level logic"""
+    """Main application window with enhanced file selection"""
     
     def __init__(self, root):
         """Initialize the main window"""
@@ -45,8 +44,6 @@ class MainWindow:
         self.current_data = None
         self.current_file_path = None
         self.current_csv_content = ""
-        self.available_languages = {}
-        self.available_content_types = ["vocabulary", "grammar"]
         
         # GUI state
         self._window_configured = False
@@ -54,8 +51,11 @@ class MainWindow:
         # Setup UI
         self._create_layout()
         self._setup_event_handlers()
-        self._scan_data_directory()
         self._apply_saved_settings()
+        
+        # Initialize file selector after all components are created
+        if hasattr(self, 'file_selector'):
+            self.file_selector._perform_initial_scan()
     
     def _create_layout(self):
         """Create the main window layout"""
@@ -76,7 +76,7 @@ class MainWindow:
         self._create_status_bar(main_frame)
     
     def _create_toolbar(self, parent):
-        """Create the top toolbar with file selection and settings"""
+        """Create the top toolbar with enhanced file selection and settings"""
         toolbar_frame = ttk.Frame(parent, padding="5")
         toolbar_frame.grid(row=0, column=0, columnspan=2, sticky=(tk.W, tk.E), pady=(0, 10))
         toolbar_frame.columnconfigure(1, weight=1)
@@ -88,7 +88,7 @@ class MainWindow:
             command=self._open_settings
         ).grid(row=0, column=0, padx=(0, 10), sticky=tk.W)
         
-        # File selector component
+        # Enhanced file selector component
         self.file_selector = FileSelector(
             toolbar_frame, 
             selection_callback=self._on_file_selection_changed
@@ -107,11 +107,11 @@ class MainWindow:
         self.content_selector = ContentSelector(
             content_frame, 
             selection_callback=self._on_content_selection_changed,
-            selection_mode='single'  # NEW: Only allow single day/section selection
+            selection_mode='single'
         )
         self.content_selector.grid(row=0, column=0, sticky=(tk.W, tk.E, tk.N, tk.S), padx=(0, 5))
         
-        # Right panel - CSV Preview Editor (NEW: Editable CSV preview)
+        # Right panel - CSV Preview Editor
         self.csv_preview = CSVPreviewEditor(
             content_frame,
             on_csv_changed=self._on_csv_content_changed
@@ -144,7 +144,7 @@ class MainWindow:
         """Setup event handlers for component interactions"""
         # Window events
         self.root.bind('<Control-s>', lambda e: self._save_csv_content())
-        self.root.bind('<Control-o>', lambda e: self.file_selector.open_file_dialog())
+        self.root.bind('<Control-o>', lambda e: self.file_selector._browse_for_file())
         self.root.bind('<F5>', lambda e: self._refresh_data())
     
     def _get_csv_generator_config(self) -> Dict[str, Any]:
@@ -167,46 +167,14 @@ class MainWindow:
             }
         }
     
-    def _scan_data_directory(self):
-        """Scan the data directory for available languages and content"""
-        data_path = self.settings_manager.get_data_directory()
-        
-        if not data_path.exists():
-            data_path.mkdir(parents=True, exist_ok=True)
-            self.status_bar.set_message(f"Created data directory at {data_path}")
-            return
-        
-        # Scan for languages and content types
-        for content_type in self.available_content_types:
-            content_path = data_path / content_type
-            if content_path.exists():
-                for lang_dir in content_path.iterdir():
-                    if lang_dir.is_dir():
-                        lang_name = lang_dir.name
-                        if lang_name not in self.available_languages:
-                            self.available_languages[lang_name] = {}
-                        
-                        # Find JSON files in this language directory
-                        json_files = list(lang_dir.glob("*.json"))
-                        if json_files:
-                            self.available_languages[lang_name][content_type] = json_files
-        
-        # Update file selector with available options
-        self.file_selector.update_available_options(
-            self.available_languages, 
-            self.available_content_types
-        )
-        
-        if self.available_languages:
-            self.status_bar.set_message(f"Found {len(self.available_languages)} languages")
-        else:
-            self.status_bar.set_message("No data files found - add JSON files to data directory")
-    
     def _on_file_selection_changed(self, file_path: Optional[Path], language: str, content_type: str):
         """Handle file selection change - load file and update components"""
         if file_path is None:
             self._clear_content()
-            self.status_bar.set_message(f"No {content_type} files available for {language}")
+            if language and content_type:
+                self.status_bar.set_message(f"No files available for {language} {content_type}")
+            else:
+                self.status_bar.set_message("Make a selection to begin")
             return
         
         try:
@@ -230,13 +198,20 @@ class MainWindow:
             # Add to recent files
             self.settings_manager.add_recent_file(str(file_path))
             
-            self.status_bar.set_message(f"Loaded: {file_path.name}")
+            # Show selection info
+            week = self.file_selector.get_selected_week()
+            display_name = f"{week} - {language} {self._format_content_type_display(content_type)}"
+            self.status_bar.set_message(f"Loaded: {display_name}")
             logger.info(f"Loaded file: {file_path}")
             
         except Exception as e:
             logger.error(f"Failed to load file {file_path}: {e}")
             ErrorDialog.show_error(self.root, "Load Error", f"Failed to load file: {e}")
             self._clear_content()
+    
+    def _format_content_type_display(self, content_type: str) -> str:
+        """Format content type for display"""
+        return content_type.replace('_', ' ').title()
     
     def _on_content_selection_changed(self, selected_section: Optional[str], item_count: int):
         """Handle content selection change - generate and show CSV preview"""
@@ -260,7 +235,14 @@ class MainWindow:
             # Update export panel
             self.export_panel.set_selection(1, len(entries))  # 1 section, N items
             
-            self.status_bar.set_message(f"Previewing {len(entries)} items from {selected_section}")
+            # Update status with current selection info
+            week = self.file_selector.get_selected_week()
+            language = self.file_selector.get_selected_language()
+            content_type_display = self._format_content_type_display(self.file_selector.get_selected_content_type())
+            
+            self.status_bar.set_message(
+                f"Previewing {len(entries)} items from {selected_section} ({week} - {language} {content_type_display})"
+            )
             
         except Exception as e:
             logger.error(f"Error generating CSV preview: {e}")
@@ -298,7 +280,7 @@ class MainWindow:
                 'content_type': content_type,
                 'source_file': str(self.current_file_path.name) if self.current_file_path else '',
                 'section': section_name,
-                'week': self._extract_week_from_filename(str(self.current_file_path.name)) if self.current_file_path else 1,
+                'week': self._extract_week_from_selection(),
                 'topic': self._get_section_topic(section_name)
             }
             
@@ -341,6 +323,14 @@ class MainWindow:
             logger.error(f"Error generating CSV preview: {e}")
             raise
     
+    def _extract_week_from_selection(self) -> int:
+        """Extract week number from current selection"""
+        week_display = self.file_selector.get_selected_week()
+        # Extract number from "Week 5" format
+        import re
+        match = re.search(r'week\s+(\d+)', week_display, re.IGNORECASE)
+        return int(match.group(1)) if match else 1
+    
     def _get_section_topic(self, section_key: str) -> str:
         """Get the topic for a section"""
         if not self.current_data:
@@ -351,12 +341,6 @@ class MainWindow:
         
         # Add other structure handlers as needed
         return ""
-    
-    def _extract_week_from_filename(self, filename: str) -> int:
-        """Extract week number from filename like 'week1.json'"""
-        import re
-        match = re.search(r'week(\d+)', filename.lower())
-        return int(match.group(1)) if match else 1
     
     def _on_csv_content_changed(self, new_csv_content: str):
         """Handle CSV content changes in the preview editor"""
@@ -374,11 +358,18 @@ class MainWindow:
             from tkinter import filedialog
             from datetime import datetime
             
-            # Generate default filename
+            # Generate default filename with better naming
             language = self.file_selector.get_selected_language()
-            content_type = self.file_selector.get_selected_content_type()
+            content_type_display = self._format_content_type_display(self.file_selector.get_selected_content_type())
+            week = self.file_selector.get_selected_week()
             timestamp = datetime.now().strftime("%Y%m%d_%H%M")
-            default_filename = f"{language.replace(' ', '_')}_{content_type}_{timestamp}.csv"
+            
+            # Create a clean filename
+            language_clean = language.replace(' ', '_')
+            content_clean = content_type_display.replace(' ', '_')
+            week_clean = week.replace(' ', '_')
+            
+            default_filename = f"{language_clean}_{content_clean}_{week_clean}_{timestamp}.csv"
             
             # Ask user for save location
             output_dir = self.settings_manager.get_output_directory()
@@ -404,7 +395,7 @@ class MainWindow:
             # Update history
             session_id = self.history_manager.start_study_session(
                 target_language=language,
-                content_type=content_type,
+                content_type=self.file_selector.get_selected_content_type(),
                 source_file=str(self.current_file_path) if self.current_file_path else ""
             )
             
@@ -417,17 +408,23 @@ class MainWindow:
             self.history_manager.add_generated_file(
                 str(file_path), 
                 str(self.current_file_path) if self.current_file_path else "", 
-                content_type, 
+                self.file_selector.get_selected_content_type(), 
                 item_count
             )
             
             # Update progress display
             self.progress_display.refresh()
             
-            # Show success message
+            # Show success message with better info
+            week = self.file_selector.get_selected_week()
+            content_type_display = self._format_content_type_display(self.file_selector.get_selected_content_type())
+            
             messagebox.showinfo(
                 "Success", 
-                f"CSV exported successfully!\n\nFile: {Path(file_path).name}\nItems: {item_count}"
+                f"CSV exported successfully!\n\n"
+                f"Content: {week} - {language} {content_type_display}\n"
+                f"Items: {item_count}\n"
+                f"File: {Path(file_path).name}"
             )
             
             self.status_bar.set_message(f"Exported {item_count} items to {Path(file_path).name}")
@@ -444,7 +441,7 @@ class MainWindow:
     
     def _refresh_data(self):
         """Refresh data directory scan (F5 handler)"""
-        self._scan_data_directory()
+        self.file_selector.refresh_files()
         self.status_bar.set_message("Data refreshed")
     
     def _clear_content(self):

@@ -1,0 +1,472 @@
+{
+  "target_language": "tagalog",
+  "native_language": "english",
+  "content_type": "phrase",
+  "topic": "Week 9 Phrases",
+  "level": "A1",
+  "week": 9,
+  "days": {
+    "day_1": {
+      "topic": "Phrases for Day 1",
+      "words": [
+        {
+          "tagalog": "Kamusta ka?",
+          "english": "How are you?",
+          "pronunciation": "kah-MOOS-tah kah",
+          "example": "Kamusta ka, Tita?",
+          "example_translation": "How are you, Auntie?",
+          "notes": "Common greeting",
+          "difficulty": 2,
+          "tags": [
+            "greeting"
+          ]
+        },
+        {
+          "tagalog": "Magandang umaga",
+          "english": "Good morning",
+          "pronunciation": "mah-gan-DANG oo-MA-gah",
+          "example": "Magandang umaga po, Tito.",
+          "example_translation": "Good morning, Uncle.",
+          "notes": "Use 'po' for politeness",
+          "difficulty": 2,
+          "tags": [
+            "greeting"
+          ]
+        },
+        {
+          "tagalog": "Ako si [Name].",
+          "english": "I am [Name].",
+          "pronunciation": "ah-KOH see [Name]",
+          "example": "Ako si Sam.",
+          "example_translation": "I am Sam.",
+          "notes": "Basic introduction",
+          "difficulty": 2,
+          "tags": [
+            "introduction"
+          ]
+        },
+        {
+          "tagalog": "Taga saan ka?",
+          "english": "Where are you from?",
+          "pronunciation": "ta-GAH sah-AHN kah",
+          "example": "Taga saan ka, Kuya?",
+          "example_translation": "Where are you from, older brother?",
+          "notes": "Used to ask about origin",
+          "difficulty": 2,
+          "tags": [
+            "question"
+          ]
+        },
+        {
+          "tagalog": "Salamat",
+          "english": "Thank you",
+          "pronunciation": "sah-LAH-mat",
+          "example": "Salamat po sa tulong.",
+          "example_translation": "Thank you for the help.",
+          "notes": "Gratitude expression",
+          "difficulty": 2,
+          "tags": [
+            "politeness"
+          ]
+        },
+        {
+          "tagalog": "Walang anuman",
+          "english": "You're welcome",
+          "pronunciation": "wah-LANG ah-noo-MAN",
+          "example": "Walang anuman, Kuya.",
+          "example_translation": "You're welcome, big brother.",
+          "notes": "Polite response",
+          "difficulty": 2,
+          "tags": [
+            "politeness"
+          ]
+        }
+      ]
+    },
+    "day_2": {
+      "topic": "Phrases for Day 2",
+      "words": [
+        {
+          "tagalog": "Kamusta ka?",
+          "english": "How are you?",
+          "pronunciation": "kah-MOOS-tah kah",
+          "example": "Kamusta ka, Tita?",
+          "example_translation": "How are you, Auntie?",
+          "notes": "Common greeting",
+          "difficulty": 2,
+          "tags": [
+            "greeting"
+          ]
+        },
+        {
+          "tagalog": "Magandang umaga",
+          "english": "Good morning",
+          "pronunciation": "mah-gan-DANG oo-MA-gah",
+          "example": "Magandang umaga po, Tito.",
+          "example_translation": "Good morning, Uncle.",
+          "notes": "Use 'po' for politeness",
+          "difficulty": 2,
+          "tags": [
+            "greeting"
+          ]
+        },
+        {
+          "tagalog": "Ako si [Name].",
+          "english": "I am [Name].",
+          "pronunciation": "ah-KOH see [Name]",
+          "example": "Ako si Sam.",
+          "example_translation": "I am Sam.",
+          "notes": "Basic introduction",
+          "difficulty": 2,
+          "tags": [
+            "introduction"
+          ]
+        },
+        {
+          "tagalog": "Taga saan ka?",
+          "english": "Where are you from?",
+          "pronunciation": "ta-GAH sah-AHN kah",
+          "example": "Taga saan ka, Kuya?",
+          "example_translation": "Where are you from, older brother?",
+          "notes": "Used to ask about origin",
+          "difficulty": 2,
+          "tags": [
+            "question"
+          ]
+        },
+        {
+          "tagalog": "Salamat",
+          "english": "Thank you",
+          "pronunciation": "sah-LAH-mat",
+          "example": "Salamat po sa tulong.",
+          "example_translation": "Thank you for the help.",
+          "notes": "Gratitude expression",
+          "difficulty": 2,
+          "tags": [
+            "politeness"
+          ]
+        },
+        {
+          "tagalog": "Walang anuman",
+          "english": "You're welcome",
+          "pronunciation": "wah-LANG ah-noo-MAN",
+          "example": "Walang anuman, Kuya.",
+          "example_translation": "You're welcome, big brother.",
+          "notes": "Polite response",
+          "difficulty": 2,
+          "tags": [
+            "politeness"
+          ]
+        }
+      ]
+    },
+    "day_3": {
+      "topic": "Phrases for Day 3",
+      "words": [
+        {
+          "tagalog": "Kamusta ka?",
+          "english": "How are you?",
+          "pronunciation": "kah-MOOS-tah kah",
+          "example": "Kamusta ka, Tita?",
+          "example_translation": "How are you, Auntie?",
+          "notes": "Common greeting",
+          "difficulty": 2,
+          "tags": [
+            "greeting"
+          ]
+        },
+        {
+          "tagalog": "Magandang umaga",
+          "english": "Good morning",
+          "pronunciation": "mah-gan-DANG oo-MA-gah",
+          "example": "Magandang umaga po, Tito.",
+          "example_translation": "Good morning, Uncle.",
+          "notes": "Use 'po' for politeness",
+          "difficulty": 2,
+          "tags": [
+            "greeting"
+          ]
+        },
+        {
+          "tagalog": "Ako si [Name].",
+          "english": "I am [Name].",
+          "pronunciation": "ah-KOH see [Name]",
+          "example": "Ako si Sam.",
+          "example_translation": "I am Sam.",
+          "notes": "Basic introduction",
+          "difficulty": 2,
+          "tags": [
+            "introduction"
+          ]
+        },
+        {
+          "tagalog": "Taga saan ka?",
+          "english": "Where are you from?",
+          "pronunciation": "ta-GAH sah-AHN kah",
+          "example": "Taga saan ka, Kuya?",
+          "example_translation": "Where are you from, older brother?",
+          "notes": "Used to ask about origin",
+          "difficulty": 2,
+          "tags": [
+            "question"
+          ]
+        },
+        {
+          "tagalog": "Salamat",
+          "english": "Thank you",
+          "pronunciation": "sah-LAH-mat",
+          "example": "Salamat po sa tulong.",
+          "example_translation": "Thank you for the help.",
+          "notes": "Gratitude expression",
+          "difficulty": 2,
+          "tags": [
+            "politeness"
+          ]
+        },
+        {
+          "tagalog": "Walang anuman",
+          "english": "You're welcome",
+          "pronunciation": "wah-LANG ah-noo-MAN",
+          "example": "Walang anuman, Kuya.",
+          "example_translation": "You're welcome, big brother.",
+          "notes": "Polite response",
+          "difficulty": 2,
+          "tags": [
+            "politeness"
+          ]
+        }
+      ]
+    },
+    "day_4": {
+      "topic": "Phrases for Day 4",
+      "words": [
+        {
+          "tagalog": "Kamusta ka?",
+          "english": "How are you?",
+          "pronunciation": "kah-MOOS-tah kah",
+          "example": "Kamusta ka, Tita?",
+          "example_translation": "How are you, Auntie?",
+          "notes": "Common greeting",
+          "difficulty": 2,
+          "tags": [
+            "greeting"
+          ]
+        },
+        {
+          "tagalog": "Magandang umaga",
+          "english": "Good morning",
+          "pronunciation": "mah-gan-DANG oo-MA-gah",
+          "example": "Magandang umaga po, Tito.",
+          "example_translation": "Good morning, Uncle.",
+          "notes": "Use 'po' for politeness",
+          "difficulty": 2,
+          "tags": [
+            "greeting"
+          ]
+        },
+        {
+          "tagalog": "Ako si [Name].",
+          "english": "I am [Name].",
+          "pronunciation": "ah-KOH see [Name]",
+          "example": "Ako si Sam.",
+          "example_translation": "I am Sam.",
+          "notes": "Basic introduction",
+          "difficulty": 2,
+          "tags": [
+            "introduction"
+          ]
+        },
+        {
+          "tagalog": "Taga saan ka?",
+          "english": "Where are you from?",
+          "pronunciation": "ta-GAH sah-AHN kah",
+          "example": "Taga saan ka, Kuya?",
+          "example_translation": "Where are you from, older brother?",
+          "notes": "Used to ask about origin",
+          "difficulty": 2,
+          "tags": [
+            "question"
+          ]
+        },
+        {
+          "tagalog": "Salamat",
+          "english": "Thank you",
+          "pronunciation": "sah-LAH-mat",
+          "example": "Salamat po sa tulong.",
+          "example_translation": "Thank you for the help.",
+          "notes": "Gratitude expression",
+          "difficulty": 2,
+          "tags": [
+            "politeness"
+          ]
+        },
+        {
+          "tagalog": "Walang anuman",
+          "english": "You're welcome",
+          "pronunciation": "wah-LANG ah-noo-MAN",
+          "example": "Walang anuman, Kuya.",
+          "example_translation": "You're welcome, big brother.",
+          "notes": "Polite response",
+          "difficulty": 2,
+          "tags": [
+            "politeness"
+          ]
+        }
+      ]
+    },
+    "day_5": {
+      "topic": "Phrases for Day 5",
+      "words": [
+        {
+          "tagalog": "Kamusta ka?",
+          "english": "How are you?",
+          "pronunciation": "kah-MOOS-tah kah",
+          "example": "Kamusta ka, Tita?",
+          "example_translation": "How are you, Auntie?",
+          "notes": "Common greeting",
+          "difficulty": 2,
+          "tags": [
+            "greeting"
+          ]
+        },
+        {
+          "tagalog": "Magandang umaga",
+          "english": "Good morning",
+          "pronunciation": "mah-gan-DANG oo-MA-gah",
+          "example": "Magandang umaga po, Tito.",
+          "example_translation": "Good morning, Uncle.",
+          "notes": "Use 'po' for politeness",
+          "difficulty": 2,
+          "tags": [
+            "greeting"
+          ]
+        },
+        {
+          "tagalog": "Ako si [Name].",
+          "english": "I am [Name].",
+          "pronunciation": "ah-KOH see [Name]",
+          "example": "Ako si Sam.",
+          "example_translation": "I am Sam.",
+          "notes": "Basic introduction",
+          "difficulty": 2,
+          "tags": [
+            "introduction"
+          ]
+        },
+        {
+          "tagalog": "Taga saan ka?",
+          "english": "Where are you from?",
+          "pronunciation": "ta-GAH sah-AHN kah",
+          "example": "Taga saan ka, Kuya?",
+          "example_translation": "Where are you from, older brother?",
+          "notes": "Used to ask about origin",
+          "difficulty": 2,
+          "tags": [
+            "question"
+          ]
+        },
+        {
+          "tagalog": "Salamat",
+          "english": "Thank you",
+          "pronunciation": "sah-LAH-mat",
+          "example": "Salamat po sa tulong.",
+          "example_translation": "Thank you for the help.",
+          "notes": "Gratitude expression",
+          "difficulty": 2,
+          "tags": [
+            "politeness"
+          ]
+        },
+        {
+          "tagalog": "Walang anuman",
+          "english": "You're welcome",
+          "pronunciation": "wah-LANG ah-noo-MAN",
+          "example": "Walang anuman, Kuya.",
+          "example_translation": "You're welcome, big brother.",
+          "notes": "Polite response",
+          "difficulty": 2,
+          "tags": [
+            "politeness"
+          ]
+        }
+      ]
+    },
+    "day_6": {
+      "topic": "Phrases for Day 6",
+      "words": [
+        {
+          "tagalog": "Kamusta ka?",
+          "english": "How are you?",
+          "pronunciation": "kah-MOOS-tah kah",
+          "example": "Kamusta ka, Tita?",
+          "example_translation": "How are you, Auntie?",
+          "notes": "Common greeting",
+          "difficulty": 2,
+          "tags": [
+            "greeting"
+          ]
+        },
+        {
+          "tagalog": "Magandang umaga",
+          "english": "Good morning",
+          "pronunciation": "mah-gan-DANG oo-MA-gah",
+          "example": "Magandang umaga po, Tito.",
+          "example_translation": "Good morning, Uncle.",
+          "notes": "Use 'po' for politeness",
+          "difficulty": 2,
+          "tags": [
+            "greeting"
+          ]
+        },
+        {
+          "tagalog": "Ako si [Name].",
+          "english": "I am [Name].",
+          "pronunciation": "ah-KOH see [Name]",
+          "example": "Ako si Sam.",
+          "example_translation": "I am Sam.",
+          "notes": "Basic introduction",
+          "difficulty": 2,
+          "tags": [
+            "introduction"
+          ]
+        },
+        {
+          "tagalog": "Taga saan ka?",
+          "english": "Where are you from?",
+          "pronunciation": "ta-GAH sah-AHN kah",
+          "example": "Taga saan ka, Kuya?",
+          "example_translation": "Where are you from, older brother?",
+          "notes": "Used to ask about origin",
+          "difficulty": 2,
+          "tags": [
+            "question"
+          ]
+        },
+        {
+          "tagalog": "Salamat",
+          "english": "Thank you",
+          "pronunciation": "sah-LAH-mat",
+          "example": "Salamat po sa tulong.",
+          "example_translation": "Thank you for the help.",
+          "notes": "Gratitude expression",
+          "difficulty": 2,
+          "tags": [
+            "politeness"
+          ]
+        },
+        {
+          "tagalog": "Walang anuman",
+          "english": "You're welcome",
+          "pronunciation": "wah-LANG ah-noo-MAN",
+          "example": "Walang anuman, Kuya.",
+          "example_translation": "You're welcome, big brother.",
+          "notes": "Polite response",
+          "difficulty": 2,
+          "tags": [
+            "politeness"
+          ]
+        }
+      ]
+    }
+  }
+}

@@ -1,5 +1,5 @@
 """
-Content Selector Component - Modified for single selection only
+Content Selector Component - FIXED for phrases support
 Shows days/sections in a list where only one can be selected at a time
 """
 
@@ -83,9 +83,11 @@ class ContentSelector(ttk.LabelFrame):
             for day_key in sorted(days.keys()):  # Sort to ensure consistent order
                 day_data = days[day_key]
                 topic = day_data.get('topic', 'No topic')
-                word_count = len(day_data.get('words', []))
                 
-                display_text = f"{day_key.replace('_', ' ').title()} - {topic} ({word_count} items)"
+                # FIXED: Check phrases first, then words, then other fields
+                item_count = len(day_data.get('phrases', day_data.get('words', day_data.get('entries', day_data.get('items', [])))))
+                
+                display_text = f"{day_key.replace('_', ' ').title()} - {topic} ({item_count} items)"
                 self.listbox.insert(tk.END, display_text)
                 sections_added += 1
         
@@ -97,15 +99,18 @@ class ContentSelector(ttk.LabelFrame):
             for section_key in sorted(container.keys()):
                 section_data = container[section_key]
                 topic = section_data.get('topic', section_data.get('title', 'No topic'))
-                items = section_data.get('entries', section_data.get('words', section_data.get('items', [])))
+                
+                # FIXED: Check phrases first, then other fields
+                items = section_data.get('phrases', section_data.get('entries', section_data.get('words', section_data.get('items', []))))
                 
                 display_text = f"{section_key.replace('_', ' ').title()} - {topic} ({len(items)} items)"
                 self.listbox.insert(tk.END, display_text)
                 sections_added += 1
         
-        elif 'entries' in data or 'words' in data:
+        elif any(key in data for key in ['entries', 'words', 'phrases', 'items']):
             # Direct entries structure - single item
-            items = data.get('entries', data.get('words', []))
+            # FIXED: Check phrases first, then other fields
+            items = data.get('phrases', data.get('entries', data.get('words', data.get('items', []))))
             display_text = f"All items ({len(items)} total)"
             self.listbox.insert(tk.END, display_text)
             sections_added += 1
@@ -138,7 +143,9 @@ class ContentSelector(ttk.LabelFrame):
             day_keys = sorted(self.current_data['days'].keys())
             if selected_index < len(day_keys):
                 selected_section_key = day_keys[selected_index]
-                item_count = len(self.current_data['days'][selected_section_key].get('words', []))
+                day_data = self.current_data['days'][selected_section_key]
+                # FIXED: Check phrases first, then other fields
+                item_count = len(day_data.get('phrases', day_data.get('words', day_data.get('entries', day_data.get('items', [])))))
         
         elif any(key in self.current_data for key in ['lessons', 'chapters', 'sections']):
             container_key = next(key for key in ['lessons', 'chapters', 'sections'] if key in self.current_data)
@@ -146,12 +153,14 @@ class ContentSelector(ttk.LabelFrame):
             if selected_index < len(section_keys):
                 selected_section_key = section_keys[selected_index]
                 section_data = self.current_data[container_key][selected_section_key]
-                items = section_data.get('entries', section_data.get('words', section_data.get('items', [])))
+                # FIXED: Check phrases first, then other fields
+                items = section_data.get('phrases', section_data.get('entries', section_data.get('words', section_data.get('items', []))))
                 item_count = len(items)
         
         elif selected_index == 0:  # Direct entries structure
             selected_section_key = 'main'
-            item_count = len(self.current_data.get('entries', self.current_data.get('words', [])))
+            # FIXED: Check phrases first, then other fields
+            item_count = len(self.current_data.get('phrases', self.current_data.get('entries', self.current_data.get('words', self.current_data.get('items', [])))))
         
         self._trigger_selection_callback(selected_section_key, item_count)
     

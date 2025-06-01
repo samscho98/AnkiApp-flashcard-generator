@@ -1,0 +1,164 @@
+{
+  "target_language": "german",
+  "native_language": "english",
+  "content_type": "grammar",
+  "topic": "Introduction & Basic Sentence Structure",
+  "level": "A1",
+  "week": 1,
+  "days": {
+    "day_1": {
+      "topic": "Personal Pronouns",
+      "words": [
+        {
+          "german": "ich",
+          "english": "I",
+          "content_type": "grammar",
+          "example": "Ich bin Maria.",
+          "example_translation": "I am Maria.",
+          "rule": "First person singular pronoun",
+          "pronunciation": "ikh",
+          "notes": "Always lowercase except at sentence beginning",
+          "difficulty": 1,
+          "tags": ["pronouns", "personal", "basic"]
+        },
+        {
+          "german": "du",
+          "english": "you (informal singular)",
+          "content_type": "grammar",
+          "example": "Du bist nett.",
+          "example_translation": "You are nice.",
+          "rule": "Second person singular, informal",
+          "pronunciation": "doo",
+          "notes": "Used with friends, family, children",
+          "difficulty": 1,
+          "tags": ["pronouns", "personal", "informal"]
+        },
+        {
+          "german": "er/sie/es",
+          "english": "he/she/it",
+          "content_type": "grammar",
+          "example": "Er ist groß. Sie ist klein. Es ist gut.",
+          "example_translation": "He is tall. She is small. It is good.",
+          "rule": "Third person singular pronouns",
+          "pronunciation": "air/zee/es",
+          "notes": "Er=masculine, sie=feminine, es=neuter",
+          "difficulty": 2,
+          "tags": ["pronouns", "personal", "gender"]
+        },
+        {
+          "german": "wir",
+          "english": "we",
+          "content_type": "grammar",
+          "example": "Wir sind Studenten.",
+          "example_translation": "We are students.",
+          "rule": "First person plural pronoun",
+          "pronunciation": "veer",
+          "notes": "Used for groups including yourself",
+          "difficulty": 1,
+          "tags": ["pronouns", "personal", "plural"]
+        },
+        {
+          "german": "ihr",
+          "english": "you (informal plural)",
+          "content_type": "grammar",
+          "example": "Ihr seid jung.",
+          "example_translation": "You (all) are young.",
+          "rule": "Second person plural, informal",
+          "pronunciation": "eer",
+          "notes": "Used when addressing multiple friends/family",
+          "difficulty": 2,
+          "tags": ["pronouns", "personal", "plural", "informal"]
+        },
+        {
+          "german": "sie/Sie",
+          "english": "they/you (formal)",
+          "content_type": "grammar",
+          "example": "Sie kommen heute. (they) / Sie sind Herr Schmidt? (you formal)",
+          "example_translation": "They come today. / You are Mr. Schmidt?",
+          "rule": "Third person plural OR formal second person",
+          "pronunciation": "zee",
+          "notes": "Formal Sie is always capitalized",
+          "difficulty": 3,
+          "tags": ["pronouns", "personal", "formal", "plural"]
+        }
+      ]
+    },
+    "day_2": {
+      "topic": "Regular Verb Conjugation - Present Tense",
+      "words": [
+        {
+          "german": "ich spiele",
+          "english": "I play",
+          "content_type": "grammar",
+          "example": "Ich spiele Fußball.",
+          "example_translation": "I play soccer.",
+          "rule": "Regular verbs: stem + -e for ich",
+          "pattern": "spielen → spiel + e",
+          "base_form": "spielen",
+          "difficulty": 2,
+          "tags": ["verbs", "conjugation", "present", "regular"]
+        },
+        {
+          "german": "du spielst",
+          "english": "you play",
+          "content_type": "grammar",
+          "example": "Du spielst gut.",
+          "example_translation": "You play well.",
+          "rule": "Regular verbs: stem + -st for du",
+          "pattern": "spielen → spiel + st",
+          "base_form": "spielen",
+          "difficulty": 2,
+          "tags": ["verbs", "conjugation", "present", "regular"]
+        },
+        {
+          "german": "er/sie/es spielt",
+          "english": "he/she/it plays",
+          "content_type": "grammar",
+          "example": "Sie spielt Tennis.",
+          "example_translation": "She plays tennis.",
+          "rule": "Regular verbs: stem + -t for er/sie/es",
+          "pattern": "spielen → spiel + t",
+          "base_form": "spielen",
+          "difficulty": 2,
+          "tags": ["verbs", "conjugation", "present", "regular"]
+        },
+        {
+          "german": "wir spielen",
+          "english": "we play",
+          "content_type": "grammar",
+          "example": "Wir spielen zusammen.",
+          "example_translation": "We play together.",
+          "rule": "Regular verbs: infinitive form for wir",
+          "pattern": "spielen → spielen (same as infinitive)",
+          "base_form": "spielen",
+          "difficulty": 1,
+          "tags": ["verbs", "conjugation", "present", "regular"]
+        },
+        {
+          "german": "ihr spielt",
+          "english": "you (plural) play",
+          "content_type": "grammar",
+          "example": "Ihr spielt sehr gut.",
+          "example_translation": "You (all) play very well.",
+          "rule": "Regular verbs: stem + -t for ihr",
+          "pattern": "spielen → spiel + t",
+          "base_form": "spielen",
+          "difficulty": 2,
+          "tags": ["verbs", "conjugation", "present", "regular"]
+        },
+        {
+          "german": "sie/Sie spielen",
+          "english": "they play / you (formal) play",
+          "content_type": "grammar",
+          "example": "Sie spielen oft. / Spielen Sie gern?",
+          "example_translation": "They play often. / Do you like to play?",
+          "rule": "Regular verbs: infinitive form for sie/Sie",
+          "pattern": "spielen → spielen (same as infinitive)",
+          "base_form": "spielen",
+          "difficulty": 2,
+          "tags": ["verbs", "conjugation", "present", "regular"]
+        }
+      ]
+    }
+  }
+}

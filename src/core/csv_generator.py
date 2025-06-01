@@ -1,6 +1,7 @@
 """
 Generic CSV Generator for Language Learning Flashcards
 Converts JSON content to AnkiApp-compatible CSV files for any language
+Enhanced with CommonPhrasesFormatter support
 """
 
 import csv
@@ -45,8 +46,102 @@ class GenericContentEntry:
             'connections': self.connections or {}
         }
 
+
+class CommonPhrasesFormatter(AnkiAppFormatter):
+    """Specialized formatter for common phrases with enhanced formatting"""
+    
+    def __init__(self, config: Dict[str, Any] = None):
+        """Initialize common phrases formatter"""
+        super().__init__(config)
+        
+        # Extend field mappings for common phrases
+        self.field_mappings.update({
+            'target': ['german', 'German', 'target', 'phrase', 'question'],
+            'native': ['english', 'English', 'native', 'translation', 'answer'],
+            'notes': ['notes', 'Notes', 'note', 'usage', 'context'],
+            'tags': ['tags', 'Tags', 'categories', 'tag']
+        })
+        
+        # Phrase-specific settings
+        self.show_context_indicators = self.config.get('show_context_indicators', True)
+        self.phrase_category_prefix = self.config.get('phrase_category_prefix', '💬')
+        
+    def _format_clean_back(self, entry_data: Dict[str, Any], metadata: Dict[str, Any]) -> str:
+        """Format back side with clean, simple formatting for phrases"""
+        parts = []
+        
+        # Main translation with phrase indicator
+        native = self._safe_get_string(entry_data, self.field_mappings['native'])
+        if native:
+            if self.show_context_indicators:
+                main_translation = f"{self.phrase_category_prefix} {native}"
+            else:
+                main_translation = native
+            parts.append(main_translation)
+        
+        # Context from day topic
+        day_topic = metadata.get('section_topic', metadata.get('topic', ''))
+        if day_topic and day_topic != 'No topic':
+            parts.append(f"<i>Context: {day_topic}</i>")
+        
+        # Notes (if available)
+        notes = self._safe_get_string(entry_data, self.field_mappings['notes'])
+        if notes:
+            parts.append(f"<i>📝 {notes}</i>")
+        
+        # Usage level indicator
+        week = metadata.get('week', metadata.get('unit', ''))
+        if week:
+            parts.append(f"<i>Level: A1 Week {week}</i>")
+        
+        return "<br><br>".join(parts)
+    
+    def _generate_simple_tags(self, entry_data: Dict[str, Any], metadata: Dict[str, Any]) -> str:
+        """Generate simple, clean tags for phrases"""
+        tags = []
+        
+        # Week tag
+        week = metadata.get('week', metadata.get('unit', ''))
+        if week:
+            tags.append(f"Week{week}")
+        
+        # Content type tag
+        tags.append("Phrases")
+        
+        # Day topic tag (cleaned and simplified)
+        topic = metadata.get('section_topic', metadata.get('topic', ''))
+        if topic:
+            # Clean up topic for tag use
+            topic_clean = (topic
+                          .replace('&', 'and')
+                          .replace(' & ', ' ')
+                          .replace(',', '')
+                          .strip()
+                          .split()[0]  # Take first word
+                          .capitalize())
+            
+            if topic_clean and topic_clean not in ['No', 'Topic']:
+                tags.append(topic_clean)
+        
+        # Tags from the JSON data
+        json_tags = entry_data.get('Tags', entry_data.get('tags', []))
+        if json_tags:
+            if isinstance(json_tags, list):
+                # Clean and capitalize tags from JSON
+                for tag in json_tags[:2]:  # Limit to 2 additional tags
+                    clean_tag = str(tag).strip().capitalize()
+                    if clean_tag and clean_tag not in tags:
+                        tags.append(clean_tag)
+            else:
+                clean_tag = str(json_tags).strip().capitalize()
+                if clean_tag and clean_tag not in tags:
+                    tags.append(clean_tag)
+        
+        return ",".join(tags)
+
+
 class GenericLanguageCSVGenerator:
-    """Generic CSV generator for language learning content"""
+    """Generic CSV generator for language learning content with enhanced phrase support"""
     
     def __init__(self, output_dir: str = "output", config: Dict[str, Any] = None):
         """
@@ -61,9 +156,11 @@ class GenericLanguageCSVGenerator:
         
         self.config = config or {}
         
-        # Available formatters
+        # Available formatters - now includes phrases
         self.formatters = {
             'ankiapp': AnkiAppFormatter,
+            'phrases': CommonPhrasesFormatter,
+            'common_phrases': CommonPhrasesFormatter,
             'generic': self._get_generic_formatter
         }
     
@@ -71,15 +168,56 @@ class GenericLanguageCSVGenerator:
         """Get generic formatter"""
         return AnkiAppFormatter  # For now, use AnkiApp as generic
     
+    def _detect_content_type(self, data: Dict[str, Any], source_path: str = "") -> str:
+        """
+        Detect content type from data structure and file path
+        
+        Args:
+            data: Data dictionary
+            source_path: Source file path for context
+            
+        Returns:
+            Detected content type string
+        """
+        # Check file path first
+        if source_path:
+            path_parts = Path(source_path).parts
+            for part in path_parts:
+                part_lower = part.lower()
+                if 'phrase' in part_lower or 'common_phrase' in part_lower:
+                    return 'phrases'
+                elif 'grammar' in part_lower:
+                    return 'grammar'
+                elif 'vocabulary' in part_lower:
+                    return 'vocabulary'
+        
+        # Check data structure for phrases indicators
+        data_str = str(data).lower()
+        if 'phrases' in data_str:
+            return 'phrases'
+        elif 'days' in data and any('phrases' in str(day_data) for day_data in data.get('days', {}).values()):
+            return 'phrases'
+        elif 'total_phrases' in data:
+            return 'phrases'
+        elif data.get('content_type') == 'phrases':
+            return 'phrases'
+        
+        # Check for grammar indicators
+        if 'grammar' in data_str or data.get('content_type') == 'grammar':
+            return 'grammar'
+        
+        # Default to vocabulary
+        return 'vocabulary'
+    
     def generate_from_json_file(self, json_file: str, 
-                               formatter_type: str = 'ankiapp',
+                               formatter_type: str = 'auto',
                                custom_config: Dict[str, Any] = None) -> Optional[str]:
         """
-        Generate CSV from JSON file
+        Generate CSV from JSON file with automatic content type detection
         
         Args:
             json_file: Path to JSON file
-            formatter_type: Type of formatter to use
+            formatter_type: Type of formatter to use ('auto' for automatic detection)
             custom_config: Custom configuration for formatter
             
         Returns:
@@ -94,6 +232,12 @@ class GenericLanguageCSVGenerator:
         except json.JSONDecodeError as e:
             logger.error(f"Invalid JSON in file {json_file}: {e}")
             return None
+        
+        # Auto-detect formatter type if requested
+        if formatter_type == 'auto':
+            detected_type = self._detect_content_type(data, json_file)
+            formatter_type = detected_type
+            logger.info(f"Auto-detected content type: {formatter_type}")
         
         return self.generate_from_data(data, json_file, formatter_type, custom_config)
     
@@ -183,7 +327,7 @@ class GenericLanguageCSVGenerator:
     
     def _extract_entries(self, data: Dict[str, Any]) -> List[tuple]:
         """
-        Extract entries from various JSON structures
+        Extract entries from various JSON structures (enhanced for phrases)
         
         Args:
             data: Data dictionary
@@ -197,10 +341,11 @@ class GenericLanguageCSVGenerator:
         base_metadata = {
             'target_language': data.get('target_language', data.get('language', '')),
             'native_language': data.get('native_language', 'english'),
-            'content_type': data.get('content_type', data.get('type', 'vocabulary')),
+            'content_type': self._detect_content_type(data),
             'topic': data.get('topic', data.get('title', '')),
             'level': data.get('level', data.get('difficulty', '')),
-            'source': data.get('source', '')
+            'source': data.get('source', ''),
+            'week': data.get('week', 1)  # Add week from top level
         }
         
         # Direct entries (flat structure)
@@ -238,7 +383,11 @@ class GenericLanguageCSVGenerator:
                         
                         # Check for nested sections within unit
                         unit_entries = []
-                        if 'entries' in unit_data:
+                        
+                        # Handle phrases field specifically
+                        if 'phrases' in unit_data:
+                            unit_entries = unit_data['phrases']
+                        elif 'entries' in unit_data:
                             unit_entries = unit_data['entries']
                         elif 'words' in unit_data:
                             unit_entries = unit_data['words']
@@ -264,9 +413,11 @@ class GenericLanguageCSVGenerator:
                                         'section_topic': sub_data.get('topic', sub_data.get('title', ''))
                                     })
                                     
-                                    # Get entries from sub-section
+                                    # Get entries from sub-section - handle phrases specifically
                                     sub_entries = []
-                                    if 'entries' in sub_data:
+                                    if 'phrases' in sub_data:
+                                        sub_entries = sub_data['phrases']
+                                    elif 'entries' in sub_data:
                                         sub_entries = sub_data['entries']
                                     elif 'words' in sub_data:
                                         sub_entries = sub_data['words']
@@ -316,6 +467,8 @@ class GenericLanguageCSVGenerator:
             'tag_prefix': 'Language_Learning',
             'include_html_formatting': True,
             'show_connections': True,
+            'show_context_indicators': True,
+            'phrase_category_prefix': '💬',
             'target_language': 'Target',
             'native_language': 'English',
             'field_mappings': {
@@ -333,7 +486,7 @@ class GenericLanguageCSVGenerator:
         
         Args:
             output_path: Path for sample file
-            content_type: Type of content (vocabulary, grammar, etc.)
+            content_type: Type of content (vocabulary, grammar, phrases, etc.)
             
         Returns:
             True if successful
@@ -395,6 +548,49 @@ class GenericLanguageCSVGenerator:
                     }
                 ]
             }
+        elif content_type == "phrases" or content_type == "common_phrases":
+            sample_data = {
+                "week": 1,
+                "topic": "Essential A1 Phrases: Greetings, Politeness, and Basics",
+                "source": "Common Goethe A1 Phrases",
+                "total_phrases": 4,
+                "days": {
+                    "day_1": {
+                        "topic": "Greetings & Introductions",
+                        "phrases": [
+                            {
+                                "German": "Guten Morgen!",
+                                "English": "Good morning!",
+                                "Notes": "Used until about 10-11 AM",
+                                "Tags": ["greetings", "morning"]
+                            },
+                            {
+                                "German": "Wie heißen Sie?",
+                                "English": "What is your name?",
+                                "Notes": "Formal version",
+                                "Tags": ["introductions", "questions"]
+                            }
+                        ]
+                    },
+                    "day_2": {
+                        "topic": "Politeness",
+                        "phrases": [
+                            {
+                                "German": "Bitte.",
+                                "English": "Please.",
+                                "Notes": "",
+                                "Tags": ["politeness"]
+                            },
+                            {
+                                "German": "Danke schön.",
+                                "English": "Thank you very much.",
+                                "Notes": "More emphatic than just 'Danke'",
+                                "Tags": ["politeness", "gratitude"]
+                            }
+                        ]
+                    }
+                }
+            }
         else:
             sample_data = {
                 "target_language": "target_lang",
@@ -423,9 +619,9 @@ class GenericLanguageCSVGenerator:
 
 # Utility functions for easy usage
 def generate_flashcards_from_json(json_file: str, output_dir: str = "output") -> Optional[str]:
-    """Quick function to generate flashcards from JSON file"""
+    """Quick function to generate flashcards from JSON file with auto-detection"""
     generator = GenericLanguageCSVGenerator(output_dir)
-    return generator.generate_from_json_file(json_file)
+    return generator.generate_from_json_file(json_file, 'auto')  # Use auto-detection
 
 def create_sample_files(output_dir: str = "data") -> bool:
     """Create sample JSON files for reference"""
@@ -438,6 +634,8 @@ def create_sample_files(output_dir: str = "data") -> bool:
     success &= generator.create_sample_json(f"{output_dir}/sample_vocabulary.json", "vocabulary")
     # Create grammar sample
     success &= generator.create_sample_json(f"{output_dir}/sample_grammar.json", "grammar")
+    # Create phrases sample
+    success &= generator.create_sample_json(f"{output_dir}/sample_phrases.json", "phrases")
     
     return success
 
@@ -452,14 +650,25 @@ if __name__ == "__main__":
     create_sample_files("data")
     
     # Generate CSV from sample vocabulary
-    vocab_csv = generator.generate_from_json_file("data/sample_vocabulary.json")
+    vocab_csv = generator.generate_from_json_file("data/sample_vocabulary.json", 'auto')
     if vocab_csv:
         print(f"Generated vocabulary CSV: {vocab_csv}")
     
     # Generate CSV from sample grammar
-    grammar_csv = generator.generate_from_json_file("data/sample_grammar.json")
+    grammar_csv = generator.generate_from_json_file("data/sample_grammar.json", 'auto')
     if grammar_csv:
         print(f"Generated grammar CSV: {grammar_csv}")
+    
+    # Generate CSV from sample phrases
+    phrases_csv = generator.generate_from_json_file("data/sample_phrases.json", 'auto')
+    if phrases_csv:
+        print(f"Generated phrases CSV: {phrases_csv}")
+        
+        # Show the phrases CSV content
+        with open(phrases_csv, 'r', encoding='utf-8') as f:
+            content = f.read()
+            print("\n--- Phrases CSV Content ---")
+            print(content)
     
     # Test with custom entries
     custom_entries = [

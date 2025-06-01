@@ -128,12 +128,17 @@ class ExportPanel(ttk.LabelFrame):
         self._update_button_state()
     
     def _update_button_state(self):
-        """Update export button enabled/disabled state"""
-        # Button is enabled if we have data loaded and CSV is ready
-        if self._data_loaded and self._csv_ready and self._item_count > 0:
+        """Update export button enabled/disabled state - FIXED"""
+        # Debug print to see what's happening
+        print(f"Export button update: data_loaded={self._data_loaded}, csv_ready={self._csv_ready}, item_count={self._item_count}")
+        
+        # Button is enabled if we have CSV ready (simplified condition)
+        if self._csv_ready and self._item_count > 0:
             self.export_button.config(state=tk.NORMAL)
+            print("Export button ENABLED")
         else:
             self.export_button.config(state=tk.DISABLED)
+            print("Export button DISABLED")
     
     def set_exporting(self, is_exporting: bool):
         """Update UI during export process"""

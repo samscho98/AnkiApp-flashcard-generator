@@ -1,0 +1,16 @@
+# Language Configuration for Flashcard Generator
+# Format: language_code:field_name_in_json
+# Add new languages as needed
+
+# Main supported languages
+german:German,german,target,word,term
+english:English,english,native,translation,answer
+dutch:Dutch,dutch,nederlands
+spanish:Spanish,spanish,español
+french:French,french,français
+italian:Italian,italian,italiano
+portuguese:Portuguese,portuguese,português
+tagalog:Tagalog,tagalog,pilipino
+
+# You can add more languages here following the same pattern
+# The first field name listed will be the primary one to look for

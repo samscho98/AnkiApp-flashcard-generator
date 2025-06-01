@@ -1,0 +1,508 @@
+{
+  "target_language": "tagalog",
+  "native_language": "english",
+  "content_type": "grammar",
+  "topic": "Week 8 Grammar Topics",
+  "level": "A1",
+  "week": 8,
+  "days": {
+    "day_1": {
+      "topic": "Grammar Topic 1",
+      "words": [
+        {
+          "tagalog": "ako",
+          "english": "I / me",
+          "pronunciation": "ah-koh",
+          "example": "Ako si Maria.",
+          "example_translation": "I am Maria.",
+          "rule": "First person pronoun",
+          "notes": "Used when referring to oneself",
+          "difficulty": 2,
+          "tags": [
+            "pronoun"
+          ]
+        },
+        {
+          "tagalog": "ikaw",
+          "english": "you",
+          "pronunciation": "ee-kaw",
+          "example": "Ikaw si John.",
+          "example_translation": "You are John.",
+          "rule": "Second person pronoun",
+          "notes": "Used to address someone",
+          "difficulty": 2,
+          "tags": [
+            "pronoun"
+          ]
+        },
+        {
+          "tagalog": "kumain",
+          "english": "ate",
+          "pronunciation": "koo-mah-in",
+          "example": "Kumain ako ng saging.",
+          "example_translation": "I ate a banana.",
+          "rule": "Completed aspect",
+          "notes": "Used for completed actions",
+          "difficulty": 2,
+          "tags": [
+            "verb"
+          ]
+        },
+        {
+          "tagalog": "umiinom",
+          "english": "is drinking",
+          "pronunciation": "oo-mee-ee-nom",
+          "example": "Umiinom siya ng tubig.",
+          "example_translation": "He/She is drinking water.",
+          "rule": "Incomplete aspect",
+          "notes": "Used for ongoing actions",
+          "difficulty": 2,
+          "tags": [
+            "verb"
+          ]
+        },
+        {
+          "tagalog": "kakain",
+          "english": "will eat",
+          "pronunciation": "kah-kah-in",
+          "example": "Kakain kami bukas.",
+          "example_translation": "We will eat tomorrow.",
+          "rule": "Future aspect",
+          "notes": "Used for future actions",
+          "difficulty": 2,
+          "tags": [
+            "verb"
+          ]
+        },
+        {
+          "tagalog": "hindi",
+          "english": "not",
+          "pronunciation": "hin-dee",
+          "example": "Hindi ako gutom.",
+          "example_translation": "I am not hungry.",
+          "rule": "Negation word",
+          "notes": "Negates verbs and adjectives",
+          "difficulty": 2,
+          "tags": [
+            "negation"
+          ]
+        }
+      ]
+    },
+    "day_2": {
+      "topic": "Grammar Topic 2",
+      "words": [
+        {
+          "tagalog": "ako",
+          "english": "I / me",
+          "pronunciation": "ah-koh",
+          "example": "Ako si Maria.",
+          "example_translation": "I am Maria.",
+          "rule": "First person pronoun",
+          "notes": "Used when referring to oneself",
+          "difficulty": 2,
+          "tags": [
+            "pronoun"
+          ]
+        },
+        {
+          "tagalog": "ikaw",
+          "english": "you",
+          "pronunciation": "ee-kaw",
+          "example": "Ikaw si John.",
+          "example_translation": "You are John.",
+          "rule": "Second person pronoun",
+          "notes": "Used to address someone",
+          "difficulty": 2,
+          "tags": [
+            "pronoun"
+          ]
+        },
+        {
+          "tagalog": "kumain",
+          "english": "ate",
+          "pronunciation": "koo-mah-in",
+          "example": "Kumain ako ng saging.",
+          "example_translation": "I ate a banana.",
+          "rule": "Completed aspect",
+          "notes": "Used for completed actions",
+          "difficulty": 2,
+          "tags": [
+            "verb"
+          ]
+        },
+        {
+          "tagalog": "umiinom",
+          "english": "is drinking",
+          "pronunciation": "oo-mee-ee-nom",
+          "example": "Umiinom siya ng tubig.",
+          "example_translation": "He/She is drinking water.",
+          "rule": "Incomplete aspect",
+          "notes": "Used for ongoing actions",
+          "difficulty": 2,
+          "tags": [
+            "verb"
+          ]
+        },
+        {
+          "tagalog": "kakain",
+          "english": "will eat",
+          "pronunciation": "kah-kah-in",
+          "example": "Kakain kami bukas.",
+          "example_translation": "We will eat tomorrow.",
+          "rule": "Future aspect",
+          "notes": "Used for future actions",
+          "difficulty": 2,
+          "tags": [
+            "verb"
+          ]
+        },
+        {
+          "tagalog": "hindi",
+          "english": "not",
+          "pronunciation": "hin-dee",
+          "example": "Hindi ako gutom.",
+          "example_translation": "I am not hungry.",
+          "rule": "Negation word",
+          "notes": "Negates verbs and adjectives",
+          "difficulty": 2,
+          "tags": [
+            "negation"
+          ]
+        }
+      ]
+    },
+    "day_3": {
+      "topic": "Grammar Topic 3",
+      "words": [
+        {
+          "tagalog": "ako",
+          "english": "I / me",
+          "pronunciation": "ah-koh",
+          "example": "Ako si Maria.",
+          "example_translation": "I am Maria.",
+          "rule": "First person pronoun",
+          "notes": "Used when referring to oneself",
+          "difficulty": 2,
+          "tags": [
+            "pronoun"
+          ]
+        },
+        {
+          "tagalog": "ikaw",
+          "english": "you",
+          "pronunciation": "ee-kaw",
+          "example": "Ikaw si John.",
+          "example_translation": "You are John.",
+          "rule": "Second person pronoun",
+          "notes": "Used to address someone",
+          "difficulty": 2,
+          "tags": [
+            "pronoun"
+          ]
+        },
+        {
+          "tagalog": "kumain",
+          "english": "ate",
+          "pronunciation": "koo-mah-in",
+          "example": "Kumain ako ng saging.",
+          "example_translation": "I ate a banana.",
+          "rule": "Completed aspect",
+          "notes": "Used for completed actions",
+          "difficulty": 2,
+          "tags": [
+            "verb"
+          ]
+        },
+        {
+          "tagalog": "umiinom",
+          "english": "is drinking",
+          "pronunciation": "oo-mee-ee-nom",
+          "example": "Umiinom siya ng tubig.",
+          "example_translation": "He/She is drinking water.",
+          "rule": "Incomplete aspect",
+          "notes": "Used for ongoing actions",
+          "difficulty": 2,
+          "tags": [
+            "verb"
+          ]
+        },
+        {
+          "tagalog": "kakain",
+          "english": "will eat",
+          "pronunciation": "kah-kah-in",
+          "example": "Kakain kami bukas.",
+          "example_translation": "We will eat tomorrow.",
+          "rule": "Future aspect",
+          "notes": "Used for future actions",
+          "difficulty": 2,
+          "tags": [
+            "verb"
+          ]
+        },
+        {
+          "tagalog": "hindi",
+          "english": "not",
+          "pronunciation": "hin-dee",
+          "example": "Hindi ako gutom.",
+          "example_translation": "I am not hungry.",
+          "rule": "Negation word",
+          "notes": "Negates verbs and adjectives",
+          "difficulty": 2,
+          "tags": [
+            "negation"
+          ]
+        }
+      ]
+    },
+    "day_4": {
+      "topic": "Grammar Topic 4",
+      "words": [
+        {
+          "tagalog": "ako",
+          "english": "I / me",
+          "pronunciation": "ah-koh",
+          "example": "Ako si Maria.",
+          "example_translation": "I am Maria.",
+          "rule": "First person pronoun",
+          "notes": "Used when referring to oneself",
+          "difficulty": 2,
+          "tags": [
+            "pronoun"
+          ]
+        },
+        {
+          "tagalog": "ikaw",
+          "english": "you",
+          "pronunciation": "ee-kaw",
+          "example": "Ikaw si John.",
+          "example_translation": "You are John.",
+          "rule": "Second person pronoun",
+          "notes": "Used to address someone",
+          "difficulty": 2,
+          "tags": [
+            "pronoun"
+          ]
+        },
+        {
+          "tagalog": "kumain",
+          "english": "ate",
+          "pronunciation": "koo-mah-in",
+          "example": "Kumain ako ng saging.",
+          "example_translation": "I ate a banana.",
+          "rule": "Completed aspect",
+          "notes": "Used for completed actions",
+          "difficulty": 2,
+          "tags": [
+            "verb"
+          ]
+        },
+        {
+          "tagalog": "umiinom",
+          "english": "is drinking",
+          "pronunciation": "oo-mee-ee-nom",
+          "example": "Umiinom siya ng tubig.",
+          "example_translation": "He/She is drinking water.",
+          "rule": "Incomplete aspect",
+          "notes": "Used for ongoing actions",
+          "difficulty": 2,
+          "tags": [
+            "verb"
+          ]
+        },
+        {
+          "tagalog": "kakain",
+          "english": "will eat",
+          "pronunciation": "kah-kah-in",
+          "example": "Kakain kami bukas.",
+          "example_translation": "We will eat tomorrow.",
+          "rule": "Future aspect",
+          "notes": "Used for future actions",
+          "difficulty": 2,
+          "tags": [
+            "verb"
+          ]
+        },
+        {
+          "tagalog": "hindi",
+          "english": "not",
+          "pronunciation": "hin-dee",
+          "example": "Hindi ako gutom.",
+          "example_translation": "I am not hungry.",
+          "rule": "Negation word",
+          "notes": "Negates verbs and adjectives",
+          "difficulty": 2,
+          "tags": [
+            "negation"
+          ]
+        }
+      ]
+    },
+    "day_5": {
+      "topic": "Grammar Topic 5",
+      "words": [
+        {
+          "tagalog": "ako",
+          "english": "I / me",
+          "pronunciation": "ah-koh",
+          "example": "Ako si Maria.",
+          "example_translation": "I am Maria.",
+          "rule": "First person pronoun",
+          "notes": "Used when referring to oneself",
+          "difficulty": 2,
+          "tags": [
+            "pronoun"
+          ]
+        },
+        {
+          "tagalog": "ikaw",
+          "english": "you",
+          "pronunciation": "ee-kaw",
+          "example": "Ikaw si John.",
+          "example_translation": "You are John.",
+          "rule": "Second person pronoun",
+          "notes": "Used to address someone",
+          "difficulty": 2,
+          "tags": [
+            "pronoun"
+          ]
+        },
+        {
+          "tagalog": "kumain",
+          "english": "ate",
+          "pronunciation": "koo-mah-in",
+          "example": "Kumain ako ng saging.",
+          "example_translation": "I ate a banana.",
+          "rule": "Completed aspect",
+          "notes": "Used for completed actions",
+          "difficulty": 2,
+          "tags": [
+            "verb"
+          ]
+        },
+        {
+          "tagalog": "umiinom",
+          "english": "is drinking",
+          "pronunciation": "oo-mee-ee-nom",
+          "example": "Umiinom siya ng tubig.",
+          "example_translation": "He/She is drinking water.",
+          "rule": "Incomplete aspect",
+          "notes": "Used for ongoing actions",
+          "difficulty": 2,
+          "tags": [
+            "verb"
+          ]
+        },
+        {
+          "tagalog": "kakain",
+          "english": "will eat",
+          "pronunciation": "kah-kah-in",
+          "example": "Kakain kami bukas.",
+          "example_translation": "We will eat tomorrow.",
+          "rule": "Future aspect",
+          "notes": "Used for future actions",
+          "difficulty": 2,
+          "tags": [
+            "verb"
+          ]
+        },
+        {
+          "tagalog": "hindi",
+          "english": "not",
+          "pronunciation": "hin-dee",
+          "example": "Hindi ako gutom.",
+          "example_translation": "I am not hungry.",
+          "rule": "Negation word",
+          "notes": "Negates verbs and adjectives",
+          "difficulty": 2,
+          "tags": [
+            "negation"
+          ]
+        }
+      ]
+    },
+    "day_6": {
+      "topic": "Grammar Topic 6",
+      "words": [
+        {
+          "tagalog": "ako",
+          "english": "I / me",
+          "pronunciation": "ah-koh",
+          "example": "Ako si Maria.",
+          "example_translation": "I am Maria.",
+          "rule": "First person pronoun",
+          "notes": "Used when referring to oneself",
+          "difficulty": 2,
+          "tags": [
+            "pronoun"
+          ]
+        },
+        {
+          "tagalog": "ikaw",
+          "english": "you",
+          "pronunciation": "ee-kaw",
+          "example": "Ikaw si John.",
+          "example_translation": "You are John.",
+          "rule": "Second person pronoun",
+          "notes": "Used to address someone",
+          "difficulty": 2,
+          "tags": [
+            "pronoun"
+          ]
+        },
+        {
+          "tagalog": "kumain",
+          "english": "ate",
+          "pronunciation": "koo-mah-in",
+          "example": "Kumain ako ng saging.",
+          "example_translation": "I ate a banana.",
+          "rule": "Completed aspect",
+          "notes": "Used for completed actions",
+          "difficulty": 2,
+          "tags": [
+            "verb"
+          ]
+        },
+        {
+          "tagalog": "umiinom",
+          "english": "is drinking",
+          "pronunciation": "oo-mee-ee-nom",
+          "example": "Umiinom siya ng tubig.",
+          "example_translation": "He/She is drinking water.",
+          "rule": "Incomplete aspect",
+          "notes": "Used for ongoing actions",
+          "difficulty": 2,
+          "tags": [
+            "verb"
+          ]
+        },
+        {
+          "tagalog": "kakain",
+          "english": "will eat",
+          "pronunciation": "kah-kah-in",
+          "example": "Kakain kami bukas.",
+          "example_translation": "We will eat tomorrow.",
+          "rule": "Future aspect",
+          "notes": "Used for future actions",
+          "difficulty": 2,
+          "tags": [
+            "verb"
+          ]
+        },
+        {
+          "tagalog": "hindi",
+          "english": "not",
+          "pronunciation": "hin-dee",
+          "example": "Hindi ako gutom.",
+          "example_translation": "I am not hungry.",
+          "rule": "Negation word",
+          "notes": "Negates verbs and adjectives",
+          "difficulty": 2,
+          "tags": [
+            "negation"
+          ]
+        }
+      ]
+    }
+  }
+}

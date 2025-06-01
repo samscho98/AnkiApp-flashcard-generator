@@ -226,27 +226,39 @@ class HistoryManager:
     
     def _update_study_streak(self) -> None:
         """Update the study streak based on recent sessions"""
-        today = date.today()
-        
-        # Get unique study dates from recent sessions
-        study_dates = set()
-        for session in self.history_data["study_sessions"]:
-            if session.get("status") == "completed" and session.get("end_time"):
+        try:
+            today = date.today()
+            
+            # Get unique study dates from recent sessions
+            study_dates = set()
+            for session in self.history_data["study_sessions"]:
+                if session.get("status") == "completed" and session.get("end_time"):
+                    try:
+                        session_date = datetime.fromisoformat(session["end_time"]).date()
+                        study_dates.add(session_date)
+                    except (ValueError, TypeError):
+                        continue
+            
+            # Calculate streak
+            streak = 0
+            current_date = today
+            
+            while current_date in study_dates:
+                streak += 1
+                # Safely subtract one day
                 try:
-                    session_date = datetime.fromisoformat(session["end_time"]).date()
-                    study_dates.add(session_date)
-                except ValueError:
-                    continue
-        
-        # Calculate streak
-        streak = 0
-        current_date = today
-        
-        while current_date in study_dates:
-            streak += 1
-            current_date = current_date.replace(day=current_date.day - 1)
-        
-        self.history_data["statistics"]["study_streak"] = streak
+                    from datetime import timedelta
+                    current_date = current_date - timedelta(days=1)
+                except Exception as e:
+                    logger.warning(f"Error calculating streak date: {e}")
+                    break
+            
+            self.history_data["statistics"]["study_streak"] = streak
+            
+        except Exception as e:
+            logger.error(f"Error updating study streak: {e}")
+            # Set a safe default
+            self.history_data["statistics"]["study_streak"] = 0
     
     def _check_achievements(self, items_learned: int, duration_minutes: float) -> None:
         """Check and award achievements"""

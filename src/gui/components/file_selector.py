@@ -1,7 +1,7 @@
 """
-Enhanced File Selector Component
-Replaces radio buttons with dropdowns and improves directory/file naming
-Ready to replace the existing file_selector.py
+Enhanced File Selector Component - FIXED to preserve language selection
+Shows days/sections in a list where only one can be selected at a time
+Fixed: When switching content types, preserve the current language selection
 """
 
 import tkinter as tk
@@ -23,6 +23,11 @@ class FileSelector(ttk.Frame):
         self.selection_callback = selection_callback
         self.available_languages = {}
         self.available_content_types = []
+        
+        # Store current selections to preserve them
+        self._current_language = ""
+        self._current_content_type = ""
+        self._current_week = ""
         
         self._setup_ui()
         # Don't scan immediately - wait for explicit call
@@ -152,6 +157,7 @@ class FileSelector(ttk.Frame):
         self.content_type_combo['values'] = self.available_content_types
         if self.available_content_types:
             self.content_type_combo.set(self.available_content_types[0])
+            self._current_content_type = self.available_content_types[0]
             self._on_content_type_changed()
         
         self._update_status()
@@ -189,51 +195,85 @@ class FileSelector(ttk.Frame):
         return week_files
     
     def _on_content_type_changed(self, event=None):
-        """Handle content type selection change"""
-        content_type = self.content_type_var.get()
+        """Handle content type selection change - FIXED to preserve language selection"""
+        new_content_type = self.content_type_var.get()
         
-        # Update language dropdown
-        if content_type in self.available_languages:
-            languages = list(self.available_languages[content_type].keys())
-            self.language_combo['values'] = languages
-            if languages:
-                self.language_combo.set(languages[0])
+        # Update current content type
+        self._current_content_type = new_content_type
+        
+        # Get available languages for this content type
+        if new_content_type in self.available_languages:
+            available_languages = list(self.available_languages[new_content_type].keys())
+            self.language_combo['values'] = available_languages
+            
+            # FIXED: Try to preserve the current language selection
+            if self._current_language and self._current_language in available_languages:
+                # Language is available in new content type - keep it
+                self.language_combo.set(self._current_language)
+                logger.info(f"Preserved language selection: {self._current_language}")
+                self._on_language_changed()
+            elif available_languages:
+                # Language not available or not set - select first available
+                self.language_combo.set(available_languages[0])
+                self._current_language = available_languages[0]
+                logger.info(f"Selected first available language: {self._current_language}")
                 self._on_language_changed()
             else:
+                # No languages available
                 self.language_combo.set("")
+                self._current_language = ""
                 self.week_combo['values'] = []
                 self.week_combo.set("")
+                self._current_week = ""
         else:
+            # Content type not found - reset all
             self.language_combo['values'] = []
             self.language_combo.set("")
+            self._current_language = ""
             self.week_combo['values'] = []
             self.week_combo.set("")
+            self._current_week = ""
         
         self._update_status()
     
     def _on_language_changed(self, event=None):
         """Handle language selection change"""
+        new_language = self.language_var.get()
         content_type = self.content_type_var.get()
-        language = self.language_var.get()
+        
+        # Update current language
+        self._current_language = new_language
         
         # Update week dropdown
         if (content_type in self.available_languages and 
-            language in self.available_languages[content_type]):
+            new_language in self.available_languages[content_type]):
             
-            lang_data = self.available_languages[content_type][language]
+            lang_data = self.available_languages[content_type][new_language]
             weeks = lang_data['weeks']
             
             week_options = [week['display_name'] for week in weeks]
             self.week_combo['values'] = week_options
             
-            if week_options:
+            # FIXED: Try to preserve the current week selection
+            if self._current_week and self._current_week in week_options:
+                # Week is available - keep it
+                self.week_combo.set(self._current_week)
+                logger.info(f"Preserved week selection: {self._current_week}")
+                self._on_week_changed()
+            elif week_options:
+                # Week not available or not set - select first available
                 self.week_combo.set(week_options[0])
+                self._current_week = week_options[0]
+                logger.info(f"Selected first available week: {self._current_week}")
                 self._on_week_changed()
             else:
+                # No weeks available
                 self.week_combo.set("")
+                self._current_week = ""
         else:
             self.week_combo['values'] = []
             self.week_combo.set("")
+            self._current_week = ""
         
         self._update_status()
     
@@ -241,9 +281,12 @@ class FileSelector(ttk.Frame):
         """Handle week selection change"""
         content_type = self.content_type_var.get()
         language = self.language_var.get()
-        week_display = self.week_var.get()
+        new_week_display = self.week_var.get()
         
-        if (content_type and language and week_display and
+        # Update current week
+        self._current_week = new_week_display
+        
+        if (content_type and language and new_week_display and
             content_type in self.available_languages and
             language in self.available_languages[content_type]):
             
@@ -252,7 +295,7 @@ class FileSelector(ttk.Frame):
             # Find the selected week
             selected_week = None
             for week in lang_data['weeks']:
-                if week['display_name'] == week_display:
+                if week['display_name'] == new_week_display:
                     selected_week = week
                     break
             
@@ -260,7 +303,7 @@ class FileSelector(ttk.Frame):
                 file_path = selected_week['path']
                 raw_content_type = self._get_raw_content_type_name(content_type)
                 self.selection_callback(file_path, language, raw_content_type)
-                self._update_status(f"Selected: {week_display} - {language} {content_type}")
+                self._update_status(f"Selected: {new_week_display} - {language} {content_type}")
                 return
         
         # No valid selection
@@ -311,10 +354,12 @@ class FileSelector(ttk.Frame):
                     # Update dropdowns to match
                     if content_type in self.available_content_types:
                         self.content_type_combo.set(content_type)
+                        self._current_content_type = content_type
                         self._on_content_type_changed()
                         
                         if language in self.language_combo['values']:
                             self.language_combo.set(language)
+                            self._current_language = language
                             self._on_language_changed()
                             
                             # Try to select the right week
@@ -325,6 +370,7 @@ class FileSelector(ttk.Frame):
                                 week_display = f"Week {week_num}"
                                 if week_display in self.week_combo['values']:
                                     self.week_combo.set(week_display)
+                                    self._current_week = week_display
             except (ValueError, IndexError):
                 pass
             
@@ -387,21 +433,40 @@ class FileSelector(ttk.Frame):
         
         if content_type_display in self.available_content_types:
             self.content_type_combo.set(content_type_display)
+            self._current_content_type = content_type_display
             self._on_content_type_changed()
             
             if language in self.language_combo['values']:
                 self.language_combo.set(language)
+                self._current_language = language
                 self._on_language_changed()
                 
                 if week_number:
                     week_display = f"Week {week_number}"
                     if week_display in self.week_combo['values']:
                         self.week_combo.set(week_display)
+                        self._current_week = week_display
                         self._on_week_changed()
     
     def refresh_files(self):
         """Refresh file list by rescanning data directory"""
+        # Store current selections before refresh
+        current_content_type = self._current_content_type
+        current_language = self._current_language
+        current_week = self._current_week
+        
+        # Rescan directory
         self._scan_data_directory()
+        
+        # Try to restore previous selections
+        if current_content_type and current_content_type in self.available_content_types:
+            self.content_type_combo.set(current_content_type)
+            self._current_content_type = current_content_type
+            self._on_content_type_changed()
+            
+            # Language will be handled by _on_content_type_changed which preserves it
+            
+        logger.info("File list refreshed, selections preserved where possible")
     
     def get_available_content_types(self) -> List[str]:
         """Get list of available content types"""
@@ -447,7 +512,7 @@ if __name__ == "__main__":
     
     # Create test window
     root = tk.Tk()
-    root.title("Enhanced File Selector Test")
+    root.title("Enhanced File Selector Test - Fixed Language Preservation")
     root.geometry("800x200")
     
     # Create selector

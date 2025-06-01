@@ -1,6 +1,7 @@
 """
 Updated Main Window for Language Learning Flashcard Generator
 Uses the enhanced file selector with improved dropdown organization
+Fixed for proper phrases support
 """
 
 import tkinter as tk
@@ -8,6 +9,8 @@ from tkinter import ttk, messagebox
 import logging
 from pathlib import Path
 from typing import Optional, Dict, Any, List
+import re
+import secrets
 
 # Import core modules
 from core.csv_generator import GenericLanguageCSVGenerator
@@ -156,14 +159,17 @@ class MainWindow:
             'tag_prefix': 'Language_Learning',
             'include_html_formatting': export_settings.html_formatting,
             'show_connections': study_settings.include_native_connections,
+            'show_context_indicators': True,
+            'phrase_category_prefix': '💬',
             'target_language': self.settings_manager.get_setting('language_learning.target_language', ''),
             'native_language': self.settings_manager.get_setting('language_learning.native_language', 'english'),
             'field_mappings': {
-                'target': ['german', 'target', 'word', 'term'],
-                'native': ['english', 'native', 'translation'],
+                'target': ['german', 'German', 'target', 'word', 'term', 'phrase'],
+                'native': ['english', 'English', 'native', 'translation'],
                 'example': ['example', 'example_sentence'],
                 'pronunciation': ['pronunciation', 'phonetic'],
-                'notes': ['notes', 'note', 'memory_tip']
+                'notes': ['notes', 'Notes', 'note', 'memory_tip'],
+                'tags': ['tags', 'Tags', 'categories', 'tag']
             }
         }
     
@@ -219,6 +225,7 @@ class MainWindow:
             self.csv_preview.clear()
             self.current_csv_content = ""
             self.export_panel.set_selection(0, 0)
+            self.export_panel.set_csv_ready(False)  # ADD THIS LINE
             return
         
         try:
@@ -227,13 +234,16 @@ class MainWindow:
             
             if not entries:
                 self.status_bar.set_message(f"No entries found in {selected_section}")
+                self.export_panel.set_selection(0, 0)
+                self.export_panel.set_csv_ready(False)  # ADD THIS LINE
                 return
             
-            # Generate CSV content for preview
+            # Generate CSV content for preview FIRST
             self._generate_csv_preview(entries, selected_section)
             
-            # Update export panel
+            # THEN update export panel with the correct sequence:
             self.export_panel.set_selection(1, len(entries))  # 1 section, N items
+            self.export_panel.set_csv_ready(True)  # ADD THIS LINE (moved from _generate_csv_preview)
             
             # Update status with current selection info
             week = self.file_selector.get_selected_week()
@@ -246,90 +256,229 @@ class MainWindow:
             
         except Exception as e:
             logger.error(f"Error generating CSV preview: {e}")
+            self.export_panel.set_csv_ready(False)  # ADD THIS LINE
             ErrorDialog.show_error(self.root, "Preview Error", f"Failed to generate preview: {e}")
-    
+
+
     def _extract_entries_for_section(self, section_key: str) -> List[Dict[str, Any]]:
-        """Extract entries for a specific section/day"""
+        """Extract entries for a specific section/day - FIXED for phrases support"""
         if not self.current_data:
             return []
         
         # Handle different JSON structures
         if 'days' in self.current_data:
             day_data = self.current_data['days'].get(section_key, {})
-            return day_data.get('words', [])
+            # FIXED: Check phrases first, then other fields
+            return day_data.get('phrases', day_data.get('words', day_data.get('entries', day_data.get('items', []))))
         
         elif any(key in self.current_data for key in ['lessons', 'chapters', 'sections']):
             container_key = next(key for key in ['lessons', 'chapters', 'sections'] if key in self.current_data)
             section_data = self.current_data[container_key].get(section_key, {})
-            return section_data.get('entries', section_data.get('words', section_data.get('items', [])))
+            # FIXED: Check phrases first, then other fields
+            return section_data.get('phrases', section_data.get('entries', section_data.get('words', section_data.get('items', []))))
         
         elif section_key == 'main':  # Direct entries structure
-            return self.current_data.get('entries', self.current_data.get('words', []))
+            return self.current_data.get('phrases', self.current_data.get('entries', self.current_data.get('words', [])))
         
         return []
     
     def _generate_csv_preview(self, entries: List[Dict[str, Any]], section_name: str):
-        """Generate CSV content and show in preview editor"""
+        """Generate CSV content and show in preview editor - REWRITTEN for better reliability"""
         try:
-            # Prepare metadata
+            # Clear any existing content first
+            self.current_csv_content = ""
+            
+            # Validate inputs
+            if not entries:
+                logger.warning("No entries provided for CSV generation")
+                self.csv_preview.clear()
+                return
+            
+            # Get basic info for metadata
             language = self.file_selector.get_selected_language()
             content_type = self.file_selector.get_selected_content_type()
             
+            # Auto-detect if this is phrases content
+            is_phrases = self._detect_phrases_content()
+            
+            # Build comprehensive metadata
             metadata = {
                 'target_language': language.lower().replace(' ', '_'),
-                'content_type': content_type,
+                'content_type': 'phrases' if is_phrases else content_type,
                 'source_file': str(self.current_file_path.name) if self.current_file_path else '',
                 'section': section_name,
+                'section_topic': self._get_section_topic(section_name),
                 'week': self._extract_week_from_selection(),
-                'topic': self._get_section_topic(section_name)
+                'topic': self.current_data.get('topic', ''),
+                'unit': self._extract_week_from_selection()
             }
             
-            # Generate CSV content using the CSV generator
-            formatter_config = self._get_csv_generator_config()
-            from core.card_formatter import AnkiAppFormatter
+            logger.info(f"Generating CSV preview for {len(entries)} entries, content_type: {metadata['content_type']}")
             
-            formatter = AnkiAppFormatter(formatter_config)
+            # Generate CSV content
+            csv_content = self._build_csv_content(entries, metadata, is_phrases)
             
-            # Build CSV content
-            csv_lines = []
+            # Validate generated content
+            if not csv_content or csv_content.strip() == "":
+                logger.error("Generated CSV content is empty")
+                self.csv_preview.clear()
+                return
             
-            # Add headers (AnkiApp format doesn't need headers, but we'll show them for editing)
-            headers = formatter.get_headers()
-            csv_lines.append(','.join(f'"{header}"' for header in headers))
-            
-            # Add data rows
-            for entry in entries:
-                try:
-                    row = formatter.format_entry(entry, metadata)
-                    # Properly escape CSV fields
-                    escaped_row = []
-                    for field in row:
-                        field_str = str(field).replace('"', '""')  # Escape quotes
-                        if ',' in field_str or '"' in field_str or '\n' in field_str:
-                            escaped_row.append(f'"{field_str}"')
-                        else:
-                            escaped_row.append(field_str)
-                    csv_lines.append(','.join(escaped_row))
-                except Exception as e:
-                    logger.warning(f"Failed to format entry: {e}")
-                    continue
-            
-            self.current_csv_content = '\n'.join(csv_lines)
-            
-            # Show in CSV preview editor
+            # Store and display the content
+            self.current_csv_content = csv_content
             self.csv_preview.set_csv_content(self.current_csv_content)
             
+            logger.info(f"CSV preview generated successfully: {len(csv_content)} characters, {len(entries)} entries")
+            
         except Exception as e:
-            logger.error(f"Error generating CSV preview: {e}")
+            logger.error(f"Error generating CSV preview: {e}", exc_info=True)
+            self.current_csv_content = ""
+            self.csv_preview.clear()
             raise
+
+    def _detect_phrases_content(self) -> bool:
+        """Detect if the current content is phrases-based"""
+        if not self.current_data:
+            return False
+        
+        # Check multiple indicators
+        indicators = [
+            'phrase' in self.file_selector.get_selected_content_type().lower(),
+            'phrases' in str(self.current_data).lower(),
+            'total_phrases' in self.current_data,
+            any('phrases' in str(day_data) for day_data in self.current_data.get('days', {}).values()),
+            'common_phrase' in str(self.current_file_path).lower() if self.current_file_path else False
+        ]
+        
+        return any(indicators)
+
+    def _build_csv_content(self, entries: List[Dict[str, Any]], metadata: Dict[str, Any], is_phrases: bool) -> str:
+        """Build CSV content using the appropriate formatter"""
+        
+        # Get the correct formatter
+        from core.card_formatter import FormatterFactory
+        formatter_type = 'phrases' if is_phrases else 'ankiapp'
+        formatter_config = self._get_csv_generator_config()
+        
+        try:
+            formatter = FormatterFactory.create_formatter(formatter_type, formatter_config)
+        except Exception as e:
+            logger.error(f"Failed to create formatter '{formatter_type}': {e}")
+            # Fallback to basic formatter
+            formatter = FormatterFactory.create_formatter('ankiapp', formatter_config)
+        
+        # Build CSV line by line
+        csv_lines = []
+        
+        # Add headers
+        try:
+            headers = formatter.get_headers()
+            if headers:
+                header_line = ','.join(f'"{header}"' for header in headers)
+                csv_lines.append(header_line)
+        except Exception as e:
+            logger.warning(f"Error getting headers: {e}")
+            # Use default headers
+            csv_lines.append('"Front","Back","Tag","",""')
+        
+        # Process each entry
+        successful_entries = 0
+        for i, entry in enumerate(entries):
+            try:
+                # Format the entry
+                row = formatter.format_entry(entry, metadata)
+                
+                # Escape and build CSV row
+                csv_row = self._escape_csv_row(row)
+                csv_lines.append(csv_row)
+                successful_entries += 1
+                
+            except Exception as e:
+                logger.warning(f"Failed to format entry {i+1}: {e}")
+                logger.debug(f"Problematic entry: {entry}")
+                continue
+        
+        if successful_entries == 0:
+            raise ValueError("No entries could be successfully formatted")
+        
+        logger.info(f"Successfully formatted {successful_entries}/{len(entries)} entries")
+        return '\n'.join(csv_lines)
+
+    def _escape_csv_row(self, row: List[str]) -> str:
+        """Properly escape a CSV row"""
+        escaped_fields = []
+        
+        for field in row:
+            # Convert to string and handle None values
+            field_str = str(field) if field is not None else ""
+            
+            # Escape quotes by doubling them
+            field_str = field_str.replace('"', '""')
+            
+            # Wrap in quotes if needed (contains comma, quote, newline, or HTML)
+            needs_quotes = any(char in field_str for char in [',', '"', '\n', '\r', '<', '>'])
+            
+            if needs_quotes:
+                escaped_fields.append(f'"{field_str}"')
+            else:
+                escaped_fields.append(field_str)
+        
+        return ','.join(escaped_fields)
+    
+    def _generate_csv_with_generator(self, entries: List[Dict[str, Any]], metadata: Dict[str, Any], is_phrases: bool = False) -> str:
+        """Generate CSV using the same logic as the CSV generator"""
+        
+        # Get the appropriate formatter
+        from core.card_formatter import FormatterFactory
+        formatter_type = 'phrases' if is_phrases else 'ankiapp'
+        formatter_config = self._get_csv_generator_config()
+        formatter = FormatterFactory.create_formatter(formatter_type, formatter_config)
+        
+        # Build CSV content
+        csv_lines = []
+        
+        # Add headers (for preview purposes)
+        headers = formatter.get_headers()
+        csv_lines.append(','.join(f'"{header}"' for header in headers))
+        
+        # Add data rows
+        for entry in entries:
+            try:
+                row = formatter.format_entry(entry, metadata)
+                # Properly escape CSV fields
+                escaped_row = []
+                for field in row:
+                    field_str = str(field).replace('"', '""')  # Escape quotes
+                    if ',' in field_str or '"' in field_str or '\n' in field_str or '<' in field_str:
+                        escaped_row.append(f'"{field_str}"')
+                    else:
+                        escaped_row.append(field_str)
+                csv_lines.append(','.join(escaped_row))
+            except Exception as e:
+                logger.warning(f"Failed to format entry: {e}")
+                continue
+        
+        return '\n'.join(csv_lines)
     
     def _extract_week_from_selection(self) -> int:
         """Extract week number from current selection"""
-        week_display = self.file_selector.get_selected_week()
-        # Extract number from "Week 5" format
-        import re
-        match = re.search(r'week\s+(\d+)', week_display, re.IGNORECASE)
-        return int(match.group(1)) if match else 1
+        try:
+            week_display = self.file_selector.get_selected_week()
+            # Extract number from "Week 5" format
+            import re
+            match = re.search(r'week\s+(\d+)', week_display, re.IGNORECASE)
+            if match:
+                return int(match.group(1))
+            
+            # Fallback to data
+            if self.current_data and 'week' in self.current_data:
+                return int(self.current_data['week'])
+            
+            # Default fallback
+            return 1
+        except (ValueError, AttributeError, TypeError):
+            # If anything goes wrong, return 1
+            return 1
     
     def _get_section_topic(self, section_key: str) -> str:
         """Get the topic for a section"""
@@ -349,7 +498,7 @@ class MainWindow:
         self.export_panel.set_csv_ready(bool(new_csv_content.strip()))
     
     def _export_csv(self):
-        """Export the current CSV content to a file"""
+        """Export the current CSV content to a file - FIXED to remove headers"""
         if not self.current_csv_content:
             messagebox.showwarning("Warning", "No CSV content to export")
             return
@@ -358,18 +507,14 @@ class MainWindow:
             from tkinter import filedialog
             from datetime import datetime
             
-            # Generate default filename with better naming
+            # Generate enhanced filename format
             language = self.file_selector.get_selected_language()
             content_type_display = self._format_content_type_display(self.file_selector.get_selected_content_type())
             week = self.file_selector.get_selected_week()
-            timestamp = datetime.now().strftime("%Y%m%d_%H%M")
+            section_key = self.content_selector.get_selected_section()  # Get selected day/section
             
-            # Create a clean filename
-            language_clean = language.replace(' ', '_')
-            content_clean = content_type_display.replace(' ', '_')
-            week_clean = week.replace(' ', '_')
-            
-            default_filename = f"{language_clean}_{content_clean}_{week_clean}_{timestamp}.csv"
+            # Generate new filename format: Language_Week_Day_Category_ID.csv
+            default_filename = self._generate_new_filename(language, content_type_display, week, section_key)
             
             # Ask user for save location
             output_dir = self.settings_manager.get_output_directory()
@@ -385,12 +530,21 @@ class MainWindow:
             if not file_path:
                 return
             
-            # Save the CSV content
-            with open(file_path, 'w', encoding='utf-8', newline='') as f:
-                f.write(self.current_csv_content)
+            # FIXED: Remove header row before saving
+            csv_lines = self.current_csv_content.split('\n')
             
-            # Count items (subtract 1 for header)
-            item_count = len(self.current_csv_content.split('\n')) - 1
+            # Skip the first line (headers) and keep only data rows
+            data_lines = [line for line in csv_lines[1:] if line.strip()]  # Also remove empty lines
+            
+            # Join back without headers
+            csv_content_no_headers = '\n'.join(data_lines)
+            
+            # Save the CSV content WITHOUT headers
+            with open(file_path, 'w', encoding='utf-8', newline='') as f:
+                f.write(csv_content_no_headers)
+            
+            # Count items (no need to subtract 1 for header since we removed it)
+            item_count = len(data_lines)
             
             # Update history
             session_id = self.history_manager.start_study_session(
@@ -423,16 +577,62 @@ class MainWindow:
                 "Success", 
                 f"CSV exported successfully!\n\n"
                 f"Content: {week} - {language} {content_type_display}\n"
-                f"Items: {item_count}\n"
-                f"File: {Path(file_path).name}"
+                f"Items: {item_count} flashcards\n"
+                f"File: {Path(file_path).name}\n\n"
+                f"✅ Ready for AnkiApp import!"
             )
             
-            self.status_bar.set_message(f"Exported {item_count} items to {Path(file_path).name}")
-            logger.info(f"Exported CSV: {file_path}")
+            self.status_bar.set_message(f"Exported {item_count} flashcards to {Path(file_path).name}")
+            logger.info(f"Exported CSV without headers: {file_path} ({item_count} cards)")
             
         except Exception as e:
             logger.error(f"Export failed: {e}")
             ErrorDialog.show_error(self.root, "Export Error", f"Failed to export CSV: {e}")
+
+    # OPTIONAL: Add a method to preview what will be exported (without headers)
+
+    def _generate_new_filename(self, language, content_type, week, section_key=""):
+        """Generate filename: Language_Week_Day_Category_ID.csv"""
+        
+        # Clean language name
+        language_clean = language.replace(' ', '_').replace('-', '_')
+        
+        # Extract week number (from "Week 1" -> "Week1")
+        week_match = re.search(r'week\s*(\d+)', week, re.IGNORECASE)
+        week_num = week_match.group(1) if week_match else "1"
+        week_clean = f"Week{week_num}"
+        
+        # Extract day number from section (from "day_1" -> "Day1")
+        day_clean = "Day1"  # Default
+        if section_key:
+            day_match = re.search(r'day[_\s]*(\d+)', section_key, re.IGNORECASE)
+            if day_match:
+                day_clean = f"Day{day_match.group(1)}"
+        
+        # Standardize content type
+        if 'phrase' in content_type.lower():
+            content_clean = 'Phrases'
+        elif 'grammar' in content_type.lower():
+            content_clean = 'Grammar'
+        else:
+            content_clean = 'Vocabulary'
+        
+        # Generate random 6-character ID
+        random_id = secrets.token_hex(3)  # Creates abc123 format
+        
+        # Build final filename
+        filename = f"{language_clean}_{week_clean}_{day_clean}_{content_clean}_{random_id}.csv"
+        
+        return filename
+
+    def _preview_export_content(self):
+        """Preview what will actually be exported (without headers)"""
+        if not self.current_csv_content:
+            return ""
+        
+        csv_lines = self.current_csv_content.split('\n')
+        data_lines = [line for line in csv_lines[1:] if line.strip()]
+        return '\n'.join(data_lines)
     
     def _save_csv_content(self):
         """Save current CSV content (Ctrl+S handler)"""

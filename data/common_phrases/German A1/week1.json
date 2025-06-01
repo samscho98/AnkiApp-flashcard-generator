@@ -1,52 +1,196 @@
 {
+  "target_language": "german",
+  "native_language": "english",
+  "content_type": "phrases",
   "week": 1,
   "topic": "Essential A1 Phrases: Greetings, Politeness, and Basics",
   "source": "Common Goethe A1 Phrases",
   "total_phrases": 20,
+  "level": "A1",
   "days": {
     "day_1": {
       "topic": "Greetings & Introductions",
       "phrases": [
-        {"german": "Guten Morgen!", "english": "Good morning!"},
-        {"german": "Guten Tag!", "english": "Good day!"},
-        {"german": "Wie heißen Sie?", "english": "What is your name?"},
-        {"german": "Ich heiße ...", "english": "My name is ..."}
+        {
+          "German": "Guten Morgen!",
+          "English": "Good morning!",
+          "Notes": "Used until about 10-11 AM. Standard formal greeting.",
+          "Tags": ["greetings", "morning"],
+          "difficulty": 1,
+          "usage_context": "formal_informal"
+        },
+        {
+          "German": "Guten Tag!",
+          "English": "Good day!",
+          "Notes": "Universal greeting used from late morning through afternoon.",
+          "Tags": ["greetings", "daytime"],
+          "difficulty": 1,
+          "usage_context": "formal"
+        },
+        {
+          "German": "Wie heißen Sie?",
+          "English": "What is your name?",
+          "Notes": "Formal way to ask someone's name. Use with strangers, older people, or professional settings.",
+          "Tags": ["introductions", "questions", "formal"],
+          "difficulty": 2,
+          "usage_context": "formal"
+        },
+        {
+          "German": "Ich heiße ...",
+          "English": "My name is ...",
+          "Notes": "Standard way to introduce yourself. Replace '...' with your actual name.",
+          "Tags": ["introductions", "self"],
+          "difficulty": 1,
+          "usage_context": "formal_informal"
+        }
       ]
     },
     "day_2": {
       "topic": "Politeness",
       "phrases": [
-        {"german": "Bitte.", "english": "Please."},
-        {"german": "Danke.", "english": "Thank you."},
-        {"german": "Entschuldigung!", "english": "Excuse me!"},
-        {"german": "Es tut mir leid.", "english": "I’m sorry."}
+        {
+          "German": "Bitte.",
+          "English": "Please.",
+          "Notes": "Multi-purpose word: 'please', 'you're welcome', or 'here you go'.",
+          "Tags": ["politeness", "essential"],
+          "difficulty": 1,
+          "usage_context": "universal"
+        },
+        {
+          "German": "Danke.",
+          "English": "Thank you.",
+          "Notes": "Basic thank you. Can be enhanced with 'Danke schön' (thank you very much).",
+          "Tags": ["politeness", "gratitude"],
+          "difficulty": 1,
+          "usage_context": "universal"
+        },
+        {
+          "German": "Entschuldigung!",
+          "English": "Excuse me!",
+          "Notes": "Used to get attention, when passing by someone, or for minor interruptions.",
+          "Tags": ["politeness", "attention"],
+          "difficulty": 2,
+          "usage_context": "universal"
+        },
+        {
+          "German": "Es tut mir leid.",
+          "English": "I'm sorry.",
+          "Notes": "More formal and sincere than 'Entschuldigung'. Use for genuine apologies.",
+          "Tags": ["apologies", "politeness", "formal"],
+          "difficulty": 3,
+          "usage_context": "formal"
+        }
       ]
     },
     "day_3": {
       "topic": "Asking and Understanding",
       "phrases": [
-        {"german": "Können Sie mir helfen?", "english": "Can you help me?"},
-        {"german": "Ich verstehe nicht.", "english": "I don’t understand."},
-        {"german": "Wie bitte?", "english": "Pardon me?"},
-        {"german": "Können Sie das bitte wiederholen?", "english": "Can you repeat that, please?"}
+        {
+          "German": "Können Sie mir helfen?",
+          "English": "Can you help me?",
+          "Notes": "Polite way to ask for assistance. Essential for travelers and learners.",
+          "Tags": ["help", "questions", "formal"],
+          "difficulty": 3,
+          "usage_context": "formal"
+        },
+        {
+          "German": "Ich verstehe nicht.",
+          "English": "I don't understand.",
+          "Notes": "Crucial phrase for language learners. Shows you need clarification.",
+          "Tags": ["understanding", "learning"],
+          "difficulty": 2,
+          "usage_context": "universal"
+        },
+        {
+          "German": "Wie bitte?",
+          "English": "Pardon me?",
+          "Notes": "Polite way to ask someone to repeat what they said. More formal than 'Was?'",
+          "Tags": ["understanding", "clarification"],
+          "difficulty": 2,
+          "usage_context": "formal"
+        },
+        {
+          "German": "Können Sie das bitte wiederholen?",
+          "English": "Can you repeat that, please?",
+          "Notes": "Useful in classes, meetings, or when you need something repeated clearly.",
+          "Tags": ["understanding", "questions", "classroom"],
+          "difficulty": 4,
+          "usage_context": "formal"
+        }
       ]
     },
     "day_4": {
       "topic": "Small Talk & Basics",
       "phrases": [
-        {"german": "Wie geht es Ihnen?", "english": "How are you?"},
-        {"german": "Mir geht es gut.", "english": "I’m doing well."},
-        {"german": "Woher kommen Sie?", "english": "Where are you from?"},
-        {"german": "Ich komme aus ...", "english": "I come from ..."}
+        {
+          "German": "Wie geht es Ihnen?",
+          "English": "How are you?",
+          "Notes": "Formal way to ask about someone's wellbeing. Informal version: 'Wie geht's?'",
+          "Tags": ["smalltalk", "questions", "formal"],
+          "difficulty": 2,
+          "usage_context": "formal"
+        },
+        {
+          "German": "Mir geht es gut.",
+          "English": "I'm doing well.",
+          "Notes": "Standard positive response to 'How are you?'. Can add 'Danke' at the end.",
+          "Tags": ["smalltalk", "response"],
+          "difficulty": 2,
+          "usage_context": "universal"
+        },
+        {
+          "German": "Woher kommen Sie?",
+          "English": "Where are you from?",
+          "Notes": "Common question when meeting new people. Shows interest in their background.",
+          "Tags": ["questions", "origins", "smalltalk"],
+          "difficulty": 3,
+          "usage_context": "formal"
+        },
+        {
+          "German": "Ich komme aus ...",
+          "English": "I come from ...",
+          "Notes": "Replace '...' with your country/city. Example: 'Ich komme aus Amerika.'",
+          "Tags": ["origins", "self", "geography"],
+          "difficulty": 2,
+          "usage_context": "universal"
+        }
       ]
     },
     "day_5": {
       "topic": "Farewells & Courtesy",
       "phrases": [
-        {"german": "Auf Wiedersehen!", "english": "Goodbye!"},
-        {"german": "Tschüss!", "english": "Bye!"},
-        {"german": "Gute Nacht!", "english": "Good night!"},
-        {"german": "Schönen Tag noch!", "english": "Have a nice day!"}
+        {
+          "German": "Auf Wiedersehen!",
+          "English": "Goodbye!",
+          "Notes": "Formal farewell. Literally means 'until we see each other again'.",
+          "Tags": ["farewells", "formal"],
+          "difficulty": 2,
+          "usage_context": "formal"
+        },
+        {
+          "German": "Tschüss!",
+          "English": "Bye!",
+          "Notes": "Casual, friendly goodbye. Use with friends, family, or informal situations.",
+          "Tags": ["farewells", "informal"],
+          "difficulty": 1,
+          "usage_context": "informal"
+        },
+        {
+          "German": "Gute Nacht!",
+          "English": "Good night!",
+          "Notes": "Used when going to bed or leaving in the evening. Not just 'good evening'.",
+          "Tags": ["farewells", "evening"],
+          "difficulty": 1,
+          "usage_context": "universal"
+        },
+        {
+          "German": "Schönen Tag noch!",
+          "English": "Have a nice day!",
+          "Notes": "Friendly way to end a conversation. Shows politeness and good wishes.",
+          "Tags": ["farewells", "politeness", "courtesy"],
+          "difficulty": 3,
+          "usage_context": "formal_informal"
+        }
       ]
     }
   }
